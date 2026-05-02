@@ -1,82 +1,141 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CarneCerta</title>
 
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <header class="topbar">
-    <div class="logo">
-      <span class="logo-icon">🥩</span>
-      <h1>CarneCerta</h1>
+<header class="topbar">
+  <div class="logo">
+    <h1> 🥩 Carne<span style="color: #ff4747;">Certa</span></h1>
+  </div>
+
+  <div class="top-buttons">
+
+    <button>Ajuda</button>
+    <button>Acessibilidade</button>
+  </div>
+</header>
+
+<section class="chat-top">
+
+
+    <div class="chat-header">
+      🤖 IA Açougueiro
     </div>
 
-    <div class="top-actions">
-      <button>Ajuda</button>
-      <button>Acessibilidade</button>
+    <div class="chat-message">
+      “Posso te ajudar a escolher a carne ideal.”
     </div>
-  </header>
-    <main class="hero">
 
-    <section class="hero-text">
-      <span class="tag">Açougue Inteligente</span>
+  </div>
 
-      <h2>
-        O que você vai
-        preparar <span>hoje?</span>
-      </h2>
+</section>
 
-      <p>
-        Escolha o preparo e descubra os melhores cortes,
-        custo-benefício e sugestões inteligentes.
-      </p>
+<main class="hero">
 
-      <div class="cards">
+  <section class="hero-left">
 
-        <div class="card">
-          <div class="emoji">🍲</div>
-          <h3>Para Panela</h3>
-          <p>Cortes ideais para cozidos e ensopados.</p>
-        </div>
+    <span class="tag">
+      Açougue Inteligente
+    </span>
 
-        <div class="card">
-          <div class="emoji">🥩</div>
-          <h3>Para Bife</h3>
-          <p>Carnes macias e rápidas para grelha.</p>
-        </div>
-        <div class="card">
-          <div class="emoji">🔥</div>
-          <h3>Churrasco</h3>
-          <p>Os melhores cortes para brasa.</p>
-        </div>
+    <h2>
+      O que você vai preparar
+      <span>hoje?</span>
+    </h2>
 
-        <div class="card">
-          <div class="emoji">🍔</div>
-          <h3>Hambúrguer</h3>
-          <p>Misturas perfeitas para burgers artesanais.</p>
-        </div>
+    <p>
+      Escolha o preparo e descubra os melhores cortes,
+      custo-benefício e sugestões inteligentes.
+    </p>
 
+    <div class="cards">
+
+      <div class="card">
+        <img src="../assets/imagens/parapanela.jpg" alt="">
+        <h3>🍲 Para Panela</h3>
+        <p>Cortes ideais para cozidos e ensopados.</p>
       </div>
-    </section>
-     <section class="hero-image">
-      <img width="600"
-        src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?q=80&w=1200&auto=format&fit=crop"
-        alt="Carne premium"
-      />
 
-      <div class="floating-box">
-        <h4>🤖 IA Açougueiro</h4>
-        <p>“Posso te ajudar a escolher a carne ideal.”</p>
+      <div class="card">
+        <img src="../assets/imagens/parabife.jpg" alt="">
+        <h3>🥩 Para Bife</h3>
+        <p>Carnes macias e rápidas para grelha.</p>
       </div>
-    </section>
 
-  </main>
+      <div class="card">
+        <img src="../assets/imagens/parachurrasco.webp" alt="">
+        <h3>🔥 Churrasco</h3>
+        <p>Os melhores cortes para brasa.</p>
+      </div>
 
-  <script src="script.js"></script>
+      <div class="card">
+        <img src="../assets/imagens/paramoer.webp" alt="">
+        <h3>🍔 Hambúrguer</h3>
+        <p>Misturas perfeitas para burgers artesanais.</p>
+      </div>
+
+      <div class="card">
+        <img src="../assets/imagens/paradesfiar.jpg" alt="">
+        <h3 > Desfiar</h3>
+        <p>Carnes excelentes para desfiar  </p>
+      </div>
+
+      <div class="card">
+        <img src="../assets/imagens/bifearole.jpg" alt="">
+        <h3 > Para Bife a role</h3>
+        <p>Misturas perfeitas para burgers artesanais.</p>
+      </div>
+      <div class="card">
+        <img src="../assets/imagens/paramoer.webp" alt="">
+        <h3 >Para  Moer </h3>
+        <p>Carnes para moer </p>
+      </div>
+       <div class="card">
+        <img src="../assets/imagens/ajudecarnes.jpg" alt="">
+        <h3 > Não sei me ajude</h3>
+        <p>Vamos explorar e conhecer mais opções.</p>
+      </div>
+    
+    </div>
+
+  </section>
+
+  <section class="hero-right">
+
+    <img
+      class="hero-image"
+      src="../assets/images/hero/carne-banner.jpg"
+      alt=""
+    >
+
+  </section>
+
+</main>
+
+<section class="bottom-bar">
+
+  <div class="bottom-card">
+    ✅ +15 cortes cadastrados
+  </div>
+
+  <div class="bottom-card">
+    ⭐ Sistema inteligente
+  </div>
+
+  <div class="bottom-card">
+    🥩 Sugestões por preparo
+  </div>
+
+</section>
+
+<script src="script.js"></script>
+
 </body>
 </html>
