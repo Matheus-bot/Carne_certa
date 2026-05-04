@@ -171,14 +171,38 @@ Este projeto também está sendo utilizado como prática de:
 
 # 📈 Status do Projeto
 
-🚧 Em desenvolvimento
+O projeto está em desenvolvimento ativo.
 
-Atualmente:
+### ✅ Funcionalidades já implementadas
 
-* Estrutura inicial criada
-* Documentação organizada
-* Primeira tela em desenvolvimento
-* Protótipos sendo refinados
+- Estrutura inicial do frontend
+- Documentação organizada
+- Home page em dark mode
+- Organização profissional de pastas
+- Navegação entre telas
+- Página interativa do mapa do boi
+- Página individual do corte Acém
+- Cards de categorias de preparo
+- Estrutura responsiva inicial
+- Layout moderno inspirado em foodtechs
+
+### 🔄 Em desenvolvimento
+
+- Sistema inteligente de recomendação
+- Mais páginas de cortes bovinos
+- Filtros por preparo e custo-benefício
+- Área de chat com IA
+- Melhorias de acessibilidade
+- Animações e interações
+- Responsividade avançada
+
+### 📌 Próximos passos
+
+- Adicionar novos cortes
+- Criar categorias dinâmicas
+- Melhorar UX/UI
+- Implementar lógica de recomendação
+- Integrar backend futuramente
 
 ---
 
