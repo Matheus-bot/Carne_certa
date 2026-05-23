@@ -262,9 +262,29 @@ header{
 }
 
 .acem-btn{
+  top:10%;
+
+  left:75%;
+}
+.coxaomole-btn{
+  top:9;
+
+  left:17%;
+}
+.paleta-btn{
+  top:38%;
+
+  left:70%;
+}
+.pontadealcatra-btn{
   top:35%;
 
-  left:30%;
+  left: 10px;%;
+}
+.contrafile-btn{
+  top:9%;
+
+  left:40%;
 }
 
 .meat-page{
@@ -276,19 +296,28 @@ header{
 .meat-section{
   display:grid;
 
-  grid-template-columns:1fr 1fr;
+  grid-template-columns:1.2fr 1fr;
 
   gap:70px;
 
   align-items:center;
 }
 
-.meat-image{
-  width:100%;
+.meat-image-area{
+  transform:translateX(-40px);
+}
 
-  max-width:550px;
+.meat-image{
+  width:120%;
+
+  max-width:780px;
+
+  position:relative;
+  z-index:2;
 
   animation:float 4s ease-in-out infinite;
+
+  object-fit:contain;
 }
 
 .meat-tag{
@@ -428,4 +457,651 @@ header{
   .meat-content h1{
     font-size:52px;
   }
+/*parte do acem */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
 
+body{
+  background:
+  radial-gradient(circle at top,
+  #1b1b1b 0%,
+  #050505 55%);
+
+  color:white;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+/* PAGE */
+
+.meat-page{
+  min-height:100vh;
+  padding:70px 8%;
+}
+
+/* BOTÃO VOLTAR */
+
+.back-button{
+  display:inline-block;
+
+  margin-bottom:40px;
+
+  background:#111;
+  border:1px solid #222;
+
+  padding:14px 24px;
+
+  border-radius:999px;
+
+  transition:0.3s;
+}
+
+.back-button:hover{
+  border-color:#ff4747;
+  transform:translateY(-3px);
+}
+
+/* SECTION */
+
+.meat-section{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  align-items:center;
+}
+
+/* IMAGEM */
+
+.meat-image-area{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.image-glow{
+  position:absolute;
+
+  width:400px;
+  height:400px;
+
+  background:#ff4747;
+
+  filter:blur(120px);
+
+  opacity:0.15;
+
+  z-index:0;
+}
+
+.meat-image{
+  width:120%;
+
+  max-width:780px;
+
+  position:relative;
+  z-index: index 2;;
+
+  animation:float 4s ease-in-out infinite;
+
+  object-fit:contain;
+}
+
+/* TAG */
+
+.meat-tag{
+  background:#111;
+  border:1px solid #222;
+
+  color:#ff4747;
+
+  padding:10px 18px;
+
+  border-radius:999px;
+
+  display:inline-block;
+
+  margin-bottom:25px;
+
+  font-size:14px;
+}
+
+/* TITLE */
+
+.meat-content h1{
+  font-size:72px;
+  margin-bottom:20px;
+}
+
+/* QUICK INFO */
+
+.quick-info{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+
+  margin-bottom:30px;
+}
+
+.quick-info span{
+  background:#111;
+
+  border:1px solid #222;
+
+  padding:10px 16px;
+
+  border-radius:999px;
+
+  color:#d6d6d6;
+
+  font-size:14px;
+}
+
+/* DESCRIPTION */
+
+.meat-description{
+  color:#c7c7c7;
+
+  line-height:1.9;
+
+  margin-bottom:40px;
+
+  font-size:17px;
+}
+
+/* STATS */
+
+.stats{
+  display:flex;
+  gap:20px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:35px;
+}
+
+.stat-card{
+  background:#111;
+
+  border:1px solid #222;
+
+  padding:22px;
+
+  border-radius:24px;
+
+  min-width:180px;
+
+  transition:0.3s;
+}
+
+.stat-card:hover{
+  transform:translateY(-5px);
+  border-color:#ff4747;
+}
+
+.stat-card h3{
+  margin-bottom:15px;
+}
+
+.stat-card span{
+  color:#bdbdbd;
+  font-size:14px;
+}
+
+/* BARRAS */
+
+.bar{
+  width:100%;
+  height:8px;
+
+  background:#222;
+
+  border-radius:999px;
+
+  overflow:hidden;
+
+  margin-bottom:12px;
+}
+
+.fill{
+  height:100%;
+  background:#ff4747;
+  border-radius:999px;
+}
+
+.fill-2{
+  width:40%;
+}
+
+.fill-3{
+  width:65%;
+}
+
+.fill-4{
+  width:90%;
+}
+
+/* RECOMMENDATION */
+
+.recommendation-card{
+  background:#111;
+
+  border:1px solid #222;
+
+  padding:28px;
+
+  border-radius:24px;
+
+  margin-bottom:35px;
+
+  max-width:500px;
+
+  transition:0.3s;
+}
+
+.recommendation-card:hover{
+  border-color:#ff4747;
+}
+
+.recommendation-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:15px;
+}
+
+.score{
+  color:#ff4747;
+
+  font-size:26px;
+  font-weight:bold;
+}
+
+.best-choice{
+  background:#1d1d1d;
+
+  padding:8px 14px;
+
+  border-radius:999px;
+
+  font-size:13px;
+
+  color:#d6d6d6;
+}
+
+.recommendation-card p{
+  color:#c7c7c7;
+  line-height:1.7;
+}
+
+/* IDEAL FOR */
+
+.ideal-for{
+  margin-bottom:35px;
+}
+
+.ideal-for h3{
+  margin-bottom:20px;
+}
+
+.tags{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.tags span{
+  background:#111;
+
+  border:1px solid #222;
+
+  padding:12px 18px;
+
+  border-radius:999px;
+
+  color:#d6d6d6;
+
+  transition:0.3s;
+}
+
+.tags span:hover{
+  border-color:#ff4747;
+  transform:translateY(-3px);
+}
+
+/* IA CARD */
+
+.chef-tip{
+  background:linear-gradient(
+    135deg,
+    #111,
+    #181818
+  );
+
+  border:1px solid #222;
+
+  padding:30px;
+
+  border-radius:28px;
+
+  margin-bottom:40px;
+
+  position:relative;
+
+  overflow:hidden;
+}
+
+.chef-tip::before{
+  content:"";
+
+  position:absolute;
+
+  top:-80px;
+  right:-80px;
+
+  width:180px;
+  height:180px;
+
+  background:#ff4747;
+
+  opacity:0.08;
+
+  border-radius:50%;
+}
+
+.chef-tip h3{
+  margin-bottom:15px;
+  color:#ff4747;
+}
+
+.chef-tip p{
+  color:#d6d6d6;
+  line-height:1.8;
+}
+
+/* BUTTON */
+
+.select-button{
+  background:#ff4747;
+
+  color:white;
+
+  border:none;
+
+  padding:18px 32px;
+
+  border-radius:999px;
+
+  font-size:16px;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.select-button:hover{
+  transform:translateY(-4px);
+
+  box-shadow:
+  0 12px 30px rgba(255,71,71,0.35);
+}
+
+/* ANIMATION */
+
+@keyframes float{
+
+  0%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-12px);
+  }
+
+  100%{
+    transform:translateY(0px);
+  }
+
+}
+
+/* RESPONSIVO */
+
+@media(max-width:1000px){
+
+  .meat-section{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .stats{
+    justify-content:center;
+  }
+
+  .tags{
+    justify-content:center;
+  }
+
+  .recommendation-top{
+    flex-direction:column;
+    gap:15px;
+  }
+
+  .meat-content h1{
+    font-size:56px;
+  }
+
+}
+
+@media(max-width:700px){
+
+  .meat-page{
+    padding:50px 6%;
+  }
+
+  .meat-content h1{
+    font-size:42px;
+  }
+
+  .stat-card{
+    width:100%;
+  }
+
+  .select-button{
+    width:100%;
+  }
+
+}
+
+/* ===================================== */
+/* RESPONSIVO CELULAR */
+/* ===================================== */
+
+@media(max-width:900px){
+
+  .meat-page{
+    padding:40px 6%;
+  }
+
+  .meat-section{
+    grid-template-columns:1fr;
+
+    gap:20px;
+
+    text-align:center;
+  }
+
+  /* IMAGEM */
+
+  .meat-image-area{
+    transform:none;
+
+    order:-1;
+  }
+
+  .image-glow{
+    width:250px;
+    height:250px;
+
+    filter:blur(90px);
+  }
+
+  .meat-image{
+    width:100%;
+
+    max-width:420px;
+
+    margin:auto;
+
+    display:block;
+  }
+
+  /* TITULO */
+
+  .meat-content h1{
+    font-size:48px;
+
+    margin-bottom:18px;
+  }
+
+  /* TAG PRINCIPAL */
+
+  .meat-tag{
+    font-size:12px;
+
+    padding:10px 16px;
+  }
+
+  /* QUICK INFO */
+
+  .quick-info{
+    justify-content:center;
+
+    gap:10px;
+  }
+
+  .quick-info span{
+    font-size:12px;
+
+    padding:10px 14px;
+  }
+
+  /* DESCRIÇÃO */
+
+  .meat-description{
+    font-size:15px;
+
+    line-height:1.8;
+  }
+
+  /* STATS */
+
+  .stats{
+    justify-content:center;
+
+    gap:15px;
+  }
+
+  .stat-card{
+    width:100%;
+
+    max-width:320px;
+  }
+
+  /* RECOMMENDATION */
+
+  .recommendation-card{
+    margin:auto;
+
+    margin-bottom:35px;
+  }
+
+  .recommendation-top{
+    flex-direction:column;
+
+    gap:12px;
+  }
+
+  /* TAGS */
+
+  .tags{
+    justify-content:center;
+  }
+
+  .tags span{
+    font-size:13px;
+  }
+
+  /* IA CARD */
+
+  .chef-tip{
+    padding:25px;
+
+    text-align:left;
+  }
+
+  .chef-tip h3{
+    font-size:18px;
+  }
+
+  .chef-tip p{
+    font-size:14px;
+  }
+
+  /* BOTÃO */
+
+  .select-button{
+    width:100%;
+
+    padding:18px;
+
+    font-size:15px;
+  }
+
+}
+
+/* ===================================== */
+/* CELULARES PEQUENOS */
+/* ===================================== */
+
+@media(max-width:500px){
+
+  .meat-content h1{
+    font-size:40px;
+  }
+
+  .meat-image{
+    max-width:340px;
+  }
+
+  .quick-info{
+    flex-direction:column;
+
+    align-items:center;
+  }
+
+  .quick-info span{
+    width:100%;
+  }
+
+  .tags span{
+    width:100%;
+  }
+
+  .stat-card{
+    padding:20px;
+  }
+
+  .recommendation-card{
+    padding:24px;
+  }
+
+}
