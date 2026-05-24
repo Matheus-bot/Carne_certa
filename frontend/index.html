@@ -13,6 +13,130 @@
 
 </head>
 
+<!-- PAINEL DE PREFERÊNCIAS -->
+<div class="overlay" id="overlay"></div>
+
+<div class="preferences-panel" id="preferencesPanel">
+
+  <div class="preferences-content">
+
+    <!-- FECHAR -->
+
+    <div class="close-panel" id="closePanel">
+      ✕
+    </div>
+
+    <!-- TOPO -->
+
+    <span class="panel-tag">
+      🍲 Para Panela
+    </span>
+
+    <h2 class="panel-title">
+      Suas preferências
+    </h2>
+
+    <p class="panel-description">
+      Responda rapidinho para encontrarmos
+      os melhores cortes para sua receita.
+    </p>
+
+    <!-- PESSOAS -->
+
+    <div class="question-block">
+
+      <h3>
+        Quantas pessoas?
+      </h3>
+
+      <div class="options">
+
+        <button class="option-btn">
+          👤 1-2
+        </button>
+
+        <button class="option-btn ">
+          👨‍👩‍👧 3-5
+        </button>
+
+        <button class="option-btn">
+          🎉 6+
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- PRIORIDADES -->
+
+    <div class="question-block">
+
+      <h3>
+        O que importa mais?
+      </h3>
+
+      <div class="options">
+
+        <button class="option-btn">
+          🥩 Macia
+        </button>
+
+        <button class="option-btn ">
+          💰 Barata
+        </button>
+
+        <button class="option-btn">
+          🥗 Magra
+        </button>
+
+        <button class="option-btn">
+          🔥 Saborosa
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- TIPO -->
+
+    <div class="question-block">
+
+      <h3>
+        Como deseja a carne?
+      </h3>
+
+      <div class="options">
+
+        <button class="option-btn ">
+          🔪 Cubos pequenos 
+        </button>
+
+        <button class="option-btn ">
+          🔪 Cubos medios  
+        </button>
+
+        <button class="option-btn ">
+          🔪 Cubos grandes  
+        </button>
+
+        <button class="option-btn ">
+          🥩 Inteira 
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- BOTÃO -->
+
+    <button class="panel-button">
+      Ver melhores carnes →
+    </button>
+
+  </div>
+
+</div>
+
 <body>
 
   <!-- HEADER -->
@@ -98,7 +222,7 @@
 
       <div class="cards">
 
-        <div class="card">
+        <div class="card" id="openPanel">
 
 
           <img
@@ -140,6 +264,8 @@
             alt="Churrasco"
           >
         <div class="card-content">
+            <div class="card" id="openModal"></div>
+
           <h3>🔥 Churrasco</h3>
 
           <p>
