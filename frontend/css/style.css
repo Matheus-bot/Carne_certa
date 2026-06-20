@@ -354,7 +354,7 @@ a{
 }
 .coxaomole-btn{
   top:9%;
-  z-index: index 2;
+  z-index: 2;
 
   left:17%;
 }
@@ -493,6 +493,37 @@ a{
   gap: 15px;
 
   margin-left: auto;
+
+}
+
+.top-buttons button {
+
+  background:
+    rgba(255,255,255,0.04);
+
+  border:
+    1px solid rgba(255,255,255,0.08);
+
+  color: white;
+
+  padding: 12px 18px;
+
+  border-radius: 14px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+}
+
+.top-buttons button:hover {
+
+  transform: translateY(-3px);
+
+  border-color: #ff4747;
+
+  background:
+    rgba(255,71,71,0.08);
 
 }
 
@@ -968,67 +999,6 @@ a{
 
   }
 
-.topbar {
-
-  width: 92%;
-  max-width: 1450px;
-
-  margin: 25px auto;
-
-  padding: 18px 30px;
-
-  display: flex;
-
-  justify-content: space-between;
-  align-items: center;
-
-  background:
-    rgba(255,255,255,0.03);
-
-  border:
-    1px solid rgba(255,255,255,0.06);
-
-  border-radius: 24px;
-
-  backdrop-filter:
-    blur(12px);
-
-  box-shadow:
-    0 10px 40px rgba(0,0,0,0.25);
-
-
-
-}
-.top-buttons button {
-
-  background:
-    rgba(255,255,255,0.04);
-
-  border:
-    1px solid rgba(255,255,255,0.08);
-
-  color: white;
-
-  padding: 12px 18px;
-
-  border-radius: 14px;
-
-  cursor: pointer;
-
-  transition: 0.3s;
-
-}
-
-.top-buttons button:hover {
-
-  transform: translateY(-3px);
-
-  border-color: #ff4747;
-
-  background:
-    rgba(255,71,71,0.08);
-
-}
   .card img {
 
   height: 130px;
@@ -1358,3 +1328,4 @@ a{
   visibility: visible;
 
 }
+

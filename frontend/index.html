@@ -3,141 +3,147 @@
 
 <head>
 
+
   <meta charset="UTF-8">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>
+    CarneCerta
+  </title>
 
-  <title>CarneCerta</title>
-
-  <link rel="stylesheet" href="./css/style.css">
+  <link
+    rel="stylesheet"
+    href="./css/style.css"
+  >
 
 </head>
 
-<!-- PAINEL DE PREFERÊNCIAS -->
-<div class="overlay" id="overlay"></div>
+<body>
 
-<div class="preferences-panel" id="preferencesPanel">
+  <!-- PAINEL DE PREFERÊNCIAS -->
 
-  <div class="preferences-content">
+  <div class="overlay" id="overlay"></div>
 
-    <!-- FECHAR -->
+  <div class="preferences-panel" id="preferencesPanel">
 
-    <div class="close-panel" id="closePanel">
-      ✕
-    </div>
+    <div class="preferences-content">
 
-    <!-- TOPO -->
+      <!-- FECHAR -->
 
-    <span class="panel-tag">
-      🍲 Para Panela
-    </span>
+      <div class="close-panel" id="closePanel">
+        ✕
+      </div>
 
-    <h2 class="panel-title">
-      Suas preferências
-    </h2>
+      <!-- TOPO -->
 
-    <p class="panel-description">
-      Responda rapidinho para encontrarmos
-      os melhores cortes para sua receita.
-    </p>
+      <span class="panel-tag" id="panelTag">
+        🍲 Para Panela
+      </span>
 
-    <!-- PESSOAS -->
+      <h2 class="panel-title" id="panelTitle">
+        Suas preferências
+      </h2>
 
-    <div class="question-block">
+      <p class="panel-description" id="panelDescription">
+        Responda rapidinho para encontrarmos
+        os melhores cortes para sua receita.
+      </p>
 
-      <h3>
-        Quantas pessoas?
-      </h3>
+      <!-- PESSOAS -->
 
-      <div class="options">
+      <div class="question-block">
 
-        <button class="option-btn">
-          👤 1-2
-        </button>
+        <h3>
+          Quantas pessoas?
+        </h3>
 
-        <button class="option-btn ">
-          👨‍👩‍👧 3-5
-        </button>
+        <div class="options">
 
-        <button class="option-btn">
-          🎉 6+
-        </button>
+          <button class="option-btn">
+            👤 1-2
+          </button>
+
+          <button class="option-btn">
+            👨‍👩‍👧 3-5
+          </button>
+
+          <button class="option-btn">
+            🎉 6+
+          </button>
+
+        </div>
 
       </div>
 
-    </div>
+      <!-- PRIORIDADES -->
 
-    <!-- PRIORIDADES -->
+      <div class="question-block">
 
-    <div class="question-block">
+        <h3>
+          O que importa mais?
+        </h3>
 
-      <h3>
-        O que importa mais?
-      </h3>
+        <div class="options">
 
-      <div class="options">
+          <button class="option-btn">
+            🥩 Macia
+          </button>
 
-        <button class="option-btn">
-          🥩 Macia
-        </button>
+          <button class="option-btn">
+            💰 Barata
+          </button>
 
-        <button class="option-btn ">
-          💰 Barata
-        </button>
+          <button class="option-btn">
+            🥗 Magra
+          </button>
 
-        <button class="option-btn">
-          🥗 Magra
-        </button>
+          <button class="option-btn">
+            🔥 Saborosa
+          </button>
 
-        <button class="option-btn">
-          🔥 Saborosa
-        </button>
-
-      </div>
-
-    </div>
-
-    <!-- TIPO -->
-
-    <div class="question-block">
-
-      <h3>
-        Como deseja a carne?
-      </h3>
-
-      <div class="options">
-
-        <button class="option-btn ">
-          🔪 Cubos pequenos 
-        </button>
-
-        <button class="option-btn ">
-          🔪 Cubos medios  
-        </button>
-
-        <button class="option-btn ">
-          🔪 Cubos grandes  
-        </button>
-
-        <button class="option-btn ">
-          🥩 Inteira 
-        </button>
+        </div>
 
       </div>
 
+      <!-- TIPO -->
+
+      <div class="question-block">
+
+        <h3>
+          Como deseja a carne?
+        </h3>
+
+        <div class="options">
+
+          <button class="option-btn">
+            🔪 Cubos pequenos
+          </button>
+
+          <button class="option-btn">
+            🔪 Cubos médios
+          </button>
+
+          <button class="option-btn">
+            🔪 Cubos grandes
+          </button>
+
+          <button class="option-btn">
+            🥩 Inteira
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- BOTÃO -->
+
+      <button class="panel-button" id="panelActionButton">
+        Ver melhores carnes →
+      </button>
+
     </div>
-
-    <!-- BOTÃO -->
-
-    <button class="panel-button">
-      Ver melhores carnes →
-    </button>
 
   </div>
-
-</div>
-
-<body>
 
   <!-- HEADER -->
 
@@ -146,16 +152,22 @@
     <div class="logo">
 
       <h1>
-        🥩 Carne<span style="color: #ff4747;">Certa</span>
+        🥩 Carne<span style="color: #ff4747;">
+          Certa
+        </span>
       </h1>
 
     </div>
 
     <div class="top-buttons">
 
-      <button>Ajuda</button>
+      <button>
+        Ajuda
+      </button>
 
-      <button>Acessibilidade</button>
+      <button>
+        Acessibilidade
+      </button>
 
     </div>
 
@@ -180,14 +192,14 @@
 
   </section>
 
+  <!-- HERO -->
 
-    <!-- HERO -->
-
-    <main class="hero">
+  <main class="hero">
 
     <div class="hero-blur"></div>
 
     <!-- ESQUERDA -->
+
 
     <section class="hero-left">
 
@@ -222,7 +234,15 @@
 
       <div class="cards">
 
-        <div class="card" id="openPanel">
+        <div
+          class="card"
+          data-open-preferences
+          data-tag="🍲 Para Panela"
+          data-title="Suas preferências"
+          data-description="Responda rapidinho para encontrarmos os melhores cortes para sua receita de panela."
+          data-button-text="Ver melhores carnes para panela →"
+          data-target="./paginas/categorias/panela.html"
+        >
 
 
           <img
@@ -241,7 +261,15 @@
         </div>
 
 
-        <div class="card">
+        <div
+          class="card"
+          data-open-preferences
+          data-tag="🥩 Para Bife"
+          data-title="Suas preferências"
+          data-description="Responda rapidinho para encontrarmos os melhores cortes para o seu bife."
+          data-button-text="Ver melhores carnes para bife →"
+          data-target="./paginas/categorias/bife.html"
+        >
 
           <img
             src="../assets/imagens/parabife.jpg"
@@ -253,19 +281,24 @@
           <p>
             Carnes macias e rápidas para grelha.
           </p>
-          </div>
+        </div>
         </div>
 
-
-        <div class="card">
+        <div
+          class="card"
+          data-open-preferences
+          data-tag="🔥 Para Churrasco"
+          data-title="Suas preferências"
+          data-description="Responda rapidinho para encontrarmos os melhores cortes para o seu churrasco."
+          data-button-text="Ver melhores carnes para churrasco →"
+          data-target="./paginas/categorias/churrasco.html"
+        >
 
           <img
             src="../assets/imagens/parachurrasco.webp"
             alt="Churrasco"
           >
         <div class="card-content">
-            <div class="card" id="openModal"></div>
-
           <h3>🔥 Churrasco</h3>
 
           <p>
@@ -276,7 +309,14 @@
         </div>
 
 
-        <div class="card">
+        <div
+          class="card"
+          data-open-preferences
+          data-tag="🍔 Para Hambúrguer"
+          data-title="Suas preferências"
+          data-description="Responda rapidinho para encontrarmos os melhores cortes para hambúrguer artesanal."
+          data-button-text="Ver melhores carnes para hambúrguer →"
+        >
 
           <img
             src="../assets/imagens/paramoer.webp"
@@ -293,7 +333,14 @@
         </div>
 
 
-        <div class="card">
+        <div
+          class="card"
+          data-open-preferences
+          data-tag="🍖 Para Desfiar"
+          data-title="Suas preferências"
+          data-description="Responda rapidinho para encontrarmos os melhores cortes para desfiar."
+          data-button-text="Ver melhores carnes para desfiar →"
+        >
 
           <img
             src="../assets/imagens/paradesfiar.jpg"
@@ -310,7 +357,14 @@
         </div>
 
 
-        <div class="card">
+        <div
+          class="card"
+          data-open-preferences
+          data-tag="🥩 Para Bife a Rolê"
+          data-title="Suas preferências"
+          data-description="Responda rapidinho para encontrarmos os melhores cortes para bife a rolê."
+          data-button-text="Ver melhores carnes para bife a rolê →"
+        >
 
           <img
             src="../assets/imagens/bifearole.jpg"
@@ -327,7 +381,14 @@
         </div>
 
 
-        <div class="card">
+        <div
+          class="card"
+          data-open-preferences
+          data-tag="🥩 Para Moer"
+          data-title="Suas preferências"
+          data-description="Responda rapidinho para encontrarmos os melhores cortes para moer."
+          data-button-text="Ver melhores carnes para moer →"
+        >
 
           <img
             src="../assets/imagens/paramoer.webp"
@@ -342,8 +403,14 @@
           </div>
         </div>
 
-
-        <div class="card">
+        <div
+          class="card"
+          data-open-preferences
+          data-tag="🤖 Não sei, me ajude"
+          data-title="Suas preferências"
+          data-description="Responda rapidinho para encontrarmos os melhores cortes para o que você deseja preparar."
+          data-button-text="Ver sugestões personalizadas →"
+        >
 
           <img
             src="../assets/imagens/ajudecarnes.jpg"

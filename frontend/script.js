@@ -1,80 +1,97 @@
 console.log("CarneCerta iniciado 🚀");
 
-// ABRIR PAINEL
+const preferencesPanel = document.getElementById("preferencesPanel");
+const closePanel = document.getElementById("closePanel");
+const overlay = document.getElementById("overlay");
+const panelTag = document.getElementById("panelTag");
+const panelTitle = document.getElementById("panelTitle");
+const panelDescription = document.getElementById("panelDescription");
+const panelActionButton = document.getElementById("panelActionButton");
+const preferenceCards = document.querySelectorAll("[data-open-preferences]");
 
-const openPanel =
-document.getElementById("openPanel");
+let panelTargetUrl = "";
 
-// PAINEL
-
-const preferencesPanel =
-document.getElementById("preferencesPanel");
-
-// FECHAR
-
-const closePanel =
-document.getElementById("closePanel");
-
-// OVERLAY
-
-const overlay =
-document.getElementById("overlay");
-
-// ABRIR PAINEL
-
-openPanel.onclick = () => {
+const openPreferencesPanel = () => {
+  if (!preferencesPanel || !overlay) {
+    return;
+  }
 
   preferencesPanel.classList.add("active");
-
   overlay.classList.add("active");
-
 };
 
-// FECHAR NO X
-
-closePanel.onclick = () => {
+const closePreferencesPanel = () => {
+  if (!preferencesPanel || !overlay) {
+    return;
+  }
 
   preferencesPanel.classList.remove("active");
-
   overlay.classList.remove("active");
-
 };
 
-// FECHAR CLICANDO NO FUNDO
+if (closePanel) {
+  closePanel.addEventListener("click", closePreferencesPanel);
+}
 
-overlay.onclick = () => {
+if (overlay) {
+  overlay.addEventListener("click", closePreferencesPanel);
+}
 
-  preferencesPanel.classList.remove("active");
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closePreferencesPanel();
+  }
+});
 
-  overlay.classList.remove("active");
+preferenceCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    if (panelTag && card.dataset.tag) {
+      panelTag.textContent = card.dataset.tag;
+    }
 
-};
-// BOTÕES DE OPÇÃO
+    if (panelTitle && card.dataset.title) {
+      panelTitle.textContent = card.dataset.title;
+    }
 
-const optionButtons =
-document.querySelectorAll(".option-btn");
+    if (panelDescription && card.dataset.description) {
+      panelDescription.textContent = card.dataset.description;
+    }
 
-// CLICOU
+    if (panelActionButton && card.dataset.buttonText) {
+      panelActionButton.textContent = card.dataset.buttonText;
+    }
+
+    panelTargetUrl = card.dataset.target || "";
+    openPreferencesPanel();
+  });
+});
+
+if (panelActionButton) {
+  panelActionButton.addEventListener("click", () => {
+    if (panelTargetUrl) {
+      window.location.href = panelTargetUrl;
+      return;
+    }
+
+    closePreferencesPanel();
+  });
+}
+
+const optionButtons = document.querySelectorAll(".option-btn");
 
 optionButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const optionGroup = button.closest(".options, .options-grid");
 
-  button.onclick = () => {
+    if (!optionGroup) {
+      return;
+    }
 
-    // REMOVE DOS OUTROS
-
-    const siblings =
-    button.parentElement.querySelectorAll(".option-btn");
-
+    const siblings = optionGroup.querySelectorAll(".option-btn");
     siblings.forEach((btn) => {
-
       btn.classList.remove("active-option");
-
     });
 
-    // ADICIONA NO CLICADO
-
     button.classList.add("active-option");
-
-  };
-
+  });
 });
