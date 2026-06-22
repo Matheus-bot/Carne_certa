@@ -1,0 +1,288 @@
+:root {
+  color-scheme: dark;
+  --bg: #121212;
+  --surface: #1b1b1b;
+  --surface-2: #202020;
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f4f4f4;
+  --muted: #b9b9b9;
+  --primary: #d32f2f;
+  --primary-2: #ef5350;
+  --focus: #ffd166;
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+.libras-page {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+.libras-hero {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.libras-back-link {
+  display: inline-flex;
+  width: fit-content;
+  padding: 12px 16px;
+  border-radius: 999px;
+  background: #181818;
+  border: 1px solid var(--border);
+}
+
+.hero-copy {
+  display: grid;
+  gap: 8px;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--primary-2);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+}
+
+.hero-copy h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 6vw, 4rem);
+  line-height: 1.05;
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.butcher-stage {
+  display: grid;
+  gap: 16px;
+}
+
+.butcher-mascot-placeholder,
+.meat-image-placeholder,
+.future-slot {
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  background: linear-gradient(180deg, rgba(211, 47, 47, 0.08), rgba(255, 255, 255, 0.02));
+}
+
+.butcher-mascot-placeholder {
+  min-height: 170px;
+  display: grid;
+  place-items: center;
+  border-radius: 24px;
+  color: var(--muted);
+  text-align: center;
+  padding: 20px;
+}
+
+.butcher-assistant {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+  border-radius: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.butcher-assistant p {
+  margin: 0;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.future-features {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.future-slot {
+  min-height: 54px;
+  border-radius: 18px;
+}
+
+.libras-content {
+  display: grid;
+  gap: 20px;
+}
+
+.libras-form,
+.recommendation-card,
+.butcher-details {
+  display: grid;
+  gap: 16px;
+}
+
+.choice-section {
+  margin: 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.choice-section legend {
+  padding: 0 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.choice-card,
+.show-butchers-btn {
+  width: 100%;
+  min-height: 68px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.choice-card[aria-pressed="true"] {
+  border-color: rgba(211, 47, 47, 0.9);
+  box-shadow: inset 0 0 0 1px rgba(211, 47, 47, 0.35);
+  background: rgba(211, 47, 47, 0.18);
+}
+
+.choice-card:focus-visible,
+.show-butchers-btn:focus-visible,
+.libras-back-link:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.recommendation-panel {
+  display: grid;
+  gap: 16px;
+}
+
+.recommendation-card,
+.butcher-details {
+  padding: 18px;
+  border-radius: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.recommendation-card h2,
+.butcher-details h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.meat-image-placeholder {
+  min-height: 180px;
+  border-radius: 22px;
+  display: grid;
+  place-items: center;
+  color: var(--muted);
+  text-align: center;
+  padding: 20px;
+}
+
+.recommendation-copy h3 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+}
+
+.recommendation-copy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.show-butchers-btn {
+  background: linear-gradient(180deg, var(--primary), #b71c1c);
+  font-weight: 700;
+  min-height: 74px;
+  text-align: center;
+}
+
+.butcher-details p {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.butcher-details strong {
+  color: var(--text);
+}
+
+@media (min-width: 760px) {
+  .libras-page {
+    padding: 28px 24px 56px;
+  }
+
+  .future-features {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1080px) {
+  .libras-content {
+    grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+    align-items: start;
+  }
+
+  .butcher-stage {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+  }
+
+  .butcher-mascot-placeholder {
+    min-height: 240px;
+  }
+
+  .recommendation-panel {
+    position: sticky;
+    top: 18px;
+  }
+}

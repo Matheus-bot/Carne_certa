@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modo Libras | CarneCerta</title>
+  <link rel="stylesheet" href="../../css/modo-libras.css">
+</head>
+<body>
+  <main class="libras-page">
+    <header class="libras-hero" aria-labelledby="libras-title">
+      <a class="libras-back-link" href="../../index.html">← Voltar para Home</a>
+
+      <div class="hero-copy">
+        <p class="eyebrow">Acesso assistido</p>
+        <h1 id="libras-title">Modo Libras</h1>
+        <p class="hero-subtitle">Encontre a carne ideal de forma acessível.</p>
+      </div>
+
+      <section class="butcher-stage" aria-label="Assistente virtual do açougueiro">
+        <div class="butcher-mascot-placeholder" aria-hidden="true">
+          <span>Espaço para mascote virtual do açougueiro</span>
+        </div>
+
+        <article class="butcher-assistant" aria-live="polite">
+          <p>Olá! Seja bem-vindo ao CarneCerta.</p>
+          <p>Vou ajudar você a encontrar a carne ideal.</p>
+        </article>
+
+        <div class="future-features" aria-label="Recursos futuros preparados para expansão">
+          <div class="future-slot" data-feature-slot="mascot-animations"></div>
+          <div class="future-slot" data-feature-slot="sign-language-avatar"></div>
+          <div class="future-slot" data-feature-slot="ai-chat-integration"></div>
+          <div class="future-slot" data-feature-slot="lottie-animations"></div>
+        </div>
+      </section>
+    </header>
+
+    <section class="libras-content" aria-label="Etapas para encontrar a carne ideal">
+      <form class="libras-form" id="libras-form">
+        <fieldset class="choice-section" aria-labelledby="preparo-title">
+          <legend id="preparo-title">Qual preparo você deseja?</legend>
+          <div class="choice-grid" role="radiogroup" aria-label="Qual preparo você deseja?">
+            <button type="button" class="choice-card" data-group="prep" data-value="churrasco" aria-pressed="false">Churrasco</button>
+            <button type="button" class="choice-card" data-group="prep" data-value="panela" aria-pressed="false">Panela</button>
+            <button type="button" class="choice-card" data-group="prep" data-value="bife" aria-pressed="false">Bife</button>
+            <button type="button" class="choice-card" data-group="prep" data-value="hamburguer" aria-pressed="false">Hambúrguer</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="choice-section" aria-labelledby="prioridade-title">
+          <legend id="prioridade-title">O que é mais importante para você?</legend>
+          <div class="choice-grid" role="radiogroup" aria-label="O que é mais importante para você?">
+            <button type="button" class="choice-card" data-group="priority" data-value="mais-barato" aria-pressed="false">Mais barato</button>
+            <button type="button" class="choice-card" data-group="priority" data-value="mais-macio" aria-pressed="false">Mais macio</button>
+            <button type="button" class="choice-card" data-group="priority" data-value="mais-sabor" aria-pressed="false">Mais sabor</button>
+            <button type="button" class="choice-card" data-group="priority" data-value="menos-gordura" aria-pressed="false">Menos gordura</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="choice-section" aria-labelledby="pessoas-title">
+          <legend id="pessoas-title">Para quantas pessoas?</legend>
+          <div class="choice-grid" role="radiogroup" aria-label="Para quantas pessoas?">
+            <button type="button" class="choice-card" data-group="people" data-value="1-2" aria-pressed="false">1-2</button>
+            <button type="button" class="choice-card" data-group="people" data-value="3-4" aria-pressed="false">3-4</button>
+            <button type="button" class="choice-card" data-group="people" data-value="5-6" aria-pressed="false">5-6</button>
+            <button type="button" class="choice-card" data-group="people" data-value="7+" aria-pressed="false">7+</button>
+          </div>
+        </fieldset>
+      </form>
+
+      <section class="recommendation-panel" aria-labelledby="recommendation-title">
+        <div class="recommendation-card" id="recommendation-card">
+          <h2 id="recommendation-title">Recomendação</h2>
+          <div class="meat-image-placeholder" aria-hidden="true">
+            <span>Imagem da carne recomendada</span>
+          </div>
+          <div class="recommendation-copy">
+            <h3 id="recommended-meat-name">Selecione as opções para ver sua carne ideal</h3>
+            <p id="recommended-meat-description">A CarneCerta vai mostrar aqui a melhor opção com base nas suas escolhas.</p>
+            <p id="recommended-meat-why"><strong>Por que foi recomendado:</strong> escolha um preparo, uma prioridade e a quantidade de pessoas.</p>
+          </div>
+        </div>
+
+        <button class="show-butchers-btn" id="show-butchers-btn" type="button" aria-expanded="false" aria-controls="butcher-details">
+          Mostrar ao Açougueiro
+        </button>
+
+        <article class="butcher-details" id="butcher-details" hidden>
+          <h2>Informações para o açougueiro</h2>
+          <p><strong>Corte recomendado:</strong> <span id="butcher-meat">-</span></p>
+          <p><strong>Características principais:</strong> <span id="butcher-features">-</span></p>
+          <p><strong>Tipo de preparo:</strong> <span id="butcher-prep">-</span></p>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script src="../../js/modo-libras.js"></script>
+</body>
+</html>

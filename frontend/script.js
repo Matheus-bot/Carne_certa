@@ -99,6 +99,14 @@ const getResultSection = () => {
   return section;
 };
 
+const getDisplayImage = (meat, effectiveCategory) => {
+  if (effectiveCategory === "moer" && meat.grindImage) {
+    return meat.grindImage;
+  }
+
+  return meat.image;
+};
+
 const scoreCandidate = (candidate, selected, effectiveCategory) => {
   let score = 1;
 
@@ -122,6 +130,14 @@ const scoreCandidate = (candidate, selected, effectiveCategory) => {
     score += 2;
   }
 
+  if (selected.priority.includes("magra") && candidate.fatProfile === "magra") {
+    score += 4;
+  }
+
+  if (selected.priority.includes("magra") && candidate.id === "musculo") {
+    score += 3;
+  }
+
   if (selected.cutPreference.includes("sabor") && candidate.fatProfile === "saborosa") {
     score += 2;
   }
@@ -130,6 +146,10 @@ const scoreCandidate = (candidate, selected, effectiveCategory) => {
 };
 
 const pickEffectiveCategory = (category, selected) => {
+  if (category === "bife" && selected.bifetype && selected.bifetype.includes("role")) {
+    return "bifearole";
+  }
+
   if (category !== "ajuda") {
     return category;
   }
@@ -368,6 +388,7 @@ const renderFinalInstruction = (section, meat, quantityKg, peopleCount, category
   const qrPayload = `CarneCerta|categoria:${effectiveCategory}|corte:${meat.name}|qtd:${quantityKg}kg|pessoas:${peopleCount}|prioridade:${selected.priority}`;
   const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(qrPayload)}`;
   const butcherInstruction = getButcherInstruction(meat, quantityKg, selected, effectiveCategory);
+  const meatImage = getDisplayImage(meat, effectiveCategory);
 
   section.innerHTML = `
     <div class="results-header">
@@ -376,7 +397,7 @@ const renderFinalInstruction = (section, meat, quantityKg, peopleCount, category
     </div>
 
     <article class="final-choice-card">
-      <img src="${meat.image}" alt="${meat.name}" class="final-choice-image">
+      <img src="${meatImage}" alt="${meat.name}" class="final-choice-image">
       <div class="final-choice-content">
         <h3>${meat.name}</h3>
         <p><strong>Quantidade recomendada:</strong> ${quantityKg} kg para ${peopleCount} pessoas.</p>
@@ -421,10 +442,11 @@ const renderRecommendations = (section, recommendations, category, selected, eff
   const cardsMarkup = recommendations
     .map((meat) => {
       const quantityKg = calculateQuantityKg(effectiveCategory, peopleCount, meat.factor || 1);
+      const meatImage = getDisplayImage(meat, effectiveCategory);
 
       return `
         <article class="result-card" data-meat-id="${meat.id}">
-          <img src="${meat.image}" alt="${meat.name}" class="result-image">
+          <img src="${meatImage}" alt="${meat.name}" class="result-image">
           <div class="result-content">
             <h3>${meat.name}</h3>
             <p>${meat.notes}</p>
@@ -493,7 +515,8 @@ continueButtons.forEach((button) => {
       mixRaw: getSelectedQuestionText("mix", "nao"),
       mixProfileRaw: getSelectedQuestionText("mixprofile", "equilibrado"),
       grindRaw: getSelectedQuestionText("grind", "1x"),
-      usecaseRaw: getSelectedQuestionText("usecase", "panela")
+      usecaseRaw: getSelectedQuestionText("usecase", "panela"),
+      bifetypeRaw: getSelectedQuestionText("bifetype", "normal")
     };
 
     selected.priority = normalizeText(selected.priorityRaw);
@@ -503,6 +526,7 @@ continueButtons.forEach((button) => {
     selected.mixProfile = normalizeText(selected.mixProfileRaw);
     selected.grind = normalizeText(selected.grindRaw);
     selected.usecase = normalizeText(selected.usecaseRaw);
+    selected.bifetype = normalizeText(selected.bifetypeRaw);
 
     const section = getResultSection();
     if (!section || !category) {
