@@ -37,8 +37,28 @@
         <span class="cow-map-kicker">Mapa anatômico premium</span>
         <h2 id="cow-map-title">Selecione um corte e vá direto para os detalhes</h2>
         <p>
-          Seis cortes com animações suaves, leitura clara e acesso imediato.
+          Compare duas experiências de navegação para decidir o melhor layout com 21 cortes.
         </p>
+
+        <div class="cow-layout-switch" role="group" aria-label="Alternar visualizacao do mapa">
+          <button type="button" class="cow-layout-switch-button is-selected" data-cow-layout-toggle="a" aria-pressed="true">
+            Opcao A
+          </button>
+          <button type="button" class="cow-layout-switch-button" data-cow-layout-toggle="b" aria-pressed="false">
+            Opcao B
+          </button>
+        </div>
+
+        <article class="cow-active-card" data-cow-info-card>
+          <span class="cow-active-card-kicker">Corte ativo</span>
+          <h3 class="cow-active-card-title" data-cow-active-name>Acem</h3>
+          <p class="cow-active-card-description" data-cow-active-description>
+            Passe o mouse ou clique em um ponto do boi para atualizar este painel.
+          </p>
+          <a class="cow-active-card-link" data-cow-active-link href="../carnes/acem.html" aria-label="Abrir detalhes do corte ativo">
+            Abrir pagina do corte
+          </a>
+        </article>
       </div>
 
       <div class="cow-map-stage" data-cow-map>

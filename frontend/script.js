@@ -86,7 +86,8 @@ const cowMapCuts = [
     labelX: 2.8,
     labelY: 18,
     side: "left",
-    link: "../carnes/acem.html"
+    link: "../carnes/acem.html",
+    description: "Corte dianteiro versatil, ideal para receitas de panela e dia a dia."
   },
   {
     id: "contrafile",
@@ -96,7 +97,8 @@ const cowMapCuts = [
     labelX: 68.2,
     labelY: 16.5,
     side: "right",
-    link: "../carnes/contrafile.html"
+    link: "../carnes/contrafile.html",
+    description: "Corte nobre para grelha e chapa, com sabor intenso e boa suculencia."
   },
   {
     id: "coxaomole",
@@ -106,7 +108,8 @@ const cowMapCuts = [
     labelX: 70.4,
     labelY: 65.5,
     side: "right",
-    link: "../carnes/coxaomole.html"
+    link: "../carnes/coxaomole.html",
+    description: "Maciez equilibrada para bifes, assados e preparos rapidos."
   },
   {
     id: "musculo",
@@ -116,7 +119,8 @@ const cowMapCuts = [
     labelX: 66.5,
     labelY: 82.5,
     side: "right",
-    link: "../carnes/musculo.html"
+    link: "../carnes/musculo.html",
+    description: "Rico em colageno, excelente para caldos encorpados e coccao lenta."
   },
   {
     id: "paleta",
@@ -126,7 +130,8 @@ const cowMapCuts = [
     labelX: 2.8,
     labelY: 61.5,
     side: "left",
-    link: "../carnes/paleta.html"
+    link: "../carnes/paleta.html",
+    description: "Corte dianteiro com sabor marcante, otimo para molhos e panelas."
   },
   {
     id: "pontadealcatra",
@@ -136,7 +141,8 @@ const cowMapCuts = [
     labelX: 68.2,
     labelY: 43.8,
     side: "right",
-    link: "../carnes/pontadealcatra.html"
+    link: "../carnes/pontadealcatra.html",
+    description: "Perfil saboroso para churrasco, bifes altos e preparos suculentos."
   }
 ];
 
@@ -153,6 +159,10 @@ const describeLinePath = (startX, startY, endX, endY, side) => {
 };
 
 const syncCowMapLines = (mapRoot, cuts) => {
+  if (mapRoot.dataset.mapLayout === "a") {
+    return;
+  }
+
   const svg = mapRoot.querySelector("[data-cow-lines]");
 
   if (!svg) {
@@ -210,12 +220,78 @@ const initCowMap = () => {
   const hotspotsLayer = mapRoot.querySelector("[data-cow-hotspots]");
   const svg = mapRoot.querySelector("[data-cow-lines]");
   const image = mapRoot.querySelector("[data-cow-image]");
+  const shell = mapRoot.closest(".cow-map-shell");
+  const infoCard = document.querySelector("[data-cow-info-card]");
+  const infoName = document.querySelector("[data-cow-active-name]");
+  const infoDescription = document.querySelector("[data-cow-active-description]");
+  const infoLink = document.querySelector("[data-cow-active-link]");
+  const modeButtons = Array.from(document.querySelectorAll("[data-cow-layout-toggle]"));
 
   if (!hotspotsLayer || !svg || !image) {
     return;
   }
 
   mapRoot.dataset.initialized = "true";
+
+  const cutById = new Map(cowMapCuts.map((cut) => [cut.id, cut]));
+  let activeCutId = cowMapCuts[0]?.id || "";
+
+  const parseLayoutFromUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    const queryMode = (params.get("layout") || params.get("opcao") || "").toLowerCase();
+    return queryMode === "a" ? "a" : "b";
+  };
+
+  let currentMode = parseLayoutFromUrl();
+
+  const applyLayoutMode = (mode) => {
+    currentMode = mode === "b" ? "b" : "a";
+    mapRoot.dataset.mapLayout = currentMode;
+
+    if (shell) {
+      shell.dataset.mapLayout = currentMode;
+    }
+
+    modeButtons.forEach((button) => {
+      const selected = button.dataset.cowLayoutToggle === currentMode;
+      button.classList.toggle("is-selected", selected);
+      button.setAttribute("aria-pressed", String(selected));
+    });
+  };
+
+  const updateInfoCard = (cut) => {
+    if (!infoCard || !cut) {
+      return;
+    }
+
+    if (infoName) {
+      infoName.textContent = cut.name;
+    }
+
+    if (infoDescription) {
+      infoDescription.textContent = cut.description || "Explore os detalhes completos deste corte.";
+    }
+
+    if (infoLink) {
+      infoLink.href = cut.link;
+      infoLink.setAttribute("aria-label", `Abrir detalhes de ${cut.name}`);
+    }
+  };
+
+  const setActiveCut = (cutId) => {
+    if (!cutById.has(cutId)) {
+      return;
+    }
+
+    activeCutId = cutId;
+    const activeCut = cutById.get(cutId);
+
+    mapRoot.querySelectorAll(".cow-hotspot").forEach((hotspot) => {
+      hotspot.classList.toggle("is-active", hotspot.dataset.cutId === activeCutId);
+    });
+
+    updateInfoCard(activeCut);
+  };
 
   cowMapCuts.forEach((cut, index) => {
     const delay = `${index * 0.22}s`;
@@ -224,38 +300,48 @@ const initCowMap = () => {
     hotspot.dataset.cutId = cut.id;
     hotspot.style.setProperty("--point-x", `${cut.pointX}%`);
     hotspot.style.setProperty("--point-y", `${cut.pointY}%`);
-    hotspot.style.setProperty("--label-x", `${cut.labelX}%`);
-    hotspot.style.setProperty("--label-y", `${cut.labelY}%`);
     hotspot.style.setProperty("--delay", delay);
 
-    const label = document.createElement("a");
+    const label = document.createElement("div");
     label.className = "cow-hotspot-label";
-    label.href = cut.link;
-    label.setAttribute("aria-label", `Abrir detalhes de ${cut.name}`);
+    label.setAttribute("role", "dialog");
+    label.setAttribute("aria-label", `Resumo do corte ${cut.name}`);
     label.innerHTML = `
       <span class="cow-hotspot-label-content">
         <span class="cow-hotspot-title">${cut.name}</span>
-        <span class="cow-hotspot-subtitle">Abrir pagina do corte</span>
+        <span class="cow-hotspot-subtitle">Corte selecionado</span>
       </span>
-      <span class="cow-hotspot-arrow" aria-hidden="true">↗</span>
+      <a href="${cut.link}" class="cow-hotspot-cta" aria-label="Abrir detalhes de ${cut.name}">Abrir detalhes</a>
     `;
 
-    const point = document.createElement("a");
+    const point = document.createElement("button");
+    point.type = "button";
     point.className = "cow-hotspot-point";
-    point.href = cut.link;
     point.setAttribute("aria-label", `Selecionar ${cut.name}`);
 
-    const activate = () => hotspot.classList.add("is-hovered");
+    const activate = () => {
+      hotspot.classList.add("is-hovered");
+      setActiveCut(cut.id);
+    };
     const deactivate = () => hotspot.classList.remove("is-hovered");
 
-    [label, point].forEach((element) => {
+    [point, label].forEach((element) => {
       element.addEventListener("mouseenter", activate);
       element.addEventListener("focus", activate);
       element.addEventListener("mouseleave", deactivate);
       element.addEventListener("blur", deactivate);
     });
 
-    hotspot.append(label, point);
+    point.addEventListener("click", () => {
+      setActiveCut(cut.id);
+      if (currentMode === "b") {
+        hotspot.classList.add("is-hovered");
+      }
+    });
+
+    label.addEventListener("click", () => setActiveCut(cut.id));
+
+    hotspot.append(point, label);
     hotspotsLayer.appendChild(hotspot);
 
     const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
@@ -267,6 +353,16 @@ const initCowMap = () => {
 
   const updateLines = () => syncCowMapLines(mapRoot, cowMapCuts);
   const scheduleUpdate = () => window.requestAnimationFrame(updateLines);
+
+  modeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      applyLayoutMode(button.dataset.cowLayoutToggle);
+      scheduleUpdate();
+    });
+  });
+
+  applyLayoutMode(currentMode);
+  setActiveCut(activeCutId);
 
   if (image.complete) {
     scheduleUpdate();
