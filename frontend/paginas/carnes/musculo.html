@@ -10,6 +10,221 @@
 
   <link rel="stylesheet" href="../../css/style.css">
 
+  <style>
+    /* ============================================================
+       COMPONENTE ISOLADO: MÚSCULO - ANIMAÇÕES E TRANSIÇÕES
+       ============================================================ */
+
+    .musculo-animation-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(19, 19, 19, 0.8), rgba(25, 25, 25, 0.95));
+      border: 1px solid var(--card-border-color);
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .musculo-animation-container--inline {
+      max-width: none;
+      margin: 0;
+      padding: 22px;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    /* Efeito de brilho premium no fundo */
+    .musculo-animation-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(211, 47, 47, 0.1), transparent 70%);
+      pointer-events: none;
+      animation: shimmer 8s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* Wrapper da imagem com controle de transição */
+    .musculo-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin-bottom: 30px;
+      background: var(--surface-color);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .musculo-animation-container--inline .musculo-image-wrapper {
+      height: auto;
+      min-height: 420px;
+      background: transparent;
+      border-radius: 0;
+      margin-bottom: 20px;
+    }
+
+    .musculo-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      /* Animação de fade e scale ao trocar imagem */
+      animation: fadeInScale 0.8s ease-out forwards;
+    }
+
+    .musculo-animation-container--inline .musculo-image-wrapper img.meat-image {
+      width: 100%;
+      max-width: 780px;
+      height: auto;
+      animation: fadeInScale 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Classe para resetar a imagem sem animação (estado inicial) */
+    .musculo-image-wrapper img.reset-state {
+      animation: none;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Container dos botões */
+    .musculo-buttons-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .musculo-animation-container--inline .musculo-buttons-group {
+      justify-content: flex-start;
+      padding-left: 10px;
+    }
+
+    /* Estilo base dos botões */
+    .musculo-btn {
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border: 2px solid var(--button-color);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--button-color);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+    }
+
+    /* Estado hover dos botões */
+    .musculo-btn:hover {
+      background: var(--button-color);
+      color: white;
+      box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
+      transform: translateY(-2px);
+    }
+
+    /* Estado ativo (animação em progresso) */
+    .musculo-btn.active {
+      background: var(--button-color);
+      color: white;
+      box-shadow: 0 12px 32px rgba(211, 47, 47, 0.5);
+    }
+
+    .musculo-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .musculo-btn:focus {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    /* Label informativo */
+    .musculo-info-label {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.875rem;
+      color: var(--muted-text-color);
+      font-style: italic;
+      min-height: 20px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .musculo-animation-container {
+        padding: 24px;
+        margin: 24px auto;
+      }
+
+      .musculo-image-wrapper {
+        height: 300px;
+        margin-bottom: 24px;
+      }
+
+      .musculo-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+
+      .musculo-buttons-group {
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .musculo-animation-container {
+        padding: 16px;
+        margin: 16px;
+      }
+
+      .musculo-image-wrapper {
+        height: 250px;
+      }
+
+      .musculo-btn {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        flex: 1;
+        min-width: 120px;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -33,7 +248,27 @@
           <div class="meat-image-stage">
             <span class="meat-image-glow"></span>
             <div class="meat-image-area">
-              <img src="../../../assets/imagens/musculo/musculointeiro.png" alt="Imagem do musculo bovino cru" class="meat-image">
+              <section class="musculo-animation-container musculo-animation-container--inline">
+                <div class="musculo-image-wrapper">
+                  <img
+                    id="musculo-image"
+                    src="../../../assets/imagens/musculo/musculointeiro.png"
+                    alt="Corte de Músculo - Estado Inicial"
+                    class="meat-image reset-state"
+                  >
+                </div>
+
+                <div class="musculo-buttons-group">
+                  <button id="musculo-btn-cozido" class="musculo-btn" data-action="cozido">
+                    Cozido (Panela)
+                  </button>
+                  <button id="musculo-btn-moido" class="musculo-btn" data-action="moido">
+                    Moido
+                  </button>
+                </div>
+
+                <div class="musculo-info-label" id="musculo-info-label"></div>
+              </section>
             </div>
             <div class="meat-image-meta">
               <span>Panela e caldo</span>
@@ -111,9 +346,283 @@
           <a href="../../index.html" class="select-button">Abrir recomendador inteligente</a>
         </div>
       </section>
+
     </div>
 
   </main>
+
+  <!-- SCRIPT ISOLADO: LÓGICA DE ANIMAÇÃO DO MÚSCULO -->
+  <script>
+    /**
+     * ============================================================
+     * COMPONENTE DE ANIMAÇÃO: MÚSCULO
+     * ============================================================
+     * 
+     * Responsabilidades:
+     * 1. Gerenciar sequência de imagens conforme ação do usuário
+     * 2. Controlar timers com reset automático (evitar duplicação)
+     * 3. Aplicar efeitos visuais com fade-in e scale
+     * 4. Fornecer feedback visual ao usuário
+     * 5. Segurança: clearTimeout obrigatório antes de nova animação
+     */
+
+    class MusculoAnimationController {
+      constructor() {
+        // ============================================================
+        // REFERÊNCIAS DO DOM
+        // ============================================================
+        this.imageElement = document.getElementById('musculo-image');
+        this.btnCozido = document.getElementById('musculo-btn-cozido');
+        this.btnMoido = document.getElementById('musculo-btn-moido');
+        this.infoLabel = document.getElementById('musculo-info-label');
+
+        // ============================================================
+        // ESTADO DA ANIMAÇÃO
+        // ============================================================
+        this.currentState = 'inteiro-cru';
+        this.isAnimating = false;
+        this.animationTimers = [];
+        this.runToken = 0;
+
+        // ============================================================
+        // MAPA DE IMAGENS (caminhos dos arquivos)
+        // ============================================================
+        this.imagePaths = {
+          'inteiro-cru': '../../../assets/imagens/musculo/musculointeiro.png',
+          'cubos-cru': '../../../assets/imagens/musculo/musculoemcubos.png',
+          'cubos-cozido': '../../../assets/imagens/musculo/musculocozido.png',
+          'moido-cru': '../../../assets/imagens/musculo/musculomoidocru.png',
+          'moido-cozido': '../../../assets/imagens/musculo/musculomoido.png'
+        };
+
+        // ============================================================
+        // SEQUÊNCIAS DE TRANSIÇÃO (Timeline de animação)
+        // ============================================================
+        this.sequences = {
+          // Fluxo "Cozido (Panela)": inteiro → cubos cru → cubos cozido
+          cozido: [
+            {
+              state: 'cubos-cru',
+              delay: 0,
+              label: '🔪 Transformando em cubos...'
+            },
+            {
+              state: 'cubos-cozido',
+              delay: 1500,
+              label: '✅ Músculo cozido em cubos!'
+            }
+          ],
+          // Fluxo "Moído": inteiro → moído cru → moído final
+          moido: [
+            {
+              state: 'moido-cru',
+              delay: 0,
+              label: '⚙️ Transformando em moído...'
+            },
+            {
+              state: 'moido-cozido',
+              delay: 1500,
+              label: '✅ Músculo moído pronto!'
+            }
+          ]
+        };
+
+        // Inicializa os listeners
+        this.init();
+      }
+
+      /**
+       * Inicializa event listeners dos botões
+       */
+      init() {
+        this.btnCozido.addEventListener('click', () => this.handleAction('cozido'));
+        this.btnMoido.addEventListener('click', () => this.handleAction('moido'));
+      }
+
+      /**
+       * MANIPULADOR PRINCIPAL: Dispara quando botão é clicado
+       * 
+       * FLUXO CRÍTICO:
+       * 1. Se já está animando → CANCELA tudo (clearTimeout obrigatório)
+       * 2. RESET para estado inicial
+       * 3. Marca como animando
+       * 4. Executa nova sequência
+       * 
+       * @param {string} action - 'cozido' ou 'moido'
+       */
+      handleAction(action) {
+        // ========================================================
+        // PASSO 1: SEGURANÇA - Cancela animação em progresso
+        // ========================================================
+        if (this.isAnimating) {
+          console.log(`⚠️ Interrompendo animação anterior (${this.currentState})`);
+          this.cancelAnimation();
+        }
+
+        // ========================================================
+        // PASSO 2: Reset para estado inicial
+        // ========================================================
+        this.resetToInitial();
+
+        // ========================================================
+        // PASSO 3: Marca como animando
+        // ========================================================
+        this.isAnimating = true;
+        this.updateButtonStates(action);
+
+        // ========================================================
+        // PASSO 4: Executa sequência de animação
+        // ========================================================
+        console.log(`▶️  Iniciando fluxo: ${action}`);
+        this.playSequence(action);
+      }
+
+      /**
+       * EXECUTA A SEQUÊNCIA: Reproduz cada frame da animação
+       * 
+       * Para cada frame, agenda um setTimeout com o delay específico.
+       * Quando a última frame termina, marca animação como completa.
+       * 
+       * @param {string} action - 'cozido' ou 'moido'
+       */
+      playSequence(action) {
+        const token = this.runToken;
+        const sequence = this.sequences[action];
+
+        sequence.forEach((frame, index) => {
+          // Agenda a transição desta frame
+          const frameTimer = setTimeout(() => {
+            if (token !== this.runToken) {
+              return;
+            }
+
+            this.transitionToImage(frame.state, frame.label);
+            console.log(`📸 Frame ${index + 1}/${sequence.length}: ${frame.state}`);
+
+            // Se for a última frame, finaliza a animação
+            if (index === sequence.length - 1) {
+              const finalizeTimer = setTimeout(() => {
+                if (token !== this.runToken) {
+                  return;
+                }
+
+                this.isAnimating = false;
+                this.updateButtonStates(null);
+                console.log(`✅ Animação ${action} finalizada`);
+              }, 800); // Aguarda a animação CSS (fadeInScale) terminar
+
+              this.animationTimers.push(finalizeTimer);
+            }
+          }, frame.delay);
+
+          this.animationTimers.push(frameTimer);
+        });
+      }
+
+      /**
+       * TRANSIÇÃO DE IMAGEM: Muda src com animação CSS
+       * 
+       * Processo:
+       * 1. Remove classe "reset-state" para habilitar animação CSS
+       * 2. Força reflow do navegador (offsetWidth)
+       * 3. Atualiza src da imagem
+       * 4. Animação CSS (fadeInScale) é disparada automaticamente
+       * 
+       * @param {string} state - Identificador do estado
+       * @param {string} label - Texto informativo para o usuário
+       */
+      transitionToImage(state, label) {
+        this.currentState = state;
+        this.infoLabel.textContent = label;
+
+        // Remove classe de "reset" para permitir animação
+        this.imageElement.classList.remove('reset-state');
+
+        // Força reflow: permite que CSS reconheça a mudança de classe
+        void this.imageElement.offsetWidth;
+
+        // Atualiza src da imagem
+        this.imageElement.src = this.imagePaths[state];
+        this.imageElement.alt = `Corte de Músculo - ${label}`;
+      }
+
+      /**
+       * RESET PARA INICIAL: Volta ao estado "inteiro cru"
+       * 
+       * Essa função é chamada:
+       * - No início de cada nova ação
+       * - Se o usuário clicar em outro botão durante animação
+       */
+      resetToInitial() {
+        this.currentState = 'inteiro-cru';
+        this.imageElement.classList.add('reset-state');
+        this.imageElement.src = this.imagePaths['inteiro-cru'];
+        this.imageElement.alt = 'Corte de Músculo - Estado Inicial';
+        this.infoLabel.textContent = '';
+      }
+
+      /**
+       * CANCELA ANIMAÇÃO: Limpa TODOS os timers
+       * 
+       * CRÍTICO PARA PERFORMANCE:
+       * - Se o usuário clicar repetidamente, sem isso teríamos memory leaks
+       * - Cada setTimeout não cancelado continuaria na fila
+       * - clearTimeout obrigatório ANTES de iniciar nova animação
+       */
+      cancelAnimation() {
+        this.runToken += 1;
+
+        // Limpa todos os timers pendentes da execução anterior
+        this.animationTimers.forEach((timerId) => clearTimeout(timerId));
+        this.animationTimers = [];
+        this.isAnimating = false;
+        console.log('⏹️  Timers da animação cancelados');
+      }
+
+      /**
+       * ATUALIZA ESTADO VISUAL DOS BOTÕES
+       * 
+       * Adiciona/remove classe "active" conforme qual ação está em progresso
+       * 
+       * @param {string|null} activeAction - 'cozido', 'moido', ou null
+       */
+      updateButtonStates(activeAction) {
+        if (activeAction === 'cozido') {
+          this.btnCozido.classList.add('active');
+          this.btnMoido.classList.remove('active');
+          this.btnCozido.disabled = true;
+          this.btnMoido.disabled = false;
+        } else if (activeAction === 'moido') {
+          this.btnMoido.classList.add('active');
+          this.btnCozido.classList.remove('active');
+          this.btnMoido.disabled = true;
+          this.btnCozido.disabled = false;
+        } else {
+          this.btnCozido.classList.remove('active');
+          this.btnMoido.classList.remove('active');
+          this.btnCozido.disabled = false;
+          this.btnMoido.disabled = false;
+        }
+      }
+
+      /**
+       * DESTRUIDOR: Limpa quando componente é removido
+       */
+      destroy() {
+        this.cancelAnimation();
+        this.btnCozido.removeEventListener('click', () => {});
+        this.btnMoido.removeEventListener('click', () => {});
+      }
+    }
+
+    // ============================================================
+    // INSTANCIA O CONTROLADOR QUANDO DOM ESTÁ PRONTO
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('🎬 MusculoAnimationController inicializado');
+      new MusculoAnimationController();
+    });
+  </script>
 
   <script src="../../script.js"></script>
 
