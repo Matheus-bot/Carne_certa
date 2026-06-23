@@ -123,6 +123,17 @@ const cowMapCuts = [
     description: "Rico em colageno, excelente para caldos encorpados e coccao lenta."
   },
   {
+    id: "filemignon",
+    name: "File Mignon",
+    pointX: 62.5,
+    pointY: 34.8,
+    labelX: 66.8,
+    labelY: 30.8,
+    side: "right",
+    link: "../carnes/filemignon.html",
+    description: "Corte extremamente macio e magro, ideal para fitness e preparos delicados."
+  },
+  {
     id: "paleta",
     name: "Paleta",
     pointX: 25.5,
@@ -560,6 +571,14 @@ const scoreCandidate = (candidate, selected, effectiveCategory) => {
 
   if (selected.priority.includes("magra") && candidate.id === "musculo") {
     score += 3;
+  }
+
+  if (selected.priority.includes("magra") && candidate.id === "filemignon") {
+    score += 4;
+  }
+
+  if (selected.cutPreference.includes("maci") && candidate.id === "filemignon") {
+    score += 4;
   }
 
   if (selected.cutPreference.includes("sabor") && candidate.fatProfile === "saborosa") {

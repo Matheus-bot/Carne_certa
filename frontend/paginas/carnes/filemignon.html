@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>File Mignon | CarneCerta</title>
+
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <style>
+    .filemignon-animation-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(19, 19, 19, 0.8), rgba(25, 25, 25, 0.95));
+      border: 1px solid var(--card-border-color);
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .filemignon-animation-container--inline {
+      max-width: none;
+      margin: 0;
+      padding: 22px;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .filemignon-animation-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(211, 47, 47, 0.1), transparent 70%);
+      pointer-events: none;
+      animation: shimmer 8s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% {
+        opacity: 0.5;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .filemignon-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin-bottom: 30px;
+      background: var(--surface-color);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .filemignon-animation-container--inline .filemignon-image-wrapper {
+      height: auto;
+      min-height: 420px;
+      background: transparent;
+      border-radius: 0;
+      margin-bottom: 20px;
+    }
+
+    .filemignon-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      animation: fadeInScale 0.8s ease-out forwards;
+    }
+
+    .filemignon-animation-container--inline .filemignon-image-wrapper img.meat-image {
+      width: 100%;
+      max-width: 780px;
+      height: auto;
+      animation: fadeInScale 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .filemignon-image-wrapper img.reset-state {
+      animation: none;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .filemignon-buttons-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .filemignon-animation-container--inline .filemignon-buttons-group {
+      justify-content: flex-start;
+      padding-left: 10px;
+    }
+
+    .filemignon-btn {
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border: 2px solid var(--button-color);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--button-color);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+    }
+
+    .filemignon-btn:hover {
+      background: var(--button-color);
+      color: white;
+      box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .filemignon-btn.active {
+      background: var(--button-color);
+      color: white;
+      box-shadow: 0 12px 32px rgba(211, 47, 47, 0.5);
+    }
+
+    .filemignon-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .filemignon-btn:focus {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    .filemignon-info-label {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.875rem;
+      color: var(--muted-text-color);
+      font-style: italic;
+      min-height: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .filemignon-animation-container {
+        padding: 24px;
+        margin: 24px auto;
+      }
+
+      .filemignon-image-wrapper {
+        height: 300px;
+        margin-bottom: 24px;
+      }
+
+      .filemignon-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+
+      .filemignon-buttons-group {
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .filemignon-animation-container {
+        padding: 16px;
+        margin: 16px;
+      }
+
+      .filemignon-image-wrapper {
+        height: 250px;
+      }
+
+      .filemignon-btn {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        flex: 1;
+        min-width: 120px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="meat-page meat-page--premium">
+    <div class="meat-page-shell">
+      <div class="meat-backbar" data-reveal>
+        <a href="../boi/boi.html" class="back-button meat-back-link">← Cortes do boi</a>
+        <a href="../../index.html" class="back-button meat-back-link">← Voltar para Home</a>
+      </div>
+
+      <section class="meat-section">
+        <div class="meat-visual-column" data-reveal>
+          <span class="meat-visual-kicker">Mapa CarneCerta</span>
+          <h2>Maciez premium e perfil fitness</h2>
+          <p class="meat-visual-summary">
+            O File Mignon é uma escolha sofisticada para quem quer extrema maciez, textura fina e baixo teor de gordura.
+          </p>
+
+          <div class="meat-image-stage">
+            <span class="meat-image-glow"></span>
+            <div class="meat-image-area">
+              <section class="filemignon-animation-container filemignon-animation-container--inline">
+                <div class="filemignon-image-wrapper">
+                  <img
+                    id="filemignon-image"
+                    src="../../../assets/imagens/filemignon/filemignoncruinteiro.jpeg"
+                    alt="File Mignon - Estado inicial"
+                    class="meat-image reset-state"
+                  >
+                </div>
+
+                <div class="filemignon-buttons-group">
+                  <button id="filemignon-btn-medalhao" class="filemignon-btn" data-action="medalhao">
+                    Ver medalhão
+                  </button>
+                  <button id="filemignon-btn-pronto" class="filemignon-btn" data-action="pronto">
+                    Ver pronto
+                  </button>
+                </div>
+
+                <div class="filemignon-info-label" id="filemignon-info-label"></div>
+              </section>
+            </div>
+            <div class="meat-image-meta">
+              <span>Grelha e frigideira</span>
+              <span>Perfil magro</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="meat-content" data-reveal>
+          <span class="meat-tag">Ideal para • fitness • grelha • medalhões</span>
+          <h1>File Mignon</h1>
+          <p class="meat-lead">
+            Corte extremamente macio e muito magro, perfeito para quem busca praticidade, textura premium e menor teor de gordura.
+          </p>
+          <p class="meat-description">
+            O File Mignon não é o corte mais barato nem o mais saboroso, mas entrega excelente resposta em grelha, frigideira e preparos rápidos quando a prioridade é maciez e performance fitness.
+          </p>
+
+          <div class="quick-info">
+            <span>Fitness</span>
+            <span>Maciez alta</span>
+            <span>Preparos rápidos</span>
+          </div>
+
+          <div class="meat-score-grid">
+            <article class="meat-score-card">
+              <span class="meat-score-label">Maciez</span>
+              <strong>5/5</strong>
+              <div class="bar"><div class="fill fill-5"></div></div>
+              <small>Muito macio</small>
+            </article>
+            <article class="meat-score-card">
+              <span class="meat-score-label">Gordura</span>
+              <strong>1/5</strong>
+              <div class="bar"><div class="fill fill-1"></div></div>
+              <small>Extremamente magro</small>
+            </article>
+            <article class="meat-score-card">
+              <span class="meat-score-label">Sabor</span>
+              <strong>4/5</strong>
+              <div class="bar"><div class="fill fill-4"></div></div>
+              <small>Suave e refinado</small>
+            </article>
+          </div>
+
+          <article class="recommendation-card">
+            <div class="recommendation-top">
+              <span class="score">4.9</span>
+              <span class="best-choice">Perfil fitness</span>
+            </div>
+            <p>
+              Excelente para quem valoriza maciez, textura delicada e um corte mais leve, especialmente em preparos curtos e delicados.
+            </p>
+          </article>
+
+          <div class="meat-detail-grid">
+            <article class="info-card">
+              <h3>Ideal para</h3>
+              <div class="tags">
+                <span>Grelha</span>
+                <span>Frigideira</span>
+                <span>Fitness</span>
+                <span>Medalhões</span>
+              </div>
+            </article>
+
+            <article class="chef-tip">
+              <h3>Dica do açougueiro IA</h3>
+              <p>
+                Grelhe em fogo alto por pouco tempo para preservar a textura e evitar ressecamento, já que é um corte muito magro.
+              </p>
+            </article>
+          </div>
+
+          <a href="../../index.html" class="select-button">Abrir recomendador inteligente</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    class FileMignonAnimationController {
+      constructor() {
+        this.imageElement = document.getElementById('filemignon-image');
+        this.btnMedalhao = document.getElementById('filemignon-btn-medalhao');
+        this.btnPronto = document.getElementById('filemignon-btn-pronto');
+        this.infoLabel = document.getElementById('filemignon-info-label');
+
+        this.currentState = 'inteiro-cru';
+        this.isAnimating = false;
+        this.animationTimers = [];
+        this.runToken = 0;
+
+        this.imagePaths = {
+          'inteiro-cru': '../../../assets/imagens/filemignon/filemignoncruinteiro.jpeg',
+          'medalhao-cru': '../../../assets/imagens/filemignon/filemignonmedalhaocru.jpeg',
+          'pronto': '../../../assets/imagens/filemignon/filemignonpronto.jpeg'
+        };
+
+        this.sequences = {
+          medalhao: [
+            {
+              state: 'medalhao-cru',
+              delay: 0,
+              label: '🔪 Transformando em medalhão...'
+            },
+            {
+              state: 'pronto',
+              delay: 1500,
+              label: '✅ File Mignon pronto para servir!'
+            }
+          ],
+          pronto: [
+            {
+              state: 'medalhao-cru',
+              delay: 0,
+              label: '🔪 Preparando o corte em medalhão...'
+            },
+            {
+              state: 'pronto',
+              delay: 1500,
+              label: '🍽️ Finalizado com textura premium!'
+            }
+          ]
+        };
+
+        this.init();
+      }
+
+      init() {
+        this.btnMedalhao.addEventListener('click', () => this.handleAction('medalhao'));
+        this.btnPronto.addEventListener('click', () => this.handleAction('pronto'));
+      }
+
+      handleAction(action) {
+        if (this.isAnimating) {
+          this.cancelAnimation();
+        }
+
+        this.resetToInitial();
+        this.isAnimating = true;
+        this.updateButtonStates(action);
+        this.playSequence(action);
+      }
+
+      playSequence(action) {
+        const token = this.runToken;
+        const sequence = this.sequences[action];
+
+        sequence.forEach((frame, index) => {
+          const frameTimer = setTimeout(() => {
+            if (token !== this.runToken) {
+              return;
+            }
+
+            this.transitionToImage(frame.state, frame.label);
+
+            if (index === sequence.length - 1) {
+              const finalizeTimer = setTimeout(() => {
+                if (token !== this.runToken) {
+                  return;
+                }
+
+                this.isAnimating = false;
+                this.updateButtonStates(null);
+              }, 800);
+
+              this.animationTimers.push(finalizeTimer);
+            }
+          }, frame.delay);
+
+          this.animationTimers.push(frameTimer);
+        });
+      }
+
+      transitionToImage(state, label) {
+        this.currentState = state;
+        this.infoLabel.textContent = label;
+        this.imageElement.classList.remove('reset-state');
+        void this.imageElement.offsetWidth;
+        this.imageElement.src = this.imagePaths[state];
+        this.imageElement.alt = `File Mignon - ${label}`;
+      }
+
+      resetToInitial() {
+        this.currentState = 'inteiro-cru';
+        this.imageElement.classList.add('reset-state');
+        this.imageElement.src = this.imagePaths['inteiro-cru'];
+        this.imageElement.alt = 'File Mignon - Estado inicial';
+        this.infoLabel.textContent = '';
+      }
+
+      cancelAnimation() {
+        this.runToken += 1;
+        this.animationTimers.forEach((timerId) => clearTimeout(timerId));
+        this.animationTimers = [];
+        this.isAnimating = false;
+      }
+
+      updateButtonStates(activeAction) {
+        if (activeAction === 'medalhao') {
+          this.btnMedalhao.classList.add('active');
+          this.btnPronto.classList.remove('active');
+          this.btnMedalhao.disabled = true;
+          this.btnPronto.disabled = false;
+        } else if (activeAction === 'pronto') {
+          this.btnPronto.classList.add('active');
+          this.btnMedalhao.classList.remove('active');
+          this.btnPronto.disabled = true;
+          this.btnMedalhao.disabled = false;
+        } else {
+          this.btnMedalhao.classList.remove('active');
+          this.btnPronto.classList.remove('active');
+          this.btnMedalhao.disabled = false;
+          this.btnPronto.disabled = false;
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      new FileMignonAnimationController();
+    });
+  </script>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

@@ -78,14 +78,27 @@ window.CARNECERTA_DATA = {
       butcherCut: "retire o excesso de nervos e corte em cubos medios",
       notes: "Corte magro e saboroso, excelente para panela e para moer.",
       factor: 0.92
+    },
+    filemignon: {
+      id: "filemignon",
+      name: "File Mignon",
+      image: "../../../assets/imagens/filemignon/filemignoncruinteiro.jpeg",
+      page: "../carnes/filemignon.html",
+      priorities: ["maci", "magr"],
+      categories: ["bife", "churrasco", "hamburguer"],
+      fatProfile: "magra",
+      cutHints: ["magra", "maci", "medalhao", "fitness"],
+      butcherCut: "corte em medalhoes ou bifes finos para grelha",
+      notes: "Extremamente macio e magro, ideal para quem prioriza textura e fitness.",
+      factor: 1.08
     }
   },
   categoryCandidates: {
     panela: ["musculo", "acem", "paleta", "coxaomole", "pontadealcatra"],
-    bife: ["contrafile", "coxaomole", "pontadealcatra", "acem"],
+    bife: ["contrafile", "coxaomole", "pontadealcatra", "acem", "filemignon"],
     bifearole: ["pontadealcatra", "coxaomole"],
-    churrasco: ["pontadealcatra", "contrafile", "coxaomole", "paleta"],
-    hamburguer: ["coxaomole", "musculo", "acem", "contrafile", "paleta", "pontadealcatra"],
+    churrasco: ["pontadealcatra", "contrafile", "coxaomole", "paleta", "filemignon"],
+    hamburguer: ["coxaomole", "musculo", "acem", "contrafile", "paleta", "pontadealcatra", "filemignon"],
     desfiar: ["musculo", "acem", "paleta", "pontadealcatra", "coxaomole"],
     moer: ["musculo", "acem", "paleta", "coxaomole", "contrafile"]
   },
