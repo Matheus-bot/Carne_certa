@@ -26,58 +26,44 @@
       <h1>Mapa Inteligente do Boi</h1>
 
       <p>
-        Clique em um corte para descobrir suas características.
+        Escolha o corte e siga direto para a página de detalhes.
       </p>
 
     </div>
 
-    <section class="cow-area">
+    <section class="cow-map-shell" aria-labelledby="cow-map-title">
 
-      <img
-        src="../../../assets/imagens/boi/boimodelo2.png"
-        alt="Mapa do boi"
-        class="cow-image"
-      >
+      <div class="cow-map-copy">
+        <span class="cow-map-kicker">Mapa anatômico premium</span>
+        <h2 id="cow-map-title">Selecione um corte e vá direto para os detalhes</h2>
+        <p>
+          Seis cortes com animações suaves, leitura clara e acesso imediato.
+        </p>
+      </div>
 
-      <a
-        href="../carnes/acem.html"
-        class="cut-button acem-btn"
-      >
-        Acém
-      </a>
-      <a
-        href="../carnes/coxaomole.html"
-        class="cut-button coxaomole-btn"
-      >
-        Coxão mole
-      </a>
-      <a
-        href="../carnes/paleta.html"
-        class="cut-button paleta-btn"
-      >
-        Paleta
-      </a>
-      <a
-        href="../carnes/Pontadealcatra.html"
-        class="cut-button pontadealcatra-btn"
-      >
-        Ponta de Alcatra
-      </a>
-      <a
-        href="../carnes/contrafile.html"
-        class="cut-button contrafile-btn"
-      >
-        Contrafilé
-      </a>
-      <a
-        href="../carnes/musculo.html"
-        class="cut-button musculo-btn"
-      >
-        Músculo
-      </a>
+      <div class="cow-map-stage" data-cow-map>
+        <img
+          src="../../../assets/imagens/boi/boimodelofuncional.png"
+          alt="Silhueta interativa do boi com destaque para cortes bovinos"
+          class="cow-map-image"
+          data-cow-image
+        >
+
+        <svg
+          class="cow-map-lines"
+          data-cow-lines
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        ></svg>
+
+        <div class="cow-map-hotspots" data-cow-hotspots aria-label="Mapa de cortes bovinos"></div>
+      </div>
     </section>
 
   </main>
+
+  <script src="../../script.js"></script>
 
 </body>
 

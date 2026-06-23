@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CarneCerta - Mapa Interativo de Cortes</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    /* ===================================== */
+    /* DESIGN SYSTEM PREMIUM DARK */
+    /* ===================================== */
+    :root {
+      --color-bg-primary: #121212;
+      --color-bg-secondary: #1a1a1a;
+      --color-bg-tertiary: #222222;
+      --color-text-primary: #ffffff;
+      --color-text-secondary: #c7c7c7;
+      --color-accent-red: #d32f2f;
+      --color-accent-red-light: #ff5252;
+      --color-border-dark: rgba(255, 255, 255, 0.08);
+      --color-border-light: rgba(255, 255, 255, 0.12);
+      --transition-smooth: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+      --transition-quick: 0.2s ease-out;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: var(--color-bg-primary);
+      color: var(--color-text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Trebuchet MS', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    body {
+      position: relative;
+    }
+
+    /* ===================================== */
+    /* HEADER PREMIUM */
+    /* ===================================== */
+    .header-premium {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 8%;
+      background: linear-gradient(180deg, rgba(18,18,18,0.98), rgba(18,18,18,0.8));
+      border-bottom: 1px solid var(--color-border-dark);
+      backdrop-filter: blur(20px);
+    }
+
+    .header-logo {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .header-logo .accent {
+      color: var(--color-accent-red);
+    }
+
+    .header-nav {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .header-nav a, .header-nav button {
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: 1px solid var(--color-border-dark);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--color-text-primary);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all var(--transition-quick);
+    }
+
+    .header-nav a:hover, .header-nav button:hover {
+      border-color: var(--color-accent-red);
+      background: rgba(211, 47, 47, 0.08);
+      transform: translateY(-2px);
+    }
+
+    /* ===================================== */
+    /* SEÇÃO 1: MAPA INTERATIVO DO BOI */
+    /* ===================================== */
+    .section-cow-map {
+      position: relative;
+      width: 100%;
+      padding: 60px 5%;
+      background: linear-gradient(180deg, var(--color-bg-primary) 0%, rgba(18,18,18,0.8) 100%);
+    }
+
+    .cow-map-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .cow-map-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .cow-map-kicker {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-accent-red-light);
+      margin-bottom: 12px;
+    }
+
+    .cow-map-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      line-height: 1.1;
+      margin-bottom: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .cow-map-subtitle {
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Canvas do Mapa */
+    .cow-map-canvas {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      aspect-ratio: 1.2 / 1;
+      background: radial-gradient(circle at 50% 50%, rgba(211, 47, 47, 0.08), transparent 70%);
+      border-radius: 24px;
+      border: 1px solid var(--color-border-dark);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cow-image-wrapper {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .cow-image {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 20px;
+    }
+
+    /* Hotspot System */
+    .hotspots-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+    }
+
+    .hotspot {
+      position: absolute;
+      cursor: pointer;
+      transform-origin: center;
+    }
+
+    .hotspot-point {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      background: var(--color-accent-red);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.6);
+      animation: pulse-point 2s ease-in-out infinite;
+    }
+
+    .hotspot-hitbox {
+      position: absolute;
+      width: 56px;
+      height: 56px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: transparent;
+    }
+
+    .hotspot-line-container {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+    }
+
+    .hotspot-line {
+      stroke: var(--color-accent-red);
+      stroke-width: 2;
+      fill: none;
+      stroke-dasharray: 200;
+      stroke-dashoffset: 200;
+    }
+
+    .hotspot-label {
+      position: absolute;
+      display: none;
+      padding: 14px 18px;
+      background: rgba(26, 26, 26, 0.92);
+      border: 1px solid var(--color-border-light);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      white-space: nowrap;
+      font-size: 0.95rem;
+      color: var(--color-text-primary);
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      z-index: 3;
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    .hotspot-label:hover {
+      background: rgba(26, 26, 26, 0.98);
+      border-color: var(--color-accent-red);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(211, 47, 47, 0.2);
+    }
+
+    .hotspot.active .hotspot-label {
+      display: block;
+      opacity: 1;
+      animation: label-appear var(--transition-smooth) forwards;
+    }
+
+    /* Label Left/Right positioning */
+    .hotspot.label-left .hotspot-label {
+      right: 100%;
+      top: 50%;
+      transform: translate(-12px, -50%);
+      margin-right: 16px;
+    }
+
+    .hotspot.label-left .hotspot-label:hover {
+      transform: translate(-12px, -50%);
+    }
+
+    .hotspot.label-right .hotspot-label {
+      left: 100%;
+      top: 50%;
+      transform: translate(12px, -50%);
+      margin-left: 16px;
+    }
+
+    .hotspot.label-right .hotspot-label:hover {
+      transform: translate(12px, -50%);
+    }
+
+    /* Bottom Sheet Mobile */
+    .bottom-sheet {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2000;
+      max-height: 80vh;
+      background: linear-gradient(180deg, var(--color-bg-secondary), var(--color-bg-primary));
+      border-top: 1px solid var(--color-border-dark);
+      border-radius: 24px 24px 0 0;
+      padding: 24px;
+      transform: translateY(100%);
+      transition: transform var(--transition-smooth);
+      overflow-y: auto;
+    }
+
+    .bottom-sheet.active {
+      transform: translateY(0);
+    }
+
+    .bottom-sheet-handle {
+      width: 40px;
+      height: 4px;
+      background: var(--color-border-light);
+      border-radius: 2px;
+      margin: 0 auto 24px;
+    }
+
+    .bottom-sheet-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .bottom-sheet-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .bottom-sheet-description {
+      color: var(--color-text-secondary);
+      line-height: 1.8;
+    }
+
+    .bottom-sheet-image {
+      width: 100%;
+      max-height: 300px;
+      border-radius: 16px;
+      object-fit: cover;
+      margin: 16px 0;
+    }
+
+    .bottom-sheet-button {
+      width: 100%;
+      padding: 16px;
+      background: var(--color-accent-red);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-quick);
+      margin-top: 12px;
+    }
+
+    .bottom-sheet-button:active {
+      transform: scale(0.98);
+    }
+
+    .bottom-sheet-close {
+      display: none;
+    }
+
+    /* ===================================== */
+    /* SEÇÃO 2: PÓDIO KAHOOT */
+    /* ===================================== */
+    .section-podium {
+      width: 100%;
+      padding: 80px 5%;
+      background: linear-gradient(180deg, rgba(18,18,18,0.6) 0%, var(--color-bg-primary) 100%);
+      border-top: 1px solid var(--color-border-dark);
+    }
+
+    .podium-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .podium-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .podium-kicker {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-accent-red-light);
+      margin-bottom: 12px;
+    }
+
+    .podium-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .podium-subtitle {
+      font-size: 1.05rem;
+      color: var(--color-text-secondary);
+    }
+
+    /* Podium Stages */
+    .podium-stages {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 20px;
+      min-height: 400px;
+      margin-top: 40px;
+    }
+
+    .podium-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+      max-width: 280px;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all var(--transition-smooth);
+    }
+
+    .podium-stage.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .podium-rank {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent-red);
+    }
+
+    .podium-height-2 {
+      order: 1;
+    }
+
+    .podium-height-1 {
+      order: 2;
+      transform: scale(1.05);
+    }
+
+    .podium-height-3 {
+      order: 3;
+    }
+
+    .podium-stage.height-1 {
+      min-height: 340px;
+    }
+
+    .podium-stage.height-2 {
+      min-height: 280px;
+    }
+
+    .podium-stage.height-3 {
+      min-height: 220px;
+    }
+
+    .podium-card {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 24px;
+      background: linear-gradient(145deg, rgba(42, 42, 42, 0.6), rgba(26, 26, 26, 0.8));
+      border: 1px solid var(--color-border-light);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .podium-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(211, 47, 47, 0.1) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity var(--transition-smooth);
+      pointer-events: none;
+    }
+
+    .podium-stage.height-1 .podium-card::before {
+      opacity: 1;
+      box-shadow: inset 0 0 40px rgba(211, 47, 47, 0.15);
+      animation: glow-pulse 2s ease-in-out infinite;
+    }
+
+    .podium-medal {
+      font-size: 2.5rem;
+      margin-bottom: 8px;
+    }
+
+    .podium-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    .podium-description {
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .podium-badge {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 8px 12px;
+      background: rgba(211, 47, 47, 0.15);
+      border: 1px solid rgba(211, 47, 47, 0.3);
+      border-radius: 8px;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent-red-light);
+    }
+
+    /* ===================================== */
+    /* ANIMAÇÕES */
+    /* ===================================== */
+    @keyframes pulse-point {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.6);
+      }
+      50% {
+        box-shadow: 0 0 0 8px rgba(211, 47, 47, 0);
+      }
+    }
+
+    @keyframes label-appear {
+      from {
+        opacity: 0;
+        transform: inherit;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes glow-pulse {
+      0%, 100% {
+        box-shadow: inset 0 0 40px rgba(211, 47, 47, 0.15);
+      }
+      50% {
+        box-shadow: inset 0 0 60px rgba(211, 47, 47, 0.25);
+      }
+    }
+
+    @keyframes stagger-in {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ===================================== */
+    /* RESPONSIVO MOBILE */
+    /* ===================================== */
+    @media (max-width: 900px) {
+      .section-cow-map {
+        padding: 40px 4%;
+      }
+
+      .cow-map-title {
+        font-size: clamp(1.6rem, 5vw, 2.4rem);
+      }
+
+      .hotspot-label {
+        display: none !important;
+      }
+
+      .podium-stages {
+        flex-direction: column;
+        min-height: auto;
+        gap: 16px;
+      }
+
+      .podium-height-1,
+      .podium-height-2,
+      .podium-height-3 {
+        order: unset;
+        transform: scale(1) !important;
+      }
+
+      .podium-stage {
+        min-height: 200px;
+        max-width: 100%;
+      }
+
+      .podium-stage.height-1,
+      .podium-stage.height-2,
+      .podium-stage.height-3 {
+        min-height: 200px;
+      }
+
+      .podium-card {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .section-cow-map,
+      .section-podium {
+        padding: 30px 3%;
+      }
+
+      .cow-map-title {
+        font-size: 1.6rem;
+      }
+
+      .podium-title {
+        font-size: 1.5rem;
+      }
+
+      .podium-name {
+        font-size: 1.1rem;
+      }
+
+      .podium-description {
+        font-size: 0.85rem;
+      }
+    }
+
+    /* Accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .hotspot-point {
+        animation: none;
+      }
+
+      .podium-stage.height-1 .podium-card::before {
+        animation: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER PREMIUM -->
+  <header class="header-premium">
+    <div class="header-logo">
+      Carne<span class="accent">Certa</span>
+    </div>
+    <nav class="header-nav">
+      <a href="#cow-map">Mapa do Boi</a>
+      <a href="#podium">Melhores Cortes</a>
+      <button onclick="toggleTheme()">🌙 Modo</button>
+    </nav>
+  </header>
+
+  <!-- SEÇÃO 1: MAPA INTERATIVO DO BOI -->
+  <section class="section-cow-map" id="cow-map">
+    <div class="cow-map-container">
+      <div class="cow-map-header">
+        <div class="cow-map-kicker">Mapa Anatômico Premium</div>
+        <h2 class="cow-map-title">Descubra Cada Corte</h2>
+        <p class="cow-map-subtitle">Clique nos hotspots para explorar os cortes e suas características</p>
+      </div>
+
+      <div class="cow-map-canvas">
+        <div class="cow-image-wrapper">
+          <img src="../assets/imagens/boi/boimodelofuncional.png" alt="Mapa anatômico do boi" class="cow-image">
+        </div>
+        <div class="hotspots-layer" id="hotspotsLayer"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEÇÃO 2: PÓDIO KAHOOT -->
+  <section class="section-podium" id="podium">
+    <div class="podium-container">
+      <div class="podium-header">
+        <div class="podium-kicker">Recomendações Premium</div>
+        <h2 class="podium-title">Melhores Cortes para Grelhar</h2>
+        <p class="podium-subtitle">Os cortes mais escolhidos pelos chefs profissionais</p>
+      </div>
+
+      <div class="podium-stages" id="podiumStages"></div>
+    </div>
+  </section>
+
+  <!-- BOTTOM SHEET MOBILE -->
+  <div class="bottom-sheet" id="bottomSheet">
+    <div class="bottom-sheet-handle"></div>
+    <div class="bottom-sheet-content">
+      <h3 class="bottom-sheet-title" id="sheetTitle">Carregando...</h3>
+      <p class="bottom-sheet-description" id="sheetDescription">Detalhes do corte</p>
+      <img id="sheetImage" class="bottom-sheet-image" src="" alt="Imagem do corte">
+      <a id="sheetLink" href="#" class="bottom-sheet-button">Ver Detalhes Completos</a>
+    </div>
+  </div>
+
+  <script>
+    // ===================================== 
+    // DATA MANAGEMENT - ESTRUTURA DE DADOS JSON
+    // =====================================
+    const cutsData = [
+      {
+        id: 'acem',
+        name: 'Acém',
+        description: 'Corte versátil com sabor intenso. Ótimo para panelas e ensopados.',
+        image: '../assets/imagens/acem/acemgerado.jpg',
+        link: './paginas/carnes/acem.html',
+        position: { x: 32, y: 42 },
+        side: 'left'
+      },
+      {
+        id: 'contrafile',
+        name: 'Contra-filé',
+        description: 'Premium para churrasco. Maciez excepcional e gordura equilibrada.',
+        image: '../assets/imagens/contrafileTradicional/contrafilet.png',
+        link: './paginas/carnes/contrafile.html',
+        position: { x: 60, y: 40 },
+        side: 'right'
+      },
+      {
+        id: 'alcatra',
+        name: 'Alcatra',
+        description: 'Corte nobre e versátil. Perfeito para bifes finos e grelhados.',
+        image: '../assets/imagens/pontadealcatra/pontadealcatragerada1.png',
+        link: './paginas/carnes/pontadealcatra.html',
+        position: { x: 70, y: 44 },
+        side: 'right'
+      }
+    ];
+
+    const podiumData = [
+      {
+        rank: 1,
+        medal: '🥇',
+        name: 'Contra-filé Tradicional',
+        description: 'Combinação perfeita de maciez premium e gordura equilibrada. Favorito dos chefs para churrasco de alta performance.'
+      },
+      {
+        rank: 2,
+        medal: '🥈',
+        name: 'Alcatra Premium',
+        description: 'Versátil e nobre. Responde bem a preparos variados mantendo sabor intenso em qualquer ponto.'
+      },
+      {
+        rank: 3,
+        medal: '🥉',
+        name: 'Acém Selecionado',
+        description: 'Sabor robusto e ótimo rendimento. Escolha inteligente para panelas longas e caldos encorpados.'
+      }
+    ];
+
+    // ===================================== 
+    // MAPA INTERATIVO - INICIALIZAÇÃO
+    // =====================================
+    function initCowMap() {
+      const hotspotsLayer = document.getElementById('hotspotsLayer');
+      const canvas = document.querySelector('.cow-map-canvas');
+
+      cutsData.forEach((cut, index) => {
+        const hotspot = document.createElement('div');
+        hotspot.className = `hotspot label-${cut.side}`;
+        hotspot.style.left = `${cut.position.x}%`;
+        hotspot.style.top = `${cut.position.y}%`;
+        hotspot.style.transform = 'translate(-50%, -50%)';
+        hotspot.dataset.cutId = cut.id;
+        hotspot.dataset.index = index;
+
+        // HTML do hotspot
+        hotspot.innerHTML = `
+          <div class="hotspot-hitbox"></div>
+          <div class="hotspot-point"></div>
+          <svg class="hotspot-line-container" viewBox="0 0 100 100">
+            <line class="hotspot-line" x1="50" y1="50" x2="${cut.side === 'left' ? 0 : 100}" y2="50" />
+          </svg>
+          <a href="#" class="hotspot-label">${cut.name}</a>
+        `;
+
+        // Eventos de interação
+        hotspot.addEventListener('mouseenter', () => {
+          if (window.innerWidth > 900) {
+            activateHotspot(hotspot);
+          }
+        });
+
+        hotspot.addEventListener('mouseleave', () => {
+          if (window.innerWidth > 900) {
+            deactivateHotspot(hotspot);
+          }
+        });
+
+        // Mobile: Bottom sheet
+        hotspot.addEventListener('click', (e) => {
+          e.preventDefault();
+          if (window.innerWidth <= 900) {
+            openBottomSheet(cut);
+          } else {
+            window.location.href = cut.link;
+          }
+        });
+
+        // Label click
+        const label = hotspot.querySelector('.hotspot-label');
+        label.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.location.href = cut.link;
+        });
+
+        hotspotsLayer.appendChild(hotspot);
+
+        // Animação de entrada em cascata
+        setTimeout(() => {
+          hotspot.classList.add('active');
+          animateLineStroke(hotspot.querySelector('.hotspot-line'));
+        }, index * 150);
+      });
+    }
+
+    function activateHotspot(hotspot) {
+      hotspot.classList.add('active');
+      animateLineStroke(hotspot.querySelector('.hotspot-line'));
+    }
+
+    function deactivateHotspot(hotspot) {
+      hotspot.classList.remove('active');
+      resetLineStroke(hotspot.querySelector('.hotspot-line'));
+    }
+
+    function animateLineStroke(line) {
+      if (!line) return;
+      line.style.strokeDashoffset = '0';
+      line.style.transition = 'stroke-dashoffset 0.6s ease-out';
+    }
+
+    function resetLineStroke(line) {
+      if (!line) return;
+      line.style.strokeDashoffset = '200';
+    }
+
+    // ===================================== 
+    // BOTTOM SHEET MOBILE
+    // =====================================
+    function openBottomSheet(cut) {
+      const sheet = document.getElementById('bottomSheet');
+      document.getElementById('sheetTitle').textContent = cut.name;
+      document.getElementById('sheetDescription').textContent = cut.description;
+      document.getElementById('sheetImage').src = cut.image;
+      document.getElementById('sheetImage').alt = cut.name;
+      document.getElementById('sheetLink').href = cut.link;
+      document.getElementById('sheetLink').textContent = `Ver ${cut.name} em Detalhes`;
+
+      sheet.classList.add('active');
+      document.body.style.overflow = 'hidden';
+
+      // Close on outside click
+      sheet.addEventListener('click', closeBottomSheet);
+    }
+
+    function closeBottomSheet() {
+      const sheet = document.getElementById('bottomSheet');
+      sheet.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Detectar clique fora do bottom sheet
+    document.addEventListener('click', (e) => {
+      const sheet = document.getElementById('bottomSheet');
+      if (sheet.classList.contains('active') && !sheet.contains(e.target)) {
+        closeBottomSheet();
+      }
+    });
+
+    // ===================================== 
+    // PÓDIO KAHOOT - INICIALIZAÇÃO
+    // =====================================
+    function initPodium() {
+      const podiumStages = document.getElementById('podiumStages');
+
+      // Ordenar: 2º, 1º, 3º (para usar Flexbox order)
+      const orderedData = [podiumData[1], podiumData[0], podiumData[2]];
+      const classMap = ['podium-height-2', 'podium-height-1', 'podium-height-3'];
+
+      orderedData.forEach((item, index) => {
+        const stage = document.createElement('div');
+        stage.className = `podium-stage ${classMap[index]}`;
+        stage.innerHTML = `
+          <div class="podium-card">
+            <div class="podium-rank">${item.rank}º Lugar</div>
+            <div class="podium-medal">${item.medal}</div>
+            <h3 class="podium-name">${item.name}</h3>
+            <p class="podium-description">${item.description}</p>
+            <span class="podium-badge">Recomendado</span>
+          </div>
+        `;
+        podiumStages.appendChild(stage);
+      });
+
+      // Observador de scroll para animação de entrada
+      observePodiumAnimation();
+    }
+
+    function observePodiumAnimation() {
+      const stages = document.querySelectorAll('.podium-stage');
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            // Delay inverso: 3º, 2º, 1º
+            const delayMap = { 0: 600, 1: 0, 2: 300 };
+            const delay = delayMap[index] || 0;
+
+            setTimeout(() => {
+              entry.target.classList.add('revealed');
+            }, delay);
+
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      stages.forEach((stage) => observer.observe(stage));
+    }
+
+    // ===================================== 
+    // TEMA DARK/LIGHT
+    // =====================================
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    }
+
+    // Carregar tema salvo
+    function loadTheme() {
+      const saved = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', saved);
+    }
+
+    // ===================================== 
+    // INICIALIZAÇÃO NA CARGA DO DOM
+    // =====================================
+    document.addEventListener('DOMContentLoaded', () => {
+      loadTheme();
+      initCowMap();
+      initPodium();
+    });
+
+    // Handle resize para revalidar hotspots
+    window.addEventListener('resize', () => {
+      // Revalidação opcional
+    });
+  </script>
+</body>
+
+</html>

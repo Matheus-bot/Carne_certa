@@ -1,5 +1,333 @@
 console.log("CarneCerta iniciado 🚀");
 
+const themeStorageKey = "carnecerta-theme";
+const themeOptions = {
+  dark: {
+    label: "🌙",
+    title: "Modo escuro",
+    className: "dark-theme"
+  },
+  light: {
+    label: "☀️",
+    title: "Modo claro",
+    className: "light-theme"
+  }
+};
+
+const getStoredTheme = () => {
+  try {
+    return localStorage.getItem(themeStorageKey) || "dark";
+  } catch (error) {
+    return "dark";
+  }
+};
+
+const applyTheme = (themeName) => {
+  const nextTheme = themeName === "light" ? "light" : "dark";
+  const body = document.body;
+
+  body.classList.remove(themeOptions.dark.className, themeOptions.light.className);
+  body.classList.add(themeOptions[nextTheme].className);
+  body.dataset.theme = nextTheme;
+
+  try {
+    localStorage.setItem(themeStorageKey, nextTheme);
+  } catch (error) {
+    /* localStorage unavailable */
+  }
+
+  const toggleButton = document.querySelector("[data-theme-toggle]");
+  if (toggleButton) {
+    const targetTheme = nextTheme === "dark" ? "light" : "dark";
+    toggleButton.dataset.theme = nextTheme;
+    toggleButton.setAttribute("aria-label", `Alternar para ${themeOptions[targetTheme].title}`);
+    toggleButton.innerHTML = `
+      <span class="theme-toggle-icon" aria-hidden="true">${themeOptions[nextTheme].label}</span>
+      <span class="theme-toggle-thumb" aria-hidden="true"></span>
+    `;
+  }
+};
+
+const injectThemeToggle = () => {
+  if (document.querySelector("[data-theme-toggle]")) {
+    return;
+  }
+
+  const toggle = document.createElement("button");
+  toggle.type = "button";
+  toggle.className = "theme-toggle";
+  toggle.setAttribute("data-theme-toggle", "true");
+  toggle.setAttribute("aria-live", "polite");
+  toggle.addEventListener("click", () => {
+    const currentTheme = document.body.dataset.theme === "light" ? "light" : "dark";
+    applyTheme(currentTheme === "dark" ? "light" : "dark");
+  });
+
+  document.body.appendChild(toggle);
+};
+
+const initTheme = () => {
+  injectThemeToggle();
+  applyTheme(getStoredTheme());
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initTheme, { once: true });
+} else {
+  initTheme();
+}
+
+const cowMapCuts = [
+  {
+    id: "acem",
+    name: "Acem",
+    pointX: 32.4,
+    pointY: 40.5,
+    labelX: 2.8,
+    labelY: 18,
+    side: "left",
+    link: "../carnes/acem.html"
+  },
+  {
+    id: "contrafile",
+    name: "Contra-file",
+    pointX: 59.8,
+    pointY: 39.2,
+    labelX: 68.2,
+    labelY: 16.5,
+    side: "right",
+    link: "../carnes/contrafile.html"
+  },
+  {
+    id: "coxaomole",
+    name: "Coxao Mole",
+    pointX: 73.6,
+    pointY: 55,
+    labelX: 70.4,
+    labelY: 65.5,
+    side: "right",
+    link: "../carnes/coxaomole.html"
+  },
+  {
+    id: "musculo",
+    name: "Musculo",
+    pointX: 74.9,
+    pointY: 74.2,
+    labelX: 66.5,
+    labelY: 82.5,
+    side: "right",
+    link: "../carnes/musculo.html"
+  },
+  {
+    id: "paleta",
+    name: "Paleta",
+    pointX: 25.5,
+    pointY: 58,
+    labelX: 2.8,
+    labelY: 61.5,
+    side: "left",
+    link: "../carnes/paleta.html"
+  },
+  {
+    id: "pontadealcatra",
+    name: "Ponta de Alcatra",
+    pointX: 70.2,
+    pointY: 43.8,
+    labelX: 68.2,
+    labelY: 43.8,
+    side: "right",
+    link: "../carnes/pontadealcatra.html"
+  }
+];
+
+const describeLinePath = (startX, startY, endX, endY, side) => {
+  const direction = side === "left" ? -1 : 1;
+  const deltaX = Math.abs(endX - startX);
+  const controlOffset = Math.max(22, deltaX * 0.3);
+  const middleX = startX + direction * controlOffset;
+
+  return [
+    `M ${startX} ${startY}`,
+    `C ${middleX} ${startY}, ${endX - direction * 18} ${endY}, ${endX} ${endY}`
+  ].join(" ");
+};
+
+const syncCowMapLines = (mapRoot, cuts) => {
+  const svg = mapRoot.querySelector("[data-cow-lines]");
+
+  if (!svg) {
+    return;
+  }
+
+  const mapRect = mapRoot.getBoundingClientRect();
+
+  if (!mapRect.width || !mapRect.height) {
+    return;
+  }
+
+  svg.setAttribute("viewBox", `0 0 ${mapRect.width} ${mapRect.height}`);
+
+  cuts.forEach((cut) => {
+    const hotspot = mapRoot.querySelector(`[data-cut-id="${cut.id}"]`);
+
+    if (!hotspot) {
+      return;
+    }
+
+    const point = hotspot.querySelector(".cow-hotspot-point");
+    const label = hotspot.querySelector(".cow-hotspot-label");
+    const line = svg.querySelector(`[data-line-id="${cut.id}"]`);
+
+    if (!point || !label || !line) {
+      return;
+    }
+
+    const pointRect = point.getBoundingClientRect();
+    const labelRect = label.getBoundingClientRect();
+
+    const startX = pointRect.left + pointRect.width / 2 - mapRect.left;
+    const startY = pointRect.top + pointRect.height / 2 - mapRect.top;
+    const endX = cut.side === "left"
+      ? labelRect.right - mapRect.left
+      : labelRect.left - mapRect.left;
+    const endY = labelRect.top + labelRect.height / 2 - mapRect.top;
+
+    const path = describeLinePath(startX, startY, endX, endY, cut.side);
+    line.setAttribute("d", path);
+
+    const length = line.getTotalLength();
+    line.style.setProperty("--path-length", `${length}`);
+  });
+};
+
+const initCowMap = () => {
+  const mapRoot = document.querySelector("[data-cow-map]");
+
+  if (!mapRoot || mapRoot.dataset.initialized === "true") {
+    return;
+  }
+
+  const hotspotsLayer = mapRoot.querySelector("[data-cow-hotspots]");
+  const svg = mapRoot.querySelector("[data-cow-lines]");
+  const image = mapRoot.querySelector("[data-cow-image]");
+
+  if (!hotspotsLayer || !svg || !image) {
+    return;
+  }
+
+  mapRoot.dataset.initialized = "true";
+
+  cowMapCuts.forEach((cut, index) => {
+    const delay = `${index * 0.22}s`;
+    const hotspot = document.createElement("div");
+    hotspot.className = "cow-hotspot";
+    hotspot.dataset.cutId = cut.id;
+    hotspot.style.setProperty("--point-x", `${cut.pointX}%`);
+    hotspot.style.setProperty("--point-y", `${cut.pointY}%`);
+    hotspot.style.setProperty("--label-x", `${cut.labelX}%`);
+    hotspot.style.setProperty("--label-y", `${cut.labelY}%`);
+    hotspot.style.setProperty("--delay", delay);
+
+    const label = document.createElement("a");
+    label.className = "cow-hotspot-label";
+    label.href = cut.link;
+    label.setAttribute("aria-label", `Abrir detalhes de ${cut.name}`);
+    label.innerHTML = `
+      <span class="cow-hotspot-label-content">
+        <span class="cow-hotspot-title">${cut.name}</span>
+        <span class="cow-hotspot-subtitle">Abrir pagina do corte</span>
+      </span>
+      <span class="cow-hotspot-arrow" aria-hidden="true">↗</span>
+    `;
+
+    const point = document.createElement("a");
+    point.className = "cow-hotspot-point";
+    point.href = cut.link;
+    point.setAttribute("aria-label", `Selecionar ${cut.name}`);
+
+    const activate = () => hotspot.classList.add("is-hovered");
+    const deactivate = () => hotspot.classList.remove("is-hovered");
+
+    [label, point].forEach((element) => {
+      element.addEventListener("mouseenter", activate);
+      element.addEventListener("focus", activate);
+      element.addEventListener("mouseleave", deactivate);
+      element.addEventListener("blur", deactivate);
+    });
+
+    hotspot.append(label, point);
+    hotspotsLayer.appendChild(hotspot);
+
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    line.setAttribute("class", "cow-hotspot-line");
+    line.dataset.lineId = cut.id;
+    line.style.setProperty("--delay", delay);
+    svg.appendChild(line);
+  });
+
+  const updateLines = () => syncCowMapLines(mapRoot, cowMapCuts);
+  const scheduleUpdate = () => window.requestAnimationFrame(updateLines);
+
+  if (image.complete) {
+    scheduleUpdate();
+  } else {
+    image.addEventListener("load", scheduleUpdate, { once: true });
+  }
+
+  window.addEventListener("resize", scheduleUpdate, { passive: true });
+
+  if (typeof ResizeObserver === "function") {
+    const observer = new ResizeObserver(scheduleUpdate);
+    observer.observe(mapRoot);
+  }
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initCowMap, { once: true });
+} else {
+  initCowMap();
+}
+
+const initRevealBlocks = () => {
+  const revealBlocks = document.querySelectorAll("[data-reveal]");
+
+  if (!revealBlocks.length) {
+    return;
+  }
+
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduceMotion || typeof IntersectionObserver !== "function") {
+    revealBlocks.forEach((block) => block.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, {
+    threshold: 0.16,
+    rootMargin: "0px 0px -8% 0px"
+  });
+
+  revealBlocks.forEach((block, index) => {
+    block.style.setProperty("--reveal-delay", `${index * 0.08}s`);
+    observer.observe(block);
+  });
+};
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initRevealBlocks, { once: true });
+} else {
+  initRevealBlocks();
+}
+
 const preferenceCards = document.querySelectorAll("[data-open-preferences]");
 
 preferenceCards.forEach((card) => {

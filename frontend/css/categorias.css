@@ -1,8 +1,11 @@
 :root {
-	--bg-card: rgba(255, 255, 255, 0.03);
-	--border-card: rgba(255, 255, 255, 0.08);
-	--text-muted: #bdbdbd;
-	--accent: #ff4747;
+	--bg-card: var(--card-color, rgba(255, 255, 255, 0.03));
+	--border-card: var(--card-border-color, rgba(255, 255, 255, 0.08));
+	--text-muted: var(--muted-text-color, #bdbdbd);
+	--accent: var(--button-color, #d32f2f);
+	--surface: var(--surface-color, #111111);
+	--surface-strong: var(--surface-strong, #1a1a1a);
+	--main-text: var(--text-color, #ffffff);
 }
 
 .preferences-page {
@@ -15,6 +18,7 @@
 	border: 1px solid var(--border-card);
 	background: var(--bg-card);
 	backdrop-filter: blur(10px);
+	color: var(--main-text);
 }
 
 .preferences-container {
@@ -58,7 +62,7 @@
 	padding: 22px;
 	border-radius: 20px;
 	border: 1px solid var(--border-card);
-	background: rgba(17, 17, 17, 0.65);
+	background: var(--surface-strong);
 }
 
 .single-choice-card {
@@ -86,9 +90,9 @@
 }
 
 .option-btn {
-	background: #171717;
-	border: 1px solid #2a2a2a;
-	color: white;
+	background: var(--surface-strong);
+	border: 1px solid var(--border-card);
+	color: var(--main-text);
 	padding: 14px 18px;
 	border-radius: 16px;
 	cursor: pointer;
@@ -153,14 +157,14 @@
 	border: 1px solid var(--border-card);
 	border-radius: 16px;
 	overflow: hidden;
-	background: rgba(255, 255, 255, 0.03);
+	background: var(--bg-card);
 }
 
 .result-image {
 	width: 100%;
 	height: 170px;
 	object-fit: cover;
-	background: #111;
+	background: var(--surface);
 }
 
 .result-content {
@@ -239,9 +243,9 @@
 .details-link {
 	display: inline-block;
 	margin-top: 8px;
-	color: #fff;
-	background: #1a1a1a;
-	border: 1px solid #2a2a2a;
+	color: var(--main-text);
+	background: var(--surface-strong);
+	border: 1px solid var(--border-card);
 	border-radius: 10px;
 	padding: 10px 12px;
 	text-decoration: none;

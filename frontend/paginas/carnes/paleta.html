@@ -15,95 +15,108 @@
 
 <body>
 
-  <main class="meat-page">
+  <main class="meat-page meat-page--premium">
 
-    <a href="../boi/boi.html" class="back-button">
-      ← Cortes do BOI
-    </a>
-    <a href="../boi/index.html" class="back-button">
-      ← Voltar para início 
-    </a>
-
-    <section class="meat-section">
-
-      <div class="meat-image-area">
-
-        <img
-           src="../../../assets/imagens/paleta/paletagerada.png"
-          alt="Imagem da Paleta"
-          class="meat-image"
-        >
-
+    <div class="meat-page-shell">
+      <div class="meat-backbar" data-reveal>
+        <a href="../boi/boi.html" class="back-button meat-back-link">← Cortes do boi</a>
+        <a href="../../index.html" class="back-button meat-back-link">← Voltar para Home</a>
       </div>
 
-      <div class="meat-content">
-
-        <span class="meat-tag">
-          IDEAL PARA • PANELA • ENSOPADOS
-        </span>
-
-        <h1>
-          Paleta
-        </h1>
-
-        <p class="meat-description">
-
-          A paleta é um corte bovino muito utilizado em receitas de panela,
-          conhecido pelo sabor marcante, ótimo custo-benefício e textura    
-
-        </p>
-
-        <div class="stats">
-
-          <div class="stat-card">
-
-            <h3>Maciez</h3>
-
-            <p>⭐⭐</p>
-
-          </div>
-
-          <div class="stat-card">
-
-            <h3>Gordura</h3>
-
-            <p>⭐⭐⭐</p>
-
-          </div>
-
-          <div class="stat-card">
-
-            <h3>Sabor</h3>
-
-            <p>⭐⭐⭐⭐</p>
-
-          </div>
-
-        </div>
-
-        <div class="recommendation-card">
-
-          <span class="score">
-            ⭐ 4.7
-          </span>
-
-          <p>
-            Ótimo custo-benefício para carnes de panela.
+      <section class="meat-section">
+        <div class="meat-visual-column" data-reveal>
+          <span class="meat-visual-kicker">Mapa CarneCerta</span>
+          <h2>Potencia de sabor para panela</h2>
+          <p class="meat-visual-summary">
+            A paleta trabalha muito bem em coccoes umidas, com sabor marcante e excelente leitura de custo-beneficio.
           </p>
 
+          <div class="meat-image-stage">
+            <span class="meat-image-glow"></span>
+            <div class="meat-image-area">
+              <img src="../../../assets/imagens/paleta/paletagerada.png" alt="Imagem da Paleta" class="meat-image">
+            </div>
+            <div class="meat-image-meta">
+              <span>Panela e forno</span>
+              <span>Perfil marcante</span>
+            </div>
+          </div>
         </div>
 
-        <button class="select-button">
+        <div class="meat-content" data-reveal>
+          <span class="meat-tag">Ideal para • panela • ensopados • desfiar</span>
+          <h1>Paleta</h1>
+          <p class="meat-lead">
+            Corte dianteiro com personalidade forte, otimo para receitas reconfortantes e preparos com molho.
+          </p>
+          <p class="meat-description">
+            A paleta combina sabor alto com boa resposta em cozimento lento. E uma otima escolha para panela, carnes desfiadas e receitas em que o molho faz parte do resultado final.
+          </p>
 
-          Ver detalhes e recomendações
+          <div class="quick-info">
+            <span>Ensopados densos</span>
+            <span>Bom rendimento</span>
+            <span>Textura para desfiar</span>
+          </div>
 
-        </button>
+          <div class="meat-score-grid">
+            <article class="meat-score-card">
+              <span class="meat-score-label">Maciez</span>
+              <strong>2/5</strong>
+              <div class="bar"><div class="fill fill-2"></div></div>
+              <small>Depende da coccao</small>
+            </article>
+            <article class="meat-score-card">
+              <span class="meat-score-label">Gordura</span>
+              <strong>3/5</strong>
+              <div class="bar"><div class="fill fill-3"></div></div>
+              <small>Equilibrada</small>
+            </article>
+            <article class="meat-score-card">
+              <span class="meat-score-label">Sabor</span>
+              <strong>4/5</strong>
+              <div class="bar"><div class="fill fill-4"></div></div>
+              <small>Intenso</small>
+            </article>
+          </div>
 
-      </div>
+          <article class="recommendation-card">
+            <div class="recommendation-top">
+              <span class="score">4.7</span>
+              <span class="best-choice">Favorita da panela</span>
+            </div>
+            <p>
+              Otimo custo-beneficio para preparos umidos e cozimentos prolongados, com sabor forte e textura que evolui bem.
+            </p>
+          </article>
 
-    </section>
+          <div class="meat-detail-grid">
+            <article class="info-card">
+              <h3>Ideal para</h3>
+              <div class="tags">
+                <span>Panela</span>
+                <span>Ensopados</span>
+                <span>Desfiar</span>
+                <span>Molhos</span>
+              </div>
+            </article>
+
+            <article class="chef-tip">
+              <h3>Dica do açougueiro IA</h3>
+              <p>
+                Corte em cubos medios e sele antes da coccao. Isso melhora a caramelizacao e deixa o molho com sabor mais profundo.
+              </p>
+            </article>
+          </div>
+
+          <a href="../../index.html" class="select-button">Abrir recomendador inteligente</a>
+        </div>
+      </section>
+    </div>
 
   </main>
+
+  <script src="../../script.js"></script>
 
 </body>
 
