@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Picanha | CarneCerta</title>
+
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <style>
+    .picanha-animation-container {
+      width: 100%;
+      max-width: 640px;
+      margin: 40px auto;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(19, 19, 19, 0.82), rgba(25, 25, 25, 0.96));
+      border: 1px solid var(--card-border-color);
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .picanha-animation-container--inline {
+      max-width: none;
+      margin: 0;
+      padding: 22px;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .picanha-animation-container::before {
+      content: '';
+      position: absolute;
+      inset: -40% -20% auto auto;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(211, 47, 47, 0.12), transparent 70%);
+      pointer-events: none;
+      animation: shimmer 8s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 1; }
+    }
+
+    .picanha-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      margin-bottom: 24px;
+      background: var(--surface-color);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .picanha-animation-container--inline .picanha-image-wrapper {
+      height: auto;
+      min-height: 440px;
+      background: transparent;
+      border-radius: 0;
+      margin-bottom: 18px;
+    }
+
+    .picanha-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      animation: fadeInScale 0.9s ease-out forwards;
+    }
+
+    .picanha-animation-container--inline .picanha-image-wrapper img.meat-image {
+      width: 100%;
+      max-width: 780px;
+      height: auto;
+      animation: fadeInScale 0.9s ease-out forwards;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .picanha-info-label {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: var(--muted-text-color);
+      min-height: 22px;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .picanha-animation-container {
+        padding: 24px;
+        margin: 24px auto;
+      }
+
+      .picanha-image-wrapper {
+        height: 320px;
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .picanha-animation-container {
+        padding: 16px;
+        margin: 16px;
+      }
+
+      .picanha-image-wrapper {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="meat-page meat-page--premium">
+    <div class="meat-page-shell">
+      <div class="meat-backbar" data-reveal>
+        <a href="../boi/boi.html" class="back-button meat-back-link">← Cortes do boi</a>
+        <a href="../../index.html" class="back-button meat-back-link">← Voltar para Home</a>
+      </div>
+
+      <section class="meat-section">
+        <div class="meat-visual-column" data-reveal>
+          <span class="meat-visual-kicker">Mapa CarneCerta</span>
+          <h2>Maciez premium e sabor marcante</h2>
+          <p class="meat-visual-summary">
+            A picanha é o corte mais macio e um dos mais saborosos, ideal para quem quer uma experiência de churrasco inesquecível.
+          </p>
+
+          <div class="meat-image-stage">
+            <span class="meat-image-glow"></span>
+            <div class="meat-image-area">
+              <section class="picanha-animation-container picanha-animation-container--inline">
+                <div class="picanha-image-wrapper">
+                  <img
+                    id="picanha-image"
+                    src="../../../assets/imagens/picanha/picanhainteiracrua.jpeg"
+                    alt="Picanha - apresentação inicial"
+                    class="meat-image"
+                  >
+                </div>
+                <div class="picanha-info-label" id="picanha-info-label">Apresentando a picanha em sequência elegante…</div>
+              </section>
+            </div>
+            <div class="meat-image-meta">
+              <span>Churrasco</span>
+              <span>Maciez extrema</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="meat-content" data-reveal>
+          <span class="meat-tag">Ideal para • churrasco • grelha • espetinho</span>
+          <h1>Picanha</h1>
+          <p class="meat-lead">
+            Corte nobre, extremamente macio e com sabor intenso, perfeito para quem prioriza textura premium e presença no prato.
+          </p>
+          <p class="meat-description">
+            A picanha se destaca quando a prioridade é maciez e sabor. Ela é uma das melhores escolhas para churrasco, grelha e espetinhos, especialmente quando o objetivo é impressionar sem complicação.
+          </p>
+
+          <div class="quick-info">
+            <span>Maciez alta</span>
+            <span>Sabor intenso</span>
+            <span>Churrasco premium</span>
+          </div>
+
+          <div class="meat-score-grid">
+            <article class="meat-score-card">
+              <span class="meat-score-label">Maciez</span>
+              <strong>5/5</strong>
+              <div class="bar"><div class="fill fill-5"></div></div>
+              <small>Extremamente macia</small>
+            </article>
+            <article class="meat-score-card">
+              <span class="meat-score-label">Gordura</span>
+              <strong>4/5</strong>
+              <div class="bar"><div class="fill fill-4"></div></div>
+              <small>Gordura equilibrada</small>
+            </article>
+            <article class="meat-score-card">
+              <span class="meat-score-label">Sabor</span>
+              <strong>5/5</strong>
+              <div class="bar"><div class="fill fill-5"></div></div>
+              <small>Marcante e refinado</small>
+            </article>
+          </div>
+
+          <article class="recommendation-card">
+            <div class="recommendation-top">
+              <span class="score">4.9</span>
+              <span class="best-choice">Escolha premium</span>
+            </div>
+            <p>
+              Excelente para quem valoriza a combinação perfeita entre maciez, sabor e impacto visual em churrasco e grelha.
+            </p>
+          </article>
+
+          <div class="meat-detail-grid">
+            <article class="info-card">
+              <h3>Ideal para</h3>
+              <div class="tags">
+                <span>Churrasco</span>
+                <span>Grelha</span>
+                <span>Espetinho</span>
+                <span>Premium</span>
+              </div>
+            </article>
+
+            <article class="chef-tip">
+              <h3>Dica do açougueiro IA</h3>
+              <p>
+                Corte em fatias grossas e cozinhe com atenção para preservar a suculência e o sabor marcante da picanha.
+              </p>
+            </article>
+          </div>
+
+          <a href="../../index.html" class="select-button">Abrir recomendador inteligente</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    class PicanhaLoopController {
+      constructor() {
+        this.imageElement = document.getElementById('picanha-image');
+        this.infoLabel = document.getElementById('picanha-info-label');
+
+        this.frames = [
+          {
+            src: '../../../assets/imagens/picanha/picanhainteiracrua.jpeg',
+            alt: 'Picanha inteira crua',
+            label: 'A picanha começa inteira e crua…'
+          },
+          {
+            src: '../../../assets/imagens/picanha/picanhacortadacrua.jpeg',
+            alt: 'Picanha cortada crua',
+            label: 'Depois, o corte ganha forma…'
+          },
+          {
+            src: '../../../assets/imagens/picanha/picanhaassadapinterest.jpg_202606232056.jpeg',
+            alt: 'Picanha assada com pontos',
+            label: 'A carne ganha o ponto ideal…'
+          },
+          {
+            src: '../../../assets/imagens/picanha/picanhaassada.jpeg',
+            alt: 'Picanha assada',
+            label: 'A picanha assada se destaca…'
+          },
+          {
+            src: '../../../assets/imagens/picanha/pinhaespetinhoassada.jpeg',
+            alt: 'Espetinho de picanha assado',
+            label: 'Em espetinho, a apresentação fica ainda mais elegante…'
+          },
+          {
+            src: '../../../assets/imagens/picanha/picanhapontos.jpeg',
+            alt: 'Picanha com detalhe de pontos',
+            label: 'E o ciclo se repete com beleza…'
+          }
+        ];
+
+        this.currentIndex = 0;
+        this.intervalId = null;
+        this.init();
+      }
+
+      init() {
+        this.startLoop();
+      }
+
+      startLoop() {
+        if (this.intervalId) {
+          clearInterval(this.intervalId);
+        }
+
+        this.intervalId = window.setInterval(() => {
+          this.currentIndex = (this.currentIndex + 1) % this.frames.length;
+          this.transitionToFrame(this.frames[this.currentIndex]);
+        }, 2400);
+      }
+
+      transitionToFrame(frame) {
+        this.imageElement.classList.remove('reset-state');
+        void this.imageElement.offsetWidth;
+        this.imageElement.src = frame.src;
+        this.imageElement.alt = `Picanha - ${frame.alt}`;
+        this.infoLabel.textContent = frame.label;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      new PicanhaLoopController();
+    });
+  </script>
+
+  <script src="../../script.js"></script>
+</body>
+</html>

@@ -145,6 +145,17 @@ const cowMapCuts = [
     description: "Corte dianteiro com sabor marcante, otimo para molhos e panelas."
   },
   {
+    id: "picanha",
+    name: "Picanha",
+    pointX: 64.2,
+    pointY: 33.8,
+    labelX: 71.2,
+    labelY: 27.2,
+    side: "right",
+    link: "../carnes/picanha.html",
+    description: "Corte nobre, extremamente macio e saboroso para churrasco premium."
+  },
+  {
     id: "pontadealcatra",
     name: "Ponta de Alcatra",
     pointX: 70.2,
@@ -579,6 +590,14 @@ const scoreCandidate = (candidate, selected, effectiveCategory) => {
 
   if (selected.cutPreference.includes("maci") && candidate.id === "filemignon") {
     score += 4;
+  }
+
+  if (selected.priority.includes("maci") && candidate.id === "picanha") {
+    score += 5;
+  }
+
+  if (selected.priority.includes("sabor") && candidate.id === "picanha") {
+    score += 5;
   }
 
   if (selected.cutPreference.includes("sabor") && candidate.fatProfile === "saborosa") {

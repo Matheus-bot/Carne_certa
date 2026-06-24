@@ -65,6 +65,19 @@ window.CARNECERTA_DATA = {
       notes: "Macia e com excelente resultado na brasa.",
       factor: 1.15
     },
+    picanha: {
+      id: "picanha",
+      name: "Picanha",
+      image: "../../../assets/imagens/picanha/picanhainteiracrua.jpeg",
+      page: "../carnes/picanha.html",
+      priorities: ["maci", "sabor"],
+      categories: ["churrasco", "bife", "hamburguer"],
+      fatProfile: "saborosa",
+      cutHints: ["maci", "saborosa", "premium", "espetinho"],
+      butcherCut: "corte em fatias grossas para churrasco",
+      notes: "Corte premium, extremamente macio e saboroso.",
+      factor: 1.2
+    },
     musculo: {
       id: "musculo",
       name: "Musculo",
@@ -97,8 +110,8 @@ window.CARNECERTA_DATA = {
     panela: ["musculo", "acem", "paleta", "coxaomole", "pontadealcatra"],
     bife: ["contrafile", "coxaomole", "pontadealcatra", "acem", "filemignon"],
     bifearole: ["pontadealcatra", "coxaomole"],
-    churrasco: ["pontadealcatra", "contrafile", "coxaomole", "paleta", "filemignon"],
-    hamburguer: ["coxaomole", "musculo", "acem", "contrafile", "paleta", "pontadealcatra", "filemignon"],
+    churrasco: ["pontadealcatra", "contrafile", "coxaomole", "paleta", "filemignon", "picanha"],
+    hamburguer: ["coxaomole", "musculo", "acem", "contrafile", "paleta", "pontadealcatra", "filemignon", "picanha"],
     desfiar: ["musculo", "acem", "paleta", "pontadealcatra", "coxaomole"],
     moer: ["musculo", "acem", "paleta", "coxaomole", "contrafile"]
   },
