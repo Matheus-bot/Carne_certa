@@ -3,7 +3,7 @@ window.CARNECERTA_DATA = {
     acem: {
       id: "acem",
       name: "Acem",
-      image: "../../../assets/imagens/acem/acemgerado2.jpg",
+      image: "../../../assets/imagens/acem/aceminteirocru.jpeg",
       page: "../carnes/acem.html",
       priorities: ["barat", "sabor"],
       categories: ["panela", "moer", "desfiar", "hamburguer"],

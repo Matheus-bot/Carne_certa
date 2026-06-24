@@ -10,6 +10,116 @@
 
   <link rel="stylesheet" href="../../css/style.css">
 
+  <style>
+    .acem-animation-container {
+      width: 100%;
+      max-width: 640px;
+      margin: 40px auto;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(19, 19, 19, 0.82), rgba(25, 25, 25, 0.96));
+      border: 1px solid var(--card-border-color);
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .acem-animation-container--inline {
+      max-width: none;
+      margin: 0;
+      padding: 22px;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .acem-animation-container::before {
+      content: '';
+      position: absolute;
+      inset: -40% -20% auto auto;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(211, 47, 47, 0.12), transparent 70%);
+      pointer-events: none;
+      animation: shimmer 8s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.45; }
+      50% { opacity: 1; }
+    }
+
+    .acem-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      margin-bottom: 24px;
+      background: var(--surface-color);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .acem-animation-container--inline .acem-image-wrapper {
+      height: auto;
+      min-height: 440px;
+      background: transparent;
+      border-radius: 0;
+      margin-bottom: 18px;
+    }
+
+    .acem-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      animation: fadeInScale 0.9s ease-out forwards;
+    }
+
+    .acem-animation-container--inline .acem-image-wrapper img.meat-image {
+      width: 100%;
+      max-width: 780px;
+      height: auto;
+      animation: fadeInScale 0.9s ease-out forwards;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.96);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .acem-info-label {
+      text-align: center;
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: var(--muted-text-color);
+      min-height: 22px;
+      font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+      .acem-animation-container {
+        padding: 24px;
+        margin: 24px auto;
+      }
+
+      .acem-image-wrapper {
+        height: 320px;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+
 </head>
 
 <body>
@@ -33,7 +143,17 @@
           <div class="meat-image-stage">
             <span class="meat-image-glow"></span>
             <div class="meat-image-area">
-              <img src="../../../assets/imagens/acem/acemgerado.jpg" alt="Imagem do corte Acém" class="meat-image">
+              <section class="acem-animation-container acem-animation-container--inline">
+                <div class="acem-image-wrapper">
+                  <img
+                    id="acem-image"
+                    src="../../../assets/imagens/acem/aceminteirocru.jpeg"
+                    alt="Acém em sequência"
+                    class="meat-image"
+                  >
+                </div>
+                <div class="acem-info-label" id="acem-info-label">Acompanhe a transformação do Acém em sequência…</div>
+              </section>
             </div>
             <div class="meat-image-meta">
               <span>Panela e ensopados</span>
@@ -84,6 +204,9 @@
               <span class="score">4.8</span>
               <span class="best-choice">Escolha do dia a dia</span>
             </div>
+            <div class="recommendation-visual">
+              <img src="../../../assets/imagens/acem/aceminteirocru.jpeg" alt="Acém inteiro" style="width:100%; max-width:220px; border-radius:12px; object-fit:cover;">
+            </div>
             <p>
               Melhor leitura para panela, molhos e preparos longos quando a prioridade é sabor intenso sem subir demais o custo.
             </p>
@@ -114,6 +237,62 @@
     </div>
 
   </main>
+
+  <script>
+    class AcemLoopController {
+      constructor() {
+        this.imageElement = document.getElementById('acem-image');
+        this.infoLabel = document.getElementById('acem-info-label');
+
+        this.frames = [
+          {
+            src: '../../../assets/imagens/acem/aceminteirocru.jpeg',
+            alt: 'Acém inteiro cru',
+            label: 'O Acém começa inteiro e cru…'
+          },
+          {
+            src: '../../../assets/imagens/acem/acememcuboscru.jpeg',
+            alt: 'Acém em cubos cru',
+            label: 'Em seguida, entra em cubos para o preparo…'
+          },
+          {
+            src: '../../../assets/imagens/acem/acemcozido.jpeg',
+            alt: 'Acém cozido',
+            label: 'E finaliza cozido, pronto para o prato…'
+          }
+        ];
+
+        this.currentIndex = 0;
+        this.intervalId = null;
+        this.init();
+      }
+
+      init() {
+        this.startLoop();
+      }
+
+      startLoop() {
+        if (this.intervalId) {
+          clearInterval(this.intervalId);
+        }
+
+        this.intervalId = window.setInterval(() => {
+          this.currentIndex = (this.currentIndex + 1) % this.frames.length;
+          this.transitionToFrame(this.frames[this.currentIndex]);
+        }, 2400);
+      }
+
+      transitionToFrame(frame) {
+        this.imageElement.src = frame.src;
+        this.imageElement.alt = `Acém - ${frame.alt}`;
+        this.infoLabel.textContent = frame.label;
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      new AcemLoopController();
+    });
+  </script>
 
   <script src="../../script.js"></script>
 
