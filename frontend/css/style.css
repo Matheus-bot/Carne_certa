@@ -2487,6 +2487,41 @@ a{
 
 }
 
+@media (max-width: 900px) {
+  .cards-carousel {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .cards {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 16px;
+    gap: 16px;
+    padding: 4px 2px 12px;
+    margin-top: 32px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .cards::-webkit-scrollbar {
+    display: none;
+  }
+
+  .card {
+    flex: 0 0 min(82vw, 320px);
+    max-width: min(82vw, 320px);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+
+  .card img {
+    height: 150px;
+  }
+}
 
 /* CELULAR */
 
