@@ -52,6 +52,19 @@ window.CARNECERTA_DATA = {
       notes: "Muito saboroso, excelente para grelha.",
       factor: 1.05
     },
+    bistecadocontrafile: {
+      id: "bistecadocontrafile",
+      name: "Bisteca do Contra File",
+      image: "../../../assets/imagens/bistecadocontrafile/bistecadocontracrua.png",
+      page: "../carnes/bistecadocontrafile.html",
+      priorities: ["sabor", "maci"],
+      categories: ["bife", "churrasco", "hamburguer"],
+      fatProfile: "saborosa",
+      cutHints: ["grosso", "saborosa", "churrasco"],
+      butcherCut: "corte em bifes grossos para grelha",
+      notes: "Corte clássico com sabor marcante e muito bom em churrasco.",
+      factor: 1.07
+    },
     alcatra: {
       id: "alcatra",
       name: "Alcatra",

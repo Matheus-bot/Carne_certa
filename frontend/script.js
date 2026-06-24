@@ -101,6 +101,17 @@ const cowMapCuts = [
     description: "Corte nobre para grelha e chapa, com sabor intenso e boa suculencia."
   },
   {
+    id: "bistecadocontrafile",
+    name: "Bisteca do Contra File",
+    pointX: 58.4,
+    pointY: 37.8,
+    labelX: 66.2,
+    labelY: 15.8,
+    side: "right",
+    link: "../carnes/bistecadocontrafile.html",
+    description: "Versao clássica do contra file, ideal para grelha e churrasco com textura marcante."
+  },
+  {
     id: "coxaomole",
     name: "Coxao Mole",
     pointX: 73.6,
