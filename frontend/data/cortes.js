@@ -65,6 +65,19 @@ window.CARNECERTA_DATA = {
       notes: "Corte clássico com sabor marcante e muito bom em churrasco.",
       factor: 1.07
     },
+    bistecadosete: {
+      id: "bistecadosete",
+      name: "Bisteca do Sete",
+      image: "../../../assets/imagens/bistecadosete/bistecadosetecrua.webp",
+      page: "../carnes/bistecadosete.html",
+      priorities: ["sabor", "maci"],
+      categories: ["bife", "churrasco", "hamburguer"],
+      fatProfile: "saborosa",
+      cutHints: ["grosso", "saborosa", "churrasco"],
+      butcherCut: "corte em bifes grossos para grelha",
+      notes: "Corte tradicional com sabor marcante e ótima resposta na grelha.",
+      factor: 1.06
+    },
     alcatra: {
       id: "alcatra",
       name: "Alcatra",

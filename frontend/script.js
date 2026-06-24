@@ -112,6 +112,17 @@ const cowMapCuts = [
     description: "Versao clássica do contra file, ideal para grelha e churrasco com textura marcante."
   },
   {
+    id: "bistecadosete",
+    name: "Bisteca do Sete",
+    pointX: 56.8,
+    pointY: 36.6,
+    labelX: 64.8,
+    labelY: 14.6,
+    side: "right",
+    link: "../carnes/bistecadosete.html",
+    description: "Corte tradicional com sabor marcante e ótima resposta na grelha."
+  },
+  {
     id: "coxaomole",
     name: "Coxao Mole",
     pointX: 73.6,
