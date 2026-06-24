@@ -156,6 +156,18 @@ const cowMapCuts = [
     description: "Corte nobre, extremamente macio e saboroso para churrasco premium."
   },
   {
+    id: "alcatra",
+    name: "Alcatra",
+    pointX: 60.8,
+    pointY: 39.8,
+    labelX: 58.4,
+    labelY: 34.4,
+    side: "left",
+    link: "../carnes/alcatra.html",
+    description: "Corte versátil e saboroso, excelente para grelha, assados e panela.",
+    zIndex: 6
+  },
+  {
     id: "pontadealcatra",
     name: "Ponta de Alcatra",
     pointX: 70.2,
@@ -323,6 +335,7 @@ const initCowMap = () => {
     hotspot.style.setProperty("--point-x", `${cut.pointX}%`);
     hotspot.style.setProperty("--point-y", `${cut.pointY}%`);
     hotspot.style.setProperty("--delay", delay);
+    hotspot.style.setProperty("--hotspot-z-index", `${cut.zIndex ?? 3}`);
 
     const label = document.createElement("div");
     label.className = "cow-hotspot-label";
@@ -354,11 +367,15 @@ const initCowMap = () => {
       element.addEventListener("blur", deactivate);
     });
 
-    point.addEventListener("click", () => {
+    point.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
       setActiveCut(cut.id);
       if (currentMode === "b") {
         hotspot.classList.add("is-hovered");
       }
+      const targetUrl = new URL(cut.link, window.location.href);
+      window.location.assign(targetUrl.href);
     });
 
     label.addEventListener("click", () => setActiveCut(cut.id));

@@ -771,6 +771,8 @@ a{
 
   inset:0;
 
+  z-index:var(--hotspot-z-index, 3);
+
   pointer-events:none;
 }
 
@@ -788,6 +790,7 @@ a{
   width:18px;
 
   height:18px;
+  z-index:4;
 
   border-radius:50%;
 
@@ -906,7 +909,7 @@ a{
 
   opacity:0;
 
-  pointer-events:auto;
+  pointer-events:none;
 
   isolation:isolate;
 
@@ -942,6 +945,7 @@ a{
 }
 
 .cow-hotspot-cta{
+  pointer-events:auto;
   display:inline-flex;
 
   align-items:center;

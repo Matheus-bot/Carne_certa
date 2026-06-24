@@ -52,6 +52,19 @@ window.CARNECERTA_DATA = {
       notes: "Muito saboroso, excelente para grelha.",
       factor: 1.05
     },
+    alcatra: {
+      id: "alcatra",
+      name: "Alcatra",
+      image: "../../../assets/imagens/alcatra/mioloalcatrainteirocru.jpg",
+      page: "../carnes/alcatra.html",
+      priorities: ["sabor", "maci"],
+      categories: ["churrasco", "bife", "panela", "hamburguer"],
+      fatProfile: "equilibrada",
+      cutHints: ["grosso", "inteira", "versatil", "saborosa"],
+      butcherCut: "corte em bifes grossos ou peças inteiras para assar",
+      notes: "Corte versátil com sabor marcante e boa resposta em diversos preparos.",
+      factor: 1.12
+    },
     pontadealcatra: {
       id: "pontadealcatra",
       name: "Ponta de Alcatra",
@@ -107,13 +120,13 @@ window.CARNECERTA_DATA = {
     }
   },
   categoryCandidates: {
-    panela: ["musculo", "acem", "paleta", "coxaomole", "pontadealcatra"],
-    bife: ["contrafile", "coxaomole", "pontadealcatra", "acem", "filemignon"],
+    panela: ["musculo", "acem", "paleta", "coxaomole", "pontadealcatra", "alcatra"],
+    bife: ["contrafile", "coxaomole", "pontadealcatra", "acem", "filemignon", "alcatra"],
     bifearole: ["pontadealcatra", "coxaomole"],
-    churrasco: ["pontadealcatra", "contrafile", "coxaomole", "paleta", "filemignon", "picanha"],
-    hamburguer: ["coxaomole", "musculo", "acem", "contrafile", "paleta", "pontadealcatra", "filemignon", "picanha"],
-    desfiar: ["musculo", "acem", "paleta", "pontadealcatra", "coxaomole"],
-    moer: ["musculo", "acem", "paleta", "coxaomole", "contrafile"]
+    churrasco: ["pontadealcatra", "contrafile", "coxaomole", "paleta", "filemignon", "picanha", "alcatra"],
+    hamburguer: ["coxaomole", "musculo", "acem", "contrafile", "paleta", "pontadealcatra", "filemignon", "picanha", "alcatra"],
+    desfiar: ["musculo", "acem", "paleta", "pontadealcatra", "coxaomole", "alcatra"],
+    moer: ["musculo", "acem", "paleta", "coxaomole", "contrafile", "alcatra"]
   },
   gramsPerPerson: {
     panela: 250,

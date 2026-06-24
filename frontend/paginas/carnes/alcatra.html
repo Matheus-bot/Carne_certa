@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alcatra | CarneCerta</title>
+  <link rel="stylesheet" href="../../css/style.css">
+
+  <style>
+    .alcatra-animation-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(19, 19, 19, 0.8), rgba(25, 25, 25, 0.95));
+      border: 1px solid var(--card-border-color);
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .alcatra-animation-container--inline {
+      max-width: none;
+      margin: 0;
+      padding: 22px;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .alcatra-animation-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(211, 47, 47, 0.12), transparent 70%);
+      pointer-events: none;
+      animation: shimmer 8s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .alcatra-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin-bottom: 30px;
+      background: var(--surface-color);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .alcatra-animation-container--inline .alcatra-image-wrapper {
+      height: auto;
+      min-height: 420px;
+      background: transparent;
+      border-radius: 0;
+      margin-bottom: 20px;
+    }
+
+    .alcatra-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      animation: fadeInScale 0.8s ease-out forwards;
+    }
+
+    .alcatra-animation-container--inline .alcatra-image-wrapper img.meat-image {
+      width: 100%;
+      max-width: 780px;
+      height: auto;
+      animation: fadeInScale 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .alcatra-image-wrapper img.reset-state {
+      animation: none;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .alcatra-buttons-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .alcatra-animation-container--inline .alcatra-buttons-group {
+      justify-content: flex-start;
+      padding-left: 10px;
+    }
+
+    .alcatra-btn {
+      padding: 14px 28px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      border: 2px solid var(--button-color);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--button-color);
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      text-transform: uppercase;
+    }
+
+    .alcatra-btn:hover {
+      background: var(--button-color);
+      color: white;
+      box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .alcatra-btn.active {
+      background: var(--button-color);
+      color: white;
+      box-shadow: 0 12px 32px rgba(211, 47, 47, 0.5);
+    }
+
+    .alcatra-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .alcatra-btn:focus {
+      outline: 2px solid var(--focus-ring);
+      outline-offset: 2px;
+    }
+
+    .alcatra-info-label {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.875rem;
+      color: var(--muted-text-color);
+      font-style: italic;
+      min-height: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .alcatra-animation-container {
+        padding: 24px;
+        margin: 24px auto;
+      }
+
+      .alcatra-image-wrapper {
+        height: 300px;
+        margin-bottom: 24px;
+      }
+
+      .alcatra-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+      }
+
+      .alcatra-buttons-group {
+        gap: 12px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .alcatra-animation-container {
+        padding: 16px;
+        margin: 16px;
+      }
+
+      .alcatra-image-wrapper {
+        height: 250px;
+      }
+
+      .alcatra-btn {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        flex: 1;
+        min-width: 120px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="meat-page meat-page--premium">
+    <div class="meat-page-shell">
+      <div class="meat-backbar" data-reveal>
+        <a href="../boi/boi.html" class="back-button meat-back-link">← Cortes do boi</a>
+        <a href="../../index.html" class="back-button meat-back-link">← Voltar para Home</a>
+      </div>
+
+      <section class="meat-section">
+        <div class="meat-visual-column" data-reveal>
+          <span class="meat-visual-kicker">Mapa CarneCerta</span>
+          <h2>Sabor marcante e versatilidade premium</h2>
+          <p class="meat-visual-summary">
+            A alcatra combina estrutura firme com excelente resposta em grelha, panela e cortes mais grossos.
+          </p>
+
+          <div class="meat-image-stage">
+            <span class="meat-image-glow"></span>
+            <div class="meat-image-area">
+              <section class="alcatra-animation-container alcatra-animation-container--inline">
+                <div class="alcatra-image-wrapper">
+                  <img
+                    id="alcatra-image"
+                    src="../../../assets/imagens/alcatra/mioloalcatrainteirocru.jpg"
+                    alt="Corte de Alcatra - Estado Inicial"
+                    class="meat-image reset-state"
+                  >
+                </div>
+
+                <div class="alcatra-buttons-group">
+                  <button id="alcatra-btn-inteiro" class="alcatra-btn" data-action="inteiro-cru">
+                    Inteiro Cru
+                  </button>
+                  <button id="alcatra-btn-cortado" class="alcatra-btn" data-action="cortado-cru">
+                    Cortado Cru
+                  </button>
+                  <button id="alcatra-btn-assado" class="alcatra-btn" data-action="assado">
+                    Assado
+                  </button>
+                </div>
+
+                <div class="alcatra-info-label" id="alcatra-info-label"></div>
+              </section>
+            </div>
+            <div class="meat-image-meta">
+              <span>Churrasco</span>
+              <span>Grelha</span>
+              <span>Panela</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="meat-content" data-reveal>
+          <span class="meat-tag">Ideal para • churrasco • bifes • panela</span>
+          <h1>Alcatra</h1>
+          <p class="meat-lead">
+            Corte de sabor intenso e textura equilibrada, perfeito para quem busca versatilidade sem abrir mão de identidade no prato.
+          </p>
+          <p class="meat-description">
+            A alcatra se destaca em cortes mais grossos, grelha e assados com sal grosso ou marinadas simples. Também responde muito bem em panela quando o objetivo é um prato mais encorpado e saboroso.
+          </p>
+
+          <div class="quick-info">
+            <span>Assados</span>
+            <span>Bifes grossos</span>
+            <span>Panela</span>
+          </div>
+
+          <div class="meat-score-grid">
+            <article class="meat-score-card">
+              <span class="meat-score-label">Maciez</span>
+              <strong>4/5</strong>
+              <div class="bar"><div class="fill fill-4"></div></div>
+              <small>Boa textura</small>
+            </article>
+            <article class="meat-score-card">
+              <span class="meat-score-label">Gordura</span>
+              <strong>2/5</strong>
+              <div class="bar"><div class="fill fill-2"></div></div>
+              <small>Equilibrada</small>
+            </article>
+            <article class="meat-score-card">
+              <span class="meat-score-label">Sabor</span>
+              <strong>5/5</strong>
+              <div class="bar"><div class="fill fill-5"></div></div>
+              <small>Marcante</small>
+            </article>
+          </div>
+
+          <article class="recommendation-card">
+            <div class="recommendation-top">
+              <span class="score">4.8</span>
+              <span class="best-choice">Perfil versátil</span>
+            </div>
+            <p>
+              Excelente para quem quer um corte com boa estrutura, sabor profundo e boas opções de preparo, do churrasco ao prato de panela.
+            </p>
+          </article>
+
+          <div class="meat-detail-grid">
+            <article class="info-card">
+              <h3>Ideal para</h3>
+              <div class="tags">
+                <span>Churrasco</span>
+                <span>Grelha</span>
+                <span>Panela</span>
+                <span>Bifes grossos</span>
+              </div>
+            </article>
+
+            <article class="chef-tip">
+              <h3>Dica do açougueiro IA</h3>
+              <p>
+                Para destacar o sabor, use sal grosso e uma cocção firme. Para prato mais macio, corte em peças mais grossas e cozinhe com cuidado.
+              </p>
+            </article>
+          </div>
+
+          <a href="../../index.html" class="select-button">Abrir recomendador inteligente</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../../script.js"></script>
+
+  <script>
+    class AlcatraAnimationController {
+      constructor() {
+        this.imageElement = document.getElementById('alcatra-image');
+        this.btnInteiro = document.getElementById('alcatra-btn-inteiro');
+        this.btnCortado = document.getElementById('alcatra-btn-cortado');
+        this.btnAssado = document.getElementById('alcatra-btn-assado');
+        this.infoLabel = document.getElementById('alcatra-info-label');
+
+        this.currentState = 'inteiro-cru';
+        this.isAnimating = false;
+        this.animationTimer = null;
+        this.runToken = 0;
+
+        this.imagePaths = {
+          'inteiro-cru': '../../../assets/imagens/alcatra/mioloalcatrainteirocru.jpg',
+          'cortado-cru': '../../../assets/imagens/alcatra/mioloalcatracortadocru.jpg',
+          'assado': '../../../assets/imagens/alcatra/mioloalcatraassado.webp'
+        };
+
+        this.labels = {
+          'inteiro-cru': 'Mostrando a alcatra inteira em estado cru.',
+          'cortado-cru': 'Mostrando a alcatra cortada para preparos crus.',
+          'assado': 'Mostrando a alcatra pronta para servir.'
+        };
+
+        this.bindEvents();
+        this.applyState(this.currentState, false);
+      }
+
+      bindEvents() {
+        [this.btnInteiro, this.btnCortado, this.btnAssado].forEach((button) => {
+          if (!button) {
+            return;
+          }
+
+          button.addEventListener('click', () => {
+            this.applyState(button.dataset.action, true);
+          });
+        });
+      }
+
+      clearTimer() {
+        if (this.animationTimer) {
+          window.clearTimeout(this.animationTimer);
+          this.animationTimer = null;
+        }
+      }
+
+      applyState(nextState, animate = true) {
+        if (!this.imageElement || !this.imagePaths[nextState]) {
+          return;
+        }
+
+        this.currentState = nextState;
+        this.clearTimer();
+
+        if (this.imageElement.classList.contains('reset-state')) {
+          this.imageElement.classList.remove('reset-state');
+        }
+
+        this.imageElement.src = this.imagePaths[nextState];
+        this.imageElement.alt = `Alcatra - ${this.labels[nextState]}`;
+
+        [this.btnInteiro, this.btnCortado, this.btnAssado].forEach((button) => {
+          if (!button) {
+            return;
+          }
+
+          const isActive = button.dataset.action === nextState;
+          button.classList.toggle('active', isActive);
+          button.disabled = false;
+        });
+
+        if (this.infoLabel) {
+          this.infoLabel.textContent = this.labels[nextState];
+        }
+
+        if (!animate) {
+          return;
+        }
+
+        this.isAnimating = true;
+        const token = ++this.runToken;
+
+        this.animationTimer = window.setTimeout(() => {
+          if (token === this.runToken) {
+            this.isAnimating = false;
+          }
+        }, 850);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const revealBlocks = document.querySelectorAll('[data-reveal]');
+      revealBlocks.forEach((block) => block.classList.add('is-visible'));
+      new AlcatraAnimationController();
+    });
+  </script>
+</body>
+</html>
