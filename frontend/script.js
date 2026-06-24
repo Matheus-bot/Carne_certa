@@ -123,6 +123,17 @@ const cowMapCuts = [
     description: "Corte tradicional com sabor marcante e ótima resposta na grelha."
   },
   {
+    id: "bistecaodoacem",
+    name: "Bistecão do Acem",
+    pointX: 30.8,
+    pointY: 41.2,
+    labelX: 8.6,
+    labelY: 18.6,
+    side: "left",
+    link: "../carnes/bistecaodoacem.html",
+    description: "Corte grande e saboroso, ideal para churrasco com excelente presença."
+  },
+  {
     id: "coxaomole",
     name: "Coxao Mole",
     pointX: 73.6,

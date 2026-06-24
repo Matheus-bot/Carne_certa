@@ -78,6 +78,19 @@ window.CARNECERTA_DATA = {
       notes: "Corte tradicional com sabor marcante e ótima resposta na grelha.",
       factor: 1.06
     },
+    bistecaodoacem: {
+      id: "bistecaodoacem",
+      name: "Bistecão do Acem",
+      image: "../../../assets/imagens/bistecaodoacem/bistecaodoacemcru.png",
+      page: "../carnes/bistecaodoacem.html",
+      priorities: ["sabor", "maci"],
+      categories: ["bife", "churrasco", "hamburguer"],
+      fatProfile: "saborosa",
+      cutHints: ["grosso", "saborosa", "churrasco"],
+      butcherCut: "corte em bifes grossos para grelha",
+      notes: "Corte grande e saboroso, ideal para churrasco com excelente presença.",
+      factor: 1.08
+    },
     alcatra: {
       id: "alcatra",
       name: "Alcatra",
