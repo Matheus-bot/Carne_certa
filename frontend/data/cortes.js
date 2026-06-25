@@ -26,6 +26,19 @@ window.CARNECERTA_DATA = {
       notes: "Macia e versatil para receitas de panela.",
       factor: 1.0
     },
+    patinho: {
+      id: "patinho",
+      name: "Patinho",
+      image: "../../../assets/imagens/patinho/patinhointeirocru.jpg",
+      page: "../carnes/patinho.html",
+      priorities: ["sabor", "barat"],
+      categories: ["panela", "assado", "moer"],
+      fatProfile: "equilibrada",
+      cutHints: ["cozido", "assado", "panela", "tradicional"],
+      butcherCut: "corte para panela e assados",
+      notes: "Corte versátil, com sabor marcante e ótimo rendimento.",
+      factor: 0.97
+    },
     coxaomole: {
       id: "coxaomole",
       name: "Coxao Mole",
@@ -51,6 +64,19 @@ window.CARNECERTA_DATA = {
       butcherCut: "bifes altos de 2 cm",
       notes: "Muito saboroso, excelente para grelha.",
       factor: 1.05
+    },
+    capadocontrafile: {
+      id: "capadocontrafile",
+      name: "Capa do Contra File",
+      image: "../../../assets/imagens/capadefile/capacontrafilecru.jpg",
+      page: "../carnes/capadocontrafile.html",
+      priorities: ["sabor", "maci"],
+      categories: ["bife", "churrasco"],
+      fatProfile: "saborosa",
+      cutHints: ["premium", "grosso", "churrasco"],
+      butcherCut: "corte em apresentação premium para grelha",
+      notes: "Versão elegante e sofisticada para ocasiões especiais.",
+      factor: 1.08
     },
     bistecadocontrafile: {
       id: "bistecadocontrafile",
@@ -117,6 +143,19 @@ window.CARNECERTA_DATA = {
       notes: "Corte clássico para caldo e preparos tradicionais.",
       factor: 0.93
     },
+    rabobovino: {
+      id: "rabobovino",
+      name: "Rabo Bovino",
+      image: "../../../assets/imagens/rabobovino/rabobovinointeiro.jpg",
+      page: "../carnes/rabobovino.html",
+      priorities: ["sabor", "barat"],
+      categories: ["panela", "caldo", "assado"],
+      fatProfile: "equilibrada",
+      cutHints: ["cozido", "caldo", "tradicional", "longo"],
+      butcherCut: "corte para cozimento longo",
+      notes: "Corte tradicional com sabor intenso e ótima resposta em caldos e ensopados.",
+      factor: 0.95
+    },
     alcatra: {
       id: "alcatra",
       name: "Alcatra",
@@ -156,6 +195,45 @@ window.CARNECERTA_DATA = {
       notes: "Corte premium, extremamente macio e saboroso.",
       factor: 1.2
     },
+    costela: {
+      id: "costela",
+      name: "Costela",
+      image: "../../../assets/imagens/costelaBovina/costelacortejanelacru.jpg",
+      page: "../carnes/costela.html",
+      priorities: ["sabor", "gord"],
+      categories: ["churrasco", "assado"],
+      fatProfile: "saborosa",
+      cutHints: ["inteira", "assada", "churrasco"],
+      butcherCut: "corte inteiro para assado e grelha",
+      notes: "Corte tradicional, muito saboroso e suculento.",
+      factor: 1.09
+    },
+    pontadepeito: {
+      id: "pontadepeito",
+      name: "Ponta de Peito",
+      image: "../../../assets/imagens/pontadepeito/peitobovino.webp",
+      page: "../carnes/pontadepeito.html",
+      priorities: ["sabor", "barat"],
+      categories: ["assado", "panela", "cozido"],
+      fatProfile: "equilibrada",
+      cutHints: ["assado", "panela", "cozido", "tradicional"],
+      butcherCut: "corte para assados e preparos de panela",
+      notes: "Corte versátil com bom sabor e textura firme.",
+      factor: 0.96
+    },
+    lagarto: {
+      id: "lagarto",
+      name: "Lagarto",
+      image: "../../../assets/imagens/lagarto/lagartointeirocru.jpg",
+      page: "../carnes/lagarto.html",
+      priorities: ["sabor", "barat"],
+      categories: ["assado", "panela", "moer"],
+      fatProfile: "equilibrada",
+      cutHints: ["cozido", "assado", "panela", "tradicional"],
+      butcherCut: "corte inteiro para assados e cozimentos longos",
+      notes: "Corte versátil com bom rendimento e sabor marcante.",
+      factor: 0.98
+    },
     musculo: {
       id: "musculo",
       name: "Musculo",
@@ -169,6 +247,19 @@ window.CARNECERTA_DATA = {
       butcherCut: "retire o excesso de nervos e corte em cubos medios",
       notes: "Corte magro e saboroso, excelente para panela e para moer.",
       factor: 0.92
+    },
+    ossobuco: {
+      id: "ossobuco",
+      name: "Ossobuco Bovino",
+      image: "../../../assets/imagens/ossobuco/ossobuco.jpg",
+      page: "../carnes/ossobuco.html",
+      priorities: ["sabor", "maci"],
+      categories: ["panela", "assado", "caldo"],
+      fatProfile: "saborosa",
+      cutHints: ["cozido", "molho", "longo", "tradicional"],
+      butcherCut: "corte para cozimento longo em panela ou forno",
+      notes: "Corte clássico, muito saboroso e excelente para pratos de cozimento lento.",
+      factor: 1.03
     },
     filemignon: {
       id: "filemignon",

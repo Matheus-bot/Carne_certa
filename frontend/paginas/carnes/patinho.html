@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ponta de Alcatra | CarneCerta</title>
+  <title>Patinho | CarneCerta</title>
   <link rel="stylesheet" href="../../css/style.css">
   <style>
-    .pontadealcatra-animation-container {
+    .patinho-animation-container {
       width: 100%;
       max-width: 620px;
       margin: 40px auto;
@@ -19,7 +19,7 @@
       overflow: hidden;
     }
 
-    .pontadealcatra-animation-container--inline {
+    .patinho-animation-container--inline {
       max-width: none;
       margin: 0;
       padding: 22px;
@@ -29,7 +29,7 @@
       border-radius: 0;
     }
 
-    .pontadealcatra-image-wrapper {
+    .patinho-image-wrapper {
       position: relative;
       width: 100%;
       height: 400px;
@@ -43,7 +43,7 @@
       z-index: 1;
     }
 
-    .pontadealcatra-animation-container--inline .pontadealcatra-image-wrapper {
+    .patinho-animation-container--inline .patinho-image-wrapper {
       height: auto;
       min-height: 420px;
       background: transparent;
@@ -51,7 +51,7 @@
       margin-bottom: 20px;
     }
 
-    .pontadealcatra-image-wrapper img {
+    .patinho-image-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -59,7 +59,7 @@
       animation: fadeInScale 0.8s ease-out forwards;
     }
 
-    .pontadealcatra-controls {
+    .patinho-controls {
       display: flex;
       gap: 12px;
       justify-content: center;
@@ -68,7 +68,7 @@
       z-index: 2;
     }
 
-    .pontadealcatra-btn {
+    .patinho-btn {
       padding: 12px 18px;
       font-size: 0.9rem;
       font-weight: 600;
@@ -82,15 +82,15 @@
       text-transform: uppercase;
     }
 
-    .pontadealcatra-btn:hover,
-    .pontadealcatra-btn.active {
+    .patinho-btn:hover,
+    .patinho-btn.active {
       background: var(--button-color);
       color: white;
       box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
       transform: translateY(-2px);
     }
 
-    .pontadealcatra-info-label {
+    .patinho-info-label {
       text-align: center;
       margin-top: 16px;
       font-size: 0.875rem;
@@ -99,34 +99,25 @@
       min-height: 20px;
     }
 
-    .pontadealcatra-recommendation-image {
-      width: 100%;
-      max-width: 240px;
-      border-radius: 12px;
-      object-fit: cover;
-      margin-top: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
     @media (max-width: 768px) {
-      .pontadealcatra-animation-container {
+      .patinho-animation-container {
         padding: 24px;
         margin: 24px auto;
       }
-      .pontadealcatra-image-wrapper {
+      .patinho-image-wrapper {
         height: 300px;
       }
     }
 
     @media (max-width: 480px) {
-      .pontadealcatra-animation-container {
+      .patinho-animation-container {
         padding: 16px;
         margin: 16px;
       }
-      .pontadealcatra-image-wrapper {
+      .patinho-image-wrapper {
         height: 250px;
       }
-      .pontadealcatra-btn {
+      .patinho-btn {
         padding: 10px 16px;
         font-size: 0.8rem;
         flex: 1;
@@ -146,53 +137,53 @@
       <section class="meat-section">
         <div class="meat-visual-column" data-reveal>
           <span class="meat-visual-kicker">Mapa CarneCerta</span>
-          <h2>Sabor alto e ótimo para rechear</h2>
+          <h2>Versatilidade e sabor para preparos rápidos e tradicionais</h2>
           <p class="meat-visual-summary">
-            A ponta de alcatra combina estrutura firme com identidade marcante, ótima para bifes recheados e panela.
+            O patinho é um corte clássico, muito usado em pratos de panela, assados e preparos de sabor marcante.
           </p>
 
           <div class="meat-image-stage">
             <span class="meat-image-glow"></span>
             <div class="meat-image-area">
-              <section class="pontadealcatra-animation-container pontadealcatra-animation-container--inline">
-                <div class="pontadealcatra-image-wrapper">
+              <section class="patinho-animation-container patinho-animation-container--inline">
+                <div class="patinho-image-wrapper">
                   <img
-                    id="pontadealcatra-image"
-                    src="../../../assets/imagens/pontadealcatra/pontadealcatragerada1.png"
-                    alt="Ponta de Alcatra em apresentação inicial"
+                    id="patinho-image"
+                    src="../../../assets/imagens/patinho/patinhointeirocru.jpg"
+                    alt="Patinho em apresentação inicial"
                     class="meat-image reset-state"
                   >
                 </div>
 
-                <div class="pontadealcatra-controls">
-                  <button id="pontadealcatra-pause-btn" class="pontadealcatra-btn" type="button">Pausar</button>
-                  <button id="pontadealcatra-continue-btn" class="pontadealcatra-btn" type="button">Continuar</button>
+                <div class="patinho-controls">
+                  <button id="patinho-pause-btn" class="patinho-btn" type="button">Pausar</button>
+                  <button id="patinho-continue-btn" class="patinho-btn" type="button">Continuar</button>
                 </div>
 
-                <div class="pontadealcatra-info-label" id="pontadealcatra-info-label"></div>
+                <div class="patinho-info-label" id="patinho-info-label"></div>
               </section>
             </div>
             <div class="meat-image-meta">
-              <span>Bife a role</span>
-              <span>Perfil marcante</span>
+              <span>Panela e assado</span>
+              <span>Rendimento excelente</span>
             </div>
           </div>
         </div>
 
         <div class="meat-content" data-reveal>
-          <span class="meat-tag">Ideal para • bife a role • panela • ensopados</span>
-          <h1>Ponta de Alcatra</h1>
+          <span class="meat-tag">Ideal para • panela • assado • cozido</span>
+          <h1>Patinho</h1>
           <p class="meat-lead">
-            Corte de sabor expressivo com boa presença de gordura para receitas recheadas e preparos de longa cocção.
+            Corte muito versátil, com sabor firme e boa resposta em receitas tradicionais.
           </p>
           <p class="meat-description">
-            A ponta de alcatra segura bem o recheio no bife a role, absorve molho com facilidade e mantém identidade forte mesmo em panelas mais longas. É uma opção muito estratégica quando o sabor precisa aparecer.
+            O patinho se destaca em preparos de panela, cozidos longos e assados, oferecendo textura interessante e sabor marcante.
           </p>
 
           <div class="quick-info">
-            <span>Bife a role premium</span>
-            <span>Molhos intensos</span>
-            <span>Boa suculência</span>
+            <span>Panela</span>
+            <span>Assado</span>
+            <span>Cozido</span>
           </div>
 
           <div class="meat-score-grid">
@@ -200,53 +191,47 @@
               <span class="meat-score-label">Maciez</span>
               <strong>3/5</strong>
               <div class="bar"><div class="fill fill-3"></div></div>
-              <small>Boa para rechear</small>
+              <small>Equilibrada</small>
             </article>
             <article class="meat-score-card">
               <span class="meat-score-label">Gordura</span>
-              <strong>4/5</strong>
-              <div class="bar"><div class="fill fill-4"></div></div>
-              <small>Mais presente</small>
+              <strong>2/5</strong>
+              <div class="bar"><div class="fill fill-2"></div></div>
+              <small>Moderada</small>
             </article>
             <article class="meat-score-card">
               <span class="meat-score-label">Sabor</span>
-              <strong>5/5</strong>
-              <div class="bar"><div class="fill fill-5"></div></div>
-              <small>Muito alto</small>
+              <strong>4/5</strong>
+              <div class="bar"><div class="fill fill-4"></div></div>
+              <small>Marcante</small>
             </article>
           </div>
 
           <article class="recommendation-card">
             <div class="recommendation-top">
-              <span class="score">4.8</span>
-              <span class="best-choice">Melhor para role</span>
+              <span class="score">4.1</span>
+              <span class="best-choice">Corte clássico</span>
             </div>
             <p>
-              A melhor leitura para bife a role no projeto, mantendo sabor alto e boa resposta tanto em panela quanto em cozimento úmido.
+              Excelente para quem busca um corte saboroso, com boa adaptabilidade entre receitas rápidas e preparos mais tradicionais.
             </p>
-            <img
-              id="pontadealcatra-recommendation-image"
-              class="pontadealcatra-recommendation-image"
-              src="../../../assets/imagens/pontadealcatra/coxaodurocortes.png"
-              alt="Imagem de recomendação da ponta de alcatra"
-            >
           </article>
 
           <div class="meat-detail-grid">
             <article class="info-card">
               <h3>Ideal para</h3>
               <div class="tags">
-                <span>Bife a role</span>
                 <span>Panela</span>
-                <span>Ensopados</span>
-                <span>Cozimento lento</span>
+                <span>Assado</span>
+                <span>Cozido</span>
+                <span>Molho</span>
               </div>
             </article>
 
             <article class="chef-tip">
               <h3>Dica do açougueiro IA</h3>
               <p>
-                Bata levemente os bifes antes de rechear. Isso melhora a dobra do corte e ajuda o cozimento uniforme sem romper a fibra.
+                Cozinhe em fogo baixo e deixe descansar antes de servir para realçar textura e suculência.
               </p>
             </article>
           </div>
@@ -258,21 +243,18 @@
   </main>
 
   <script>
-    class PontaDeAlcatraCarouselController {
+    class PatinhoCarouselController {
       constructor() {
-        this.imageElement = document.getElementById('pontadealcatra-image');
-        this.pauseButton = document.getElementById('pontadealcatra-pause-btn');
-        this.continueButton = document.getElementById('pontadealcatra-continue-btn');
-        this.infoLabel = document.getElementById('pontadealcatra-info-label');
+        this.imageElement = document.getElementById('patinho-image');
+        this.pauseButton = document.getElementById('patinho-pause-btn');
+        this.continueButton = document.getElementById('patinho-continue-btn');
+        this.infoLabel = document.getElementById('patinho-info-label');
         this.isPaused = false;
         this.currentIndex = 0;
         this.timer = null;
         this.images = [
-          { src: '../../../assets/imagens/pontadealcatra/pontadealcatragerada1.png', label: 'Ponta de Alcatra em apresentação' },
-          { src: '../../../assets/imagens/pontadealcatra/bifeaarole.jpg', label: 'Ponta de Alcatra em bife a role' },
-          { src: '../../../assets/imagens/pontadealcatra/coxaodurobife.webp', label: 'Ponta de Alcatra em corte fino' },
-          { src: '../../../assets/imagens/pontadealcatra/coxaodurocortes.png', label: 'Ponta de Alcatra em corte' },
-          { src: '../../../assets/imagens/pontadealcatra/coxaodurorecheado.jpg', label: 'Ponta de Alcatra recheada' }
+          { src: '../../../assets/imagens/patinho/patinhointeirocru.jpg', label: 'Patinho inteiro cru' },
+          { src: '../../../assets/imagens/patinho/patinhocozido.jpg', label: 'Patinho cozido' }
         ];
 
         this.init();
@@ -326,7 +308,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const revealBlocks = document.querySelectorAll('[data-reveal]');
       revealBlocks.forEach((block) => block.classList.add('is-visible'));
-      new PontaDeAlcatraCarouselController();
+      new PatinhoCarouselController();
     });
   </script>
 

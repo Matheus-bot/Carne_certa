@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ponta de Alcatra | CarneCerta</title>
+  <title>Lagarto | CarneCerta</title>
   <link rel="stylesheet" href="../../css/style.css">
   <style>
-    .pontadealcatra-animation-container {
+    .lagarto-animation-container {
       width: 100%;
       max-width: 620px;
       margin: 40px auto;
@@ -19,7 +19,7 @@
       overflow: hidden;
     }
 
-    .pontadealcatra-animation-container--inline {
+    .lagarto-animation-container--inline {
       max-width: none;
       margin: 0;
       padding: 22px;
@@ -29,7 +29,7 @@
       border-radius: 0;
     }
 
-    .pontadealcatra-image-wrapper {
+    .lagarto-image-wrapper {
       position: relative;
       width: 100%;
       height: 400px;
@@ -43,7 +43,7 @@
       z-index: 1;
     }
 
-    .pontadealcatra-animation-container--inline .pontadealcatra-image-wrapper {
+    .lagarto-animation-container--inline .lagarto-image-wrapper {
       height: auto;
       min-height: 420px;
       background: transparent;
@@ -51,7 +51,7 @@
       margin-bottom: 20px;
     }
 
-    .pontadealcatra-image-wrapper img {
+    .lagarto-image-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -59,7 +59,7 @@
       animation: fadeInScale 0.8s ease-out forwards;
     }
 
-    .pontadealcatra-controls {
+    .lagarto-controls {
       display: flex;
       gap: 12px;
       justify-content: center;
@@ -68,7 +68,7 @@
       z-index: 2;
     }
 
-    .pontadealcatra-btn {
+    .lagarto-btn {
       padding: 12px 18px;
       font-size: 0.9rem;
       font-weight: 600;
@@ -82,15 +82,15 @@
       text-transform: uppercase;
     }
 
-    .pontadealcatra-btn:hover,
-    .pontadealcatra-btn.active {
+    .lagarto-btn:hover,
+    .lagarto-btn.active {
       background: var(--button-color);
       color: white;
       box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
       transform: translateY(-2px);
     }
 
-    .pontadealcatra-info-label {
+    .lagarto-info-label {
       text-align: center;
       margin-top: 16px;
       font-size: 0.875rem;
@@ -99,34 +99,25 @@
       min-height: 20px;
     }
 
-    .pontadealcatra-recommendation-image {
-      width: 100%;
-      max-width: 240px;
-      border-radius: 12px;
-      object-fit: cover;
-      margin-top: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
     @media (max-width: 768px) {
-      .pontadealcatra-animation-container {
+      .lagarto-animation-container {
         padding: 24px;
         margin: 24px auto;
       }
-      .pontadealcatra-image-wrapper {
+      .lagarto-image-wrapper {
         height: 300px;
       }
     }
 
     @media (max-width: 480px) {
-      .pontadealcatra-animation-container {
+      .lagarto-animation-container {
         padding: 16px;
         margin: 16px;
       }
-      .pontadealcatra-image-wrapper {
+      .lagarto-image-wrapper {
         height: 250px;
       }
-      .pontadealcatra-btn {
+      .lagarto-btn {
         padding: 10px 16px;
         font-size: 0.8rem;
         flex: 1;
@@ -146,53 +137,53 @@
       <section class="meat-section">
         <div class="meat-visual-column" data-reveal>
           <span class="meat-visual-kicker">Mapa CarneCerta</span>
-          <h2>Sabor alto e ótimo para rechear</h2>
+          <h2>Versatilidade para assados, panelas e pratos tradicionais</h2>
           <p class="meat-visual-summary">
-            A ponta de alcatra combina estrutura firme com identidade marcante, ótima para bifes recheados e panela.
+            O lagarto é um corte com ótimo rendimento, boa resposta em cozimento e bastante presença em receitas clássicas.
           </p>
 
           <div class="meat-image-stage">
             <span class="meat-image-glow"></span>
             <div class="meat-image-area">
-              <section class="pontadealcatra-animation-container pontadealcatra-animation-container--inline">
-                <div class="pontadealcatra-image-wrapper">
+              <section class="lagarto-animation-container lagarto-animation-container--inline">
+                <div class="lagarto-image-wrapper">
                   <img
-                    id="pontadealcatra-image"
-                    src="../../../assets/imagens/pontadealcatra/pontadealcatragerada1.png"
-                    alt="Ponta de Alcatra em apresentação inicial"
+                    id="lagarto-image"
+                    src="../../../assets/imagens/lagarto/lagartointeirocru.jpg"
+                    alt="Lagarto em apresentação inicial"
                     class="meat-image reset-state"
                   >
                 </div>
 
-                <div class="pontadealcatra-controls">
-                  <button id="pontadealcatra-pause-btn" class="pontadealcatra-btn" type="button">Pausar</button>
-                  <button id="pontadealcatra-continue-btn" class="pontadealcatra-btn" type="button">Continuar</button>
+                <div class="lagarto-controls">
+                  <button id="lagarto-pause-btn" class="lagarto-btn" type="button">Pausar</button>
+                  <button id="lagarto-continue-btn" class="lagarto-btn" type="button">Continuar</button>
                 </div>
 
-                <div class="pontadealcatra-info-label" id="pontadealcatra-info-label"></div>
+                <div class="lagarto-info-label" id="lagarto-info-label"></div>
               </section>
             </div>
             <div class="meat-image-meta">
-              <span>Bife a role</span>
-              <span>Perfil marcante</span>
+              <span>Assados e panela</span>
+              <span>Rendimento excelente</span>
             </div>
           </div>
         </div>
 
         <div class="meat-content" data-reveal>
-          <span class="meat-tag">Ideal para • bife a role • panela • ensopados</span>
-          <h1>Ponta de Alcatra</h1>
+          <span class="meat-tag">Ideal para • assado • panela • cozido</span>
+          <h1>Lagarto</h1>
           <p class="meat-lead">
-            Corte de sabor expressivo com boa presença de gordura para receitas recheadas e preparos de longa cocção.
+            Corte pratico para quem procura sabor marcante, bom rendimento e varias formas de preparo.
           </p>
           <p class="meat-description">
-            A ponta de alcatra segura bem o recheio no bife a role, absorve molho com facilidade e mantém identidade forte mesmo em panelas mais longas. É uma opção muito estratégica quando o sabor precisa aparecer.
+            O lagarto se destaca em preparos tradicionais, especialmente quando se deseja um corte com textura firme, sabor intenso e boa resposta em cozimentos mais longos.
           </p>
 
           <div class="quick-info">
-            <span>Bife a role premium</span>
-            <span>Molhos intensos</span>
-            <span>Boa suculência</span>
+            <span>Assado</span>
+            <span>Panela</span>
+            <span>Cozido</span>
           </div>
 
           <div class="meat-score-grid">
@@ -200,53 +191,47 @@
               <span class="meat-score-label">Maciez</span>
               <strong>3/5</strong>
               <div class="bar"><div class="fill fill-3"></div></div>
-              <small>Boa para rechear</small>
+              <small>Equilibrada</small>
             </article>
             <article class="meat-score-card">
               <span class="meat-score-label">Gordura</span>
-              <strong>4/5</strong>
-              <div class="bar"><div class="fill fill-4"></div></div>
-              <small>Mais presente</small>
+              <strong>2/5</strong>
+              <div class="bar"><div class="fill fill-2"></div></div>
+              <small>Moderada</small>
             </article>
             <article class="meat-score-card">
               <span class="meat-score-label">Sabor</span>
-              <strong>5/5</strong>
-              <div class="bar"><div class="fill fill-5"></div></div>
-              <small>Muito alto</small>
+              <strong>4/5</strong>
+              <div class="bar"><div class="fill fill-4"></div></div>
+              <small>Marcante</small>
             </article>
           </div>
 
           <article class="recommendation-card">
             <div class="recommendation-top">
-              <span class="score">4.8</span>
-              <span class="best-choice">Melhor para role</span>
+              <span class="score">4.2</span>
+              <span class="best-choice">Corte versátil</span>
             </div>
             <p>
-              A melhor leitura para bife a role no projeto, mantendo sabor alto e boa resposta tanto em panela quanto em cozimento úmido.
+              Excelente para quem quer um corte com bom rendimento, sabor forte e boa adaptação entre assados e receitas de panela.
             </p>
-            <img
-              id="pontadealcatra-recommendation-image"
-              class="pontadealcatra-recommendation-image"
-              src="../../../assets/imagens/pontadealcatra/coxaodurocortes.png"
-              alt="Imagem de recomendação da ponta de alcatra"
-            >
           </article>
 
           <div class="meat-detail-grid">
             <article class="info-card">
               <h3>Ideal para</h3>
               <div class="tags">
-                <span>Bife a role</span>
+                <span>Assado</span>
                 <span>Panela</span>
-                <span>Ensopados</span>
-                <span>Cozimento lento</span>
+                <span>Cozido</span>
+                <span>Molho</span>
               </div>
             </article>
 
             <article class="chef-tip">
               <h3>Dica do açougueiro IA</h3>
               <p>
-                Bata levemente os bifes antes de rechear. Isso melhora a dobra do corte e ajuda o cozimento uniforme sem romper a fibra.
+                Para um resultado mais macio, cozinhe em temperatura controlada e deixe descansar antes de fatiar.
               </p>
             </article>
           </div>
@@ -258,21 +243,21 @@
   </main>
 
   <script>
-    class PontaDeAlcatraCarouselController {
+    class LagartoCarouselController {
       constructor() {
-        this.imageElement = document.getElementById('pontadealcatra-image');
-        this.pauseButton = document.getElementById('pontadealcatra-pause-btn');
-        this.continueButton = document.getElementById('pontadealcatra-continue-btn');
-        this.infoLabel = document.getElementById('pontadealcatra-info-label');
+        this.imageElement = document.getElementById('lagarto-image');
+        this.pauseButton = document.getElementById('lagarto-pause-btn');
+        this.continueButton = document.getElementById('lagarto-continue-btn');
+        this.infoLabel = document.getElementById('lagarto-info-label');
         this.isPaused = false;
         this.currentIndex = 0;
         this.timer = null;
         this.images = [
-          { src: '../../../assets/imagens/pontadealcatra/pontadealcatragerada1.png', label: 'Ponta de Alcatra em apresentação' },
-          { src: '../../../assets/imagens/pontadealcatra/bifeaarole.jpg', label: 'Ponta de Alcatra em bife a role' },
-          { src: '../../../assets/imagens/pontadealcatra/coxaodurobife.webp', label: 'Ponta de Alcatra em corte fino' },
-          { src: '../../../assets/imagens/pontadealcatra/coxaodurocortes.png', label: 'Ponta de Alcatra em corte' },
-          { src: '../../../assets/imagens/pontadealcatra/coxaodurorecheado.jpg', label: 'Ponta de Alcatra recheada' }
+          { src: '../../../assets/imagens/lagarto/lagartointeirocru.jpg', label: 'Lagarto inteiro cru' },
+          { src: '../../../assets/imagens/lagarto/lagasrtocozinhadointeiro.webp', label: 'Lagarto cozinhado inteiro' },
+          { src: '../../../assets/imagens/lagarto/lagartocozinhado.webp', label: 'Lagarto cozinhado' },
+          { src: '../../../assets/imagens/lagarto/lagartomolhoingles.webp', label: 'Lagarto molho inglês' },
+          { src: '../../../assets/imagens/lagarto/lagartomolhomadeira.jpg', label: 'Lagarto molho madeira' }
         ];
 
         this.init();
@@ -326,7 +311,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const revealBlocks = document.querySelectorAll('[data-reveal]');
       revealBlocks.forEach((block) => block.classList.add('is-visible'));
-      new PontaDeAlcatraCarouselController();
+      new LagartoCarouselController();
     });
   </script>
 

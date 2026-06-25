@@ -2,21 +2,172 @@
 <html lang="pt-BR">
 
 <head>
-
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Contra-File | CarneCerta</title>
-
   <link rel="stylesheet" href="../../css/style.css">
 
+  <style>
+    .contrafile-animation-container {
+      width: 100%;
+      max-width: 620px;
+      margin: 40px auto;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(19, 19, 19, 0.82), rgba(25, 25, 25, 0.96));
+      border: 1px solid var(--card-border-color);
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contrafile-animation-container--inline {
+      max-width: none;
+      margin: 0;
+      padding: 22px;
+      background: transparent;
+      border: 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .contrafile-animation-container::before {
+      content: '';
+      position: absolute;
+      top: -45%;
+      right: -45%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(211, 47, 47, 0.11), transparent 70%);
+      pointer-events: none;
+      animation: shimmer 8s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .contrafile-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      margin-bottom: 28px;
+      background: var(--surface-color);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .contrafile-animation-container--inline .contrafile-image-wrapper {
+      height: auto;
+      min-height: 420px;
+      background: transparent;
+      border-radius: 0;
+      margin-bottom: 20px;
+    }
+
+    .contrafile-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      animation: fadeInScale 0.8s ease-out forwards;
+    }
+
+    .contrafile-image-wrapper img.reset-state {
+      animation: none;
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    @keyframes fadeInScale {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .contrafile-buttons-group {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .contrafile-btn {
+      padding: 12px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+      border: 2px solid var(--button-color);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--button-color);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .contrafile-btn:hover,
+    .contrafile-btn.active {
+      background: var(--button-color);
+      color: white;
+      box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
+      transform: translateY(-2px);
+    }
+
+    .contrafile-info-label {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 0.875rem;
+      color: var(--muted-text-color);
+      font-style: italic;
+      min-height: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .contrafile-animation-container {
+        padding: 24px;
+        margin: 24px auto;
+      }
+
+      .contrafile-image-wrapper {
+        height: 300px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .contrafile-animation-container {
+        padding: 16px;
+        margin: 16px;
+      }
+
+      .contrafile-image-wrapper {
+        height: 250px;
+      }
+
+      .contrafile-btn {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+        flex: 1;
+        min-width: 120px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
   <main class="meat-page meat-page--premium">
-
     <div class="meat-page-shell">
       <div class="meat-backbar" data-reveal>
         <a href="../boi/boi.html" class="back-button meat-back-link">← Cortes do boi</a>
@@ -26,19 +177,39 @@
       <section class="meat-section">
         <div class="meat-visual-column" data-reveal>
           <span class="meat-visual-kicker">Mapa CarneCerta</span>
-          <h2>Classico premium de grelha e bife</h2>
+          <h2>Clássico premium com versões para cada ocasião</h2>
           <p class="meat-visual-summary">
-            O contra-file concentra maciez alta, gordura equilibrada e acabamento perfeito para fogo direto.
+            O contra-file reúne maciez, sabor bem presente e apresentação impecável para churrasco, grelha e pratos de bife.
           </p>
 
           <div class="meat-image-stage">
             <span class="meat-image-glow"></span>
             <div class="meat-image-area">
-              <img src="../../../assets/imagens/contrafileTradicional/contrafilet.png" alt="Imagem do Contra-file" class="meat-image">
+              <section class="contrafile-animation-container contrafile-animation-container--inline">
+                <div class="contrafile-image-wrapper">
+                  <img
+                    id="contrafile-image"
+                    src="../../../assets/imagens/contrafileTradicional/contrafilet.png"
+                    alt="Contra-file em formato clássico"
+                    class="meat-image reset-state"
+                  >
+                </div>
+
+                <div class="contrafile-buttons-group">
+                  <button id="contrafile-btn-file" class="contrafile-btn" data-action="file">Filé</button>
+                  <button id="contrafile-btn-angus" class="contrafile-btn" data-action="angus">Angus</button>
+                  <button id="contrafile-btn-tradicional-bife" class="contrafile-btn" data-action="tradicional-bife">Tradicional bife</button>
+                  <button id="contrafile-btn-tradicional-inteiro" class="contrafile-btn" data-action="tradicional-inteiro">Tradicional inteiro</button>
+                  <button id="contrafile-btn-noix" class="contrafile-btn" data-action="noix">Noix</button>
+                </div>
+
+                <div class="contrafile-info-label" id="contrafile-info-label"></div>
+              </section>
             </div>
             <div class="meat-image-meta">
-              <span>Churrasco e grelha</span>
-              <span>Perfil macio</span>
+              <span>Churrasco</span>
+              <span>Grelha</span>
+              <span>Fogo alto</span>
             </div>
           </div>
         </div>
@@ -47,16 +218,16 @@
           <span class="meat-tag">Ideal para • churrasco • bife • grelha</span>
           <h1>Contra-file</h1>
           <p class="meat-lead">
-            Um dos cortes mais desejados para quem quer sabor intenso com boa maciez e resposta rápida no preparo.
+            Um dos cortes mais desejados para quem busca sabor intenso, boa maciez e resposta excelente no preparo.
           </p>
           <p class="meat-description">
-            O contra-file funciona muito bem em steaks altos, bifes grelhados e churrasco. A camada de gordura ajuda a manter suculencia e reforca a identidade do corte em fogo alto.
+            O contra-file funciona muito bem em steaks altos, bifes grelhados e churrasco. A presença de gordura bem distribuída ajuda a manter a suculência e dá mais personalidade ao corte.
           </p>
 
           <div class="quick-info">
             <span>Fogo alto</span>
             <span>Steaks e bifes</span>
-            <span>Suculencia equilibrada</span>
+            <span>Suculência equilibrada</span>
           </div>
 
           <div class="meat-score-grid">
@@ -68,14 +239,14 @@
             </article>
             <article class="meat-score-card">
               <span class="meat-score-label">Gordura</span>
-              <strong>3/5</strong>
-              <div class="bar"><div class="fill fill-3"></div></div>
+              <strong>4/5</strong>
+              <div class="bar"><div class="fill fill-4"></div></div>
               <small>Equilibrada</small>
             </article>
             <article class="meat-score-card">
               <span class="meat-score-label">Sabor</span>
-              <strong>4/5</strong>
-              <div class="bar"><div class="fill fill-4"></div></div>
+              <strong>5/5</strong>
+              <div class="bar"><div class="fill fill-5"></div></div>
               <small>Marcante</small>
             </article>
           </div>
@@ -86,7 +257,7 @@
               <span class="best-choice">Favorito para grelha</span>
             </div>
             <p>
-              Excelente escolha para churrasco e bifes altos, principalmente quando a proposta e destaque de sabor com textura mais nobre.
+              Excelente escolha para churrasco e bifes altos, principalmente quando a proposta é destacar sabor com textura mais nobre e acabamento impecável.
             </p>
           </article>
 
@@ -104,7 +275,7 @@
             <article class="chef-tip">
               <h3>Dica do açougueiro IA</h3>
               <p>
-                Deixe a gordura dourar primeiro para proteger a carne do ressecamento e depois finalize o ponto no lado da proteina.
+                Deixe a gordura dourar primeiro para proteger a carne do ressecamento e depois finalize o ponto no lado da proteína.
               </p>
             </article>
           </div>
@@ -113,11 +284,75 @@
         </div>
       </section>
     </div>
-
   </main>
 
   <script src="../../script.js"></script>
+  <script>
+    class ContraFileAnimationController {
+      constructor() {
+        this.imageElement = document.getElementById('contrafile-image');
+        this.buttons = Array.from(document.querySelectorAll('.contrafile-btn'));
+        this.infoLabel = document.getElementById('contrafile-info-label');
+        this.currentState = 'file';
+        this.imagePaths = {
+          file: '../../../assets/imagens/contrafileTradicional/contrafilet.png',
+          angus: '../../../assets/imagens/contrafileTradicional/contra-filé-angus-1bifes.jpg',
+          'tradicional-bife': '../../../assets/imagens/contrafileTradicional/contrafiletradicionalbife.png',
+          'tradicional-inteiro': '../../../assets/imagens/contrafileTradicional/contrafiletradicionalinteiro.png',
+          noix: '../../../assets/imagens/contraFileNoix/contrafilenoixassado.webp'
+        };
 
+        this.labels = {
+          file: 'Mostrando o contra-file em formato clássico de filé.',
+          angus: 'Mostrando o contra-file na versão Angus com apresentação premium.',
+          'tradicional-bife': 'Mostrando o contra-file na versão tradicional em formato de bife.',
+          'tradicional-inteiro': 'Mostrando o contra-file na versão tradicional em corte inteiro.',
+          noix: 'Mostrando o contra-file na versão Noix, com apresentação mais elegante e corte diferenciado.'
+        };
+
+        this.bindEvents();
+        this.applyState(this.currentState, false);
+      }
+
+      bindEvents() {
+        this.buttons.forEach((button) => {
+          button.addEventListener('click', () => {
+            this.applyState(button.dataset.action, true);
+          });
+        });
+      }
+
+      applyState(nextState, animate = true) {
+        if (!this.imageElement || !this.imagePaths[nextState]) {
+          return;
+        }
+
+        this.currentState = nextState;
+
+        if (this.imageElement.classList.contains('reset-state')) {
+          this.imageElement.classList.remove('reset-state');
+        }
+
+        this.imageElement.src = this.imagePaths[nextState];
+        this.imageElement.alt = `Contra-file - ${this.labels[nextState]}`;
+
+        this.buttons.forEach((button) => {
+          const isActive = button.dataset.action === nextState;
+          button.classList.toggle('active', isActive);
+        });
+
+        if (this.infoLabel) {
+          this.infoLabel.textContent = this.labels[nextState];
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const revealBlocks = document.querySelectorAll('[data-reveal]');
+      revealBlocks.forEach((block) => block.classList.add('is-visible'));
+      new ContraFileAnimationController();
+    });
+  </script>
 </body>
 
 </html>

@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ponta de Alcatra | CarneCerta</title>
+  <title>Ossobuco Bovino | CarneCerta</title>
   <link rel="stylesheet" href="../../css/style.css">
   <style>
-    .pontadealcatra-animation-container {
+    .ossobuco-animation-container {
       width: 100%;
       max-width: 620px;
       margin: 40px auto;
@@ -19,7 +19,7 @@
       overflow: hidden;
     }
 
-    .pontadealcatra-animation-container--inline {
+    .ossobuco-animation-container--inline {
       max-width: none;
       margin: 0;
       padding: 22px;
@@ -29,7 +29,7 @@
       border-radius: 0;
     }
 
-    .pontadealcatra-image-wrapper {
+    .ossobuco-image-wrapper {
       position: relative;
       width: 100%;
       height: 400px;
@@ -43,7 +43,7 @@
       z-index: 1;
     }
 
-    .pontadealcatra-animation-container--inline .pontadealcatra-image-wrapper {
+    .ossobuco-animation-container--inline .ossobuco-image-wrapper {
       height: auto;
       min-height: 420px;
       background: transparent;
@@ -51,7 +51,7 @@
       margin-bottom: 20px;
     }
 
-    .pontadealcatra-image-wrapper img {
+    .ossobuco-image-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -59,7 +59,7 @@
       animation: fadeInScale 0.8s ease-out forwards;
     }
 
-    .pontadealcatra-controls {
+    .ossobuco-controls {
       display: flex;
       gap: 12px;
       justify-content: center;
@@ -68,7 +68,7 @@
       z-index: 2;
     }
 
-    .pontadealcatra-btn {
+    .ossobuco-btn {
       padding: 12px 18px;
       font-size: 0.9rem;
       font-weight: 600;
@@ -82,15 +82,15 @@
       text-transform: uppercase;
     }
 
-    .pontadealcatra-btn:hover,
-    .pontadealcatra-btn.active {
+    .ossobuco-btn:hover,
+    .ossobuco-btn.active {
       background: var(--button-color);
       color: white;
       box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
       transform: translateY(-2px);
     }
 
-    .pontadealcatra-info-label {
+    .ossobuco-info-label {
       text-align: center;
       margin-top: 16px;
       font-size: 0.875rem;
@@ -99,34 +99,25 @@
       min-height: 20px;
     }
 
-    .pontadealcatra-recommendation-image {
-      width: 100%;
-      max-width: 240px;
-      border-radius: 12px;
-      object-fit: cover;
-      margin-top: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
     @media (max-width: 768px) {
-      .pontadealcatra-animation-container {
+      .ossobuco-animation-container {
         padding: 24px;
         margin: 24px auto;
       }
-      .pontadealcatra-image-wrapper {
+      .ossobuco-image-wrapper {
         height: 300px;
       }
     }
 
     @media (max-width: 480px) {
-      .pontadealcatra-animation-container {
+      .ossobuco-animation-container {
         padding: 16px;
         margin: 16px;
       }
-      .pontadealcatra-image-wrapper {
+      .ossobuco-image-wrapper {
         height: 250px;
       }
-      .pontadealcatra-btn {
+      .ossobuco-btn {
         padding: 10px 16px;
         font-size: 0.8rem;
         flex: 1;
@@ -146,107 +137,101 @@
       <section class="meat-section">
         <div class="meat-visual-column" data-reveal>
           <span class="meat-visual-kicker">Mapa CarneCerta</span>
-          <h2>Sabor alto e ótimo para rechear</h2>
+          <h2>Maciez e sabor para pratos de cozimento lento</h2>
           <p class="meat-visual-summary">
-            A ponta de alcatra combina estrutura firme com identidade marcante, ótima para bifes recheados e panela.
+            O ossobuco bovino é um corte clássico para preparos longos, com textura gelatinosa e sabor marcante.
           </p>
 
           <div class="meat-image-stage">
             <span class="meat-image-glow"></span>
             <div class="meat-image-area">
-              <section class="pontadealcatra-animation-container pontadealcatra-animation-container--inline">
-                <div class="pontadealcatra-image-wrapper">
+              <section class="ossobuco-animation-container ossobuco-animation-container--inline">
+                <div class="ossobuco-image-wrapper">
                   <img
-                    id="pontadealcatra-image"
-                    src="../../../assets/imagens/pontadealcatra/pontadealcatragerada1.png"
-                    alt="Ponta de Alcatra em apresentação inicial"
+                    id="ossobuco-image"
+                    src="../../../assets/imagens/ossobuco/ossobuco.jpg"
+                    alt="Ossobuco bovino em apresentação inicial"
                     class="meat-image reset-state"
                   >
                 </div>
 
-                <div class="pontadealcatra-controls">
-                  <button id="pontadealcatra-pause-btn" class="pontadealcatra-btn" type="button">Pausar</button>
-                  <button id="pontadealcatra-continue-btn" class="pontadealcatra-btn" type="button">Continuar</button>
+                <div class="ossobuco-controls">
+                  <button id="ossobuco-pause-btn" class="ossobuco-btn" type="button">Pausar</button>
+                  <button id="ossobuco-continue-btn" class="ossobuco-btn" type="button">Continuar</button>
                 </div>
 
-                <div class="pontadealcatra-info-label" id="pontadealcatra-info-label"></div>
+                <div class="ossobuco-info-label" id="ossobuco-info-label"></div>
               </section>
             </div>
             <div class="meat-image-meta">
-              <span>Bife a role</span>
-              <span>Perfil marcante</span>
+              <span>Pratos longos</span>
+              <span>Sabor intenso</span>
             </div>
           </div>
         </div>
 
         <div class="meat-content" data-reveal>
-          <span class="meat-tag">Ideal para • bife a role • panela • ensopados</span>
-          <h1>Ponta de Alcatra</h1>
+          <span class="meat-tag">Ideal para • cozimento lento • caldo • molho</span>
+          <h1>Ossobuco Bovino</h1>
           <p class="meat-lead">
-            Corte de sabor expressivo com boa presença de gordura para receitas recheadas e preparos de longa cocção.
+            Corte tradicional para quem ama pratos bem cozidos, com textura macia e sabor profundo.
           </p>
           <p class="meat-description">
-            A ponta de alcatra segura bem o recheio no bife a role, absorve molho com facilidade e mantém identidade forte mesmo em panelas mais longas. É uma opção muito estratégica quando o sabor precisa aparecer.
+            O ossobuco bovino se destaca em preparos longos, ficando especialmente saboroso quando cozido com legumes, vinho e ervas.
           </p>
 
           <div class="quick-info">
-            <span>Bife a role premium</span>
-            <span>Molhos intensos</span>
-            <span>Boa suculência</span>
+            <span>Cozimento lento</span>
+            <span>Molho</span>
+            <span>Textura macia</span>
           </div>
 
           <div class="meat-score-grid">
             <article class="meat-score-card">
               <span class="meat-score-label">Maciez</span>
-              <strong>3/5</strong>
-              <div class="bar"><div class="fill fill-3"></div></div>
-              <small>Boa para rechear</small>
+              <strong>4/5</strong>
+              <div class="bar"><div class="fill fill-4"></div></div>
+              <small>Boa</small>
             </article>
             <article class="meat-score-card">
               <span class="meat-score-label">Gordura</span>
-              <strong>4/5</strong>
-              <div class="bar"><div class="fill fill-4"></div></div>
-              <small>Mais presente</small>
+              <strong>3/5</strong>
+              <div class="bar"><div class="fill fill-3"></div></div>
+              <small>Moderada</small>
             </article>
             <article class="meat-score-card">
               <span class="meat-score-label">Sabor</span>
               <strong>5/5</strong>
               <div class="bar"><div class="fill fill-5"></div></div>
-              <small>Muito alto</small>
+              <small>Intenso</small>
             </article>
           </div>
 
           <article class="recommendation-card">
             <div class="recommendation-top">
-              <span class="score">4.8</span>
-              <span class="best-choice">Melhor para role</span>
+              <span class="score">4.6</span>
+              <span class="best-choice">Prato clássico</span>
             </div>
             <p>
-              A melhor leitura para bife a role no projeto, mantendo sabor alto e boa resposta tanto em panela quanto em cozimento úmido.
+              Excelente para quem valoriza sabores mais profundos e quer um corte que se transforma em um prato irresistível com cozimento lento.
             </p>
-            <img
-              id="pontadealcatra-recommendation-image"
-              class="pontadealcatra-recommendation-image"
-              src="../../../assets/imagens/pontadealcatra/coxaodurocortes.png"
-              alt="Imagem de recomendação da ponta de alcatra"
-            >
           </article>
 
           <div class="meat-detail-grid">
             <article class="info-card">
               <h3>Ideal para</h3>
               <div class="tags">
-                <span>Bife a role</span>
-                <span>Panela</span>
-                <span>Ensopados</span>
-                <span>Cozimento lento</span>
+                <span>Caldo</span>
+                <span>Molho</span>
+                <span>Cozido</span>
+                <span>Assado</span>
               </div>
             </article>
 
             <article class="chef-tip">
               <h3>Dica do açougueiro IA</h3>
               <p>
-                Bata levemente os bifes antes de rechear. Isso melhora a dobra do corte e ajuda o cozimento uniforme sem romper a fibra.
+                Cozinhe em panela fechada ou forno baixo para alcançar a textura mais macia e o sabor mais intenso.
               </p>
             </article>
           </div>
@@ -258,21 +243,19 @@
   </main>
 
   <script>
-    class PontaDeAlcatraCarouselController {
+    class OssobucoCarouselController {
       constructor() {
-        this.imageElement = document.getElementById('pontadealcatra-image');
-        this.pauseButton = document.getElementById('pontadealcatra-pause-btn');
-        this.continueButton = document.getElementById('pontadealcatra-continue-btn');
-        this.infoLabel = document.getElementById('pontadealcatra-info-label');
+        this.imageElement = document.getElementById('ossobuco-image');
+        this.pauseButton = document.getElementById('ossobuco-pause-btn');
+        this.continueButton = document.getElementById('ossobuco-continue-btn');
+        this.infoLabel = document.getElementById('ossobuco-info-label');
         this.isPaused = false;
         this.currentIndex = 0;
         this.timer = null;
         this.images = [
-          { src: '../../../assets/imagens/pontadealcatra/pontadealcatragerada1.png', label: 'Ponta de Alcatra em apresentação' },
-          { src: '../../../assets/imagens/pontadealcatra/bifeaarole.jpg', label: 'Ponta de Alcatra em bife a role' },
-          { src: '../../../assets/imagens/pontadealcatra/coxaodurobife.webp', label: 'Ponta de Alcatra em corte fino' },
-          { src: '../../../assets/imagens/pontadealcatra/coxaodurocortes.png', label: 'Ponta de Alcatra em corte' },
-          { src: '../../../assets/imagens/pontadealcatra/coxaodurorecheado.jpg', label: 'Ponta de Alcatra recheada' }
+          { src: '../../../assets/imagens/ossobuco/ossobuco.jpg', label: 'Ossobuco bovino' },
+          { src: '../../../assets/imagens/ossobuco/ossobucocru.jpg', label: 'Ossobuco cru' },
+          { src: '../../../assets/imagens/ossobuco/ossobucocozido.jpg', label: 'Ossobuco cozido' }
         ];
 
         this.init();
@@ -326,7 +309,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const revealBlocks = document.querySelectorAll('[data-reveal]');
       revealBlocks.forEach((block) => block.classList.add('is-visible'));
-      new PontaDeAlcatraCarouselController();
+      new OssobucoCarouselController();
     });
   </script>
 

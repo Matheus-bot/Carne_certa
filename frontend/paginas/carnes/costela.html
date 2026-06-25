@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coxão Mole | CarneCerta</title>
+  <title>Costela | CarneCerta</title>
   <link rel="stylesheet" href="../../css/style.css">
 
   <style>
-    .coxaomole-animation-container {
+    .costela-animation-container {
       width: 100%;
       max-width: 620px;
       margin: 40px auto;
@@ -21,7 +21,7 @@
       overflow: hidden;
     }
 
-    .coxaomole-animation-container--inline {
+    .costela-animation-container--inline {
       max-width: none;
       margin: 0;
       padding: 22px;
@@ -31,7 +31,7 @@
       border-radius: 0;
     }
 
-    .coxaomole-animation-container::before {
+    .costela-animation-container::before {
       content: '';
       position: absolute;
       top: -45%;
@@ -48,7 +48,7 @@
       50% { opacity: 1; }
     }
 
-    .coxaomole-image-wrapper {
+    .costela-image-wrapper {
       position: relative;
       width: 100%;
       height: 400px;
@@ -62,7 +62,7 @@
       z-index: 1;
     }
 
-    .coxaomole-animation-container--inline .coxaomole-image-wrapper {
+    .costela-animation-container--inline .costela-image-wrapper {
       height: auto;
       min-height: 420px;
       background: transparent;
@@ -70,7 +70,7 @@
       margin-bottom: 20px;
     }
 
-    .coxaomole-image-wrapper img {
+    .costela-image-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -78,7 +78,7 @@
       animation: fadeInScale 0.8s ease-out forwards;
     }
 
-    .coxaomole-image-wrapper img.reset-state {
+    .costela-image-wrapper img.reset-state {
       animation: none;
       opacity: 1;
       transform: scale(1);
@@ -95,7 +95,7 @@
       }
     }
 
-    .coxaomole-buttons-group {
+    .costela-buttons-group {
       display: flex;
       gap: 12px;
       justify-content: center;
@@ -104,7 +104,7 @@
       z-index: 2;
     }
 
-    .coxaomole-btn {
+    .costela-btn {
       padding: 12px 18px;
       font-size: 0.9rem;
       font-weight: 600;
@@ -118,15 +118,15 @@
       text-transform: uppercase;
     }
 
-    .coxaomole-btn:hover,
-    .coxaomole-btn.active {
+    .costela-btn:hover,
+    .costela-btn.active {
       background: var(--button-color);
       color: white;
       box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
       transform: translateY(-2px);
     }
 
-    .coxaomole-info-label {
+    .costela-info-label {
       text-align: center;
       margin-top: 18px;
       font-size: 0.875rem;
@@ -135,37 +135,28 @@
       min-height: 20px;
     }
 
-    .coxaomole-recommendation-image {
-      width: 100%;
-      max-width: 240px;
-      border-radius: 12px;
-      object-fit: cover;
-      margin-top: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
     @media (max-width: 768px) {
-      .coxaomole-animation-container {
+      .costela-animation-container {
         padding: 24px;
         margin: 24px auto;
       }
 
-      .coxaomole-image-wrapper {
+      .costela-image-wrapper {
         height: 300px;
       }
     }
 
     @media (max-width: 480px) {
-      .coxaomole-animation-container {
+      .costela-animation-container {
         padding: 16px;
         margin: 16px;
       }
 
-      .coxaomole-image-wrapper {
+      .costela-image-wrapper {
         height: 250px;
       }
 
-      .coxaomole-btn {
+      .costela-btn {
         padding: 10px 16px;
         font-size: 0.8rem;
         flex: 1;
@@ -186,108 +177,103 @@
       <section class="meat-section">
         <div class="meat-visual-column" data-reveal>
           <span class="meat-visual-kicker">Mapa CarneCerta</span>
-          <h2>Versatilidade premium para bife e panela</h2>
+          <h2>Costela clássica para churrasco e cozimento lento</h2>
           <p class="meat-visual-summary">
-            O coxão mole equilibra maciez e rendimento, com ótimo comportamento em bifes finos e cozimento delicado.
+            A costela é um corte marcante, muito apreciado por seu sabor intenso, textura rica e grande presença em grelha e assados.
           </p>
 
           <div class="meat-image-stage">
             <span class="meat-image-glow"></span>
             <div class="meat-image-area">
-              <section class="coxaomole-animation-container coxaomole-animation-container--inline">
-                <div class="coxaomole-image-wrapper">
+              <section class="costela-animation-container costela-animation-container--inline">
+                <div class="costela-image-wrapper">
                   <img
-                    id="coxaomole-image"
-                    src="../../../assets/imagens/coxaomole/coxãomole.png"
-                    alt="Coxão mole em apresentação inicial"
+                    id="costela-image"
+                    src="../../../assets/imagens/costelaBovina/costelacortejanelacru.jpg"
+                    alt="Costela em apresentação crua"
                     class="meat-image reset-state"
                   >
                 </div>
 
-                <div class="coxaomole-buttons-group">
-                  <button id="coxaomole-btn-inteiro" class="coxaomole-btn" data-action="inteiro">Inteiro</button>
-                  <button id="coxaomole-btn-bifes" class="coxaomole-btn" data-action="bifes">Bifes</button>
-                  <button id="coxaomole-btn-frito" class="coxaomole-btn" data-action="frito">Frito</button>
+                <div class="costela-buttons-group">
+                  <button id="costela-btn-crua" class="costela-btn" data-action="crua">Crua</button>
+                  <button id="costela-btn-inteira" class="costela-btn" data-action="inteira">Inteira</button>
+                  <button id="costela-btn-assada" class="costela-btn" data-action="assada">Assada</button>
                 </div>
 
-                <div class="coxaomole-info-label" id="coxaomole-info-label"></div>
+                <div class="costela-info-label" id="costela-info-label"></div>
               </section>
             </div>
             <div class="meat-image-meta">
-              <span>Bifes e panela</span>
-              <span>Perfil equilibrado</span>
+              <span>Churrasco</span>
+              <span>Assado</span>
+              <span>Grelha</span>
             </div>
           </div>
         </div>
 
         <div class="meat-content" data-reveal>
-          <span class="meat-tag">Ideal para • bifes • panela • forno</span>
-          <h1>Coxão Mole</h1>
+          <span class="meat-tag">Ideal para • churrasco • assado • grelha</span>
+          <h1>Costela</h1>
           <p class="meat-lead">
-            Um corte traseiro democrático para quem quer maciez agradável sem perder versatilidade no preparo.
+            Um corte tradicional e muito querido, com sabor marcante e excelente resposta em preparos longos e em fogo direto.
           </p>
           <p class="meat-description">
-            O coxão mole vai bem em bifes do dia a dia, preparos recheados e receitas de panela menos longas. Quando bem fatiado, oferece textura mais uniforme e mastigação confortável.
+            A costela combina bem com fogo indireto, assados lentos e grelha, entregando uma textura suculenta e forte identidade de sabor.
           </p>
 
           <div class="quick-info">
-            <span>Bifes do dia a dia</span>
-            <span>Boa uniformidade</span>
-            <span>Fácil de fatiar</span>
+            <span>Assado</span>
+            <span>Churrasco</span>
+            <span>Fogo indireto</span>
           </div>
 
           <div class="meat-score-grid">
             <article class="meat-score-card">
-              <span class="meat-score-label">Maciez</span>
+              <span class="meat-score-label">Sabor</span>
+              <strong>5/5</strong>
+              <div class="bar"><div class="fill fill-5"></div></div>
+              <small>Intenso</small>
+            </article>
+            <article class="meat-score-card">
+              <span class="meat-score-label">Suculência</span>
               <strong>4/5</strong>
               <div class="bar"><div class="fill fill-4"></div></div>
-              <small>Boa</small>
+              <small>Alta</small>
             </article>
             <article class="meat-score-card">
-              <span class="meat-score-label">Gordura</span>
-              <strong>2/5</strong>
-              <div class="bar"><div class="fill fill-2"></div></div>
-              <small>Baixa</small>
-            </article>
-            <article class="meat-score-card">
-              <span class="meat-score-label">Sabor</span>
-              <strong>3/5</strong>
-              <div class="bar"><div class="fill fill-3"></div></div>
-              <small>Equilibrado</small>
+              <span class="meat-score-label">Versatilidade</span>
+              <strong>4/5</strong>
+              <div class="bar"><div class="fill fill-4"></div></div>
+              <small>Excelente</small>
             </article>
           </div>
 
           <article class="recommendation-card">
             <div class="recommendation-top">
-              <span class="score">4.5</span>
-              <span class="best-choice">Leitura mais versátil</span>
+              <span class="score">4.8</span>
+              <span class="best-choice">Favorita para churrasco</span>
             </div>
             <p>
-              Excelente custo de entrada para bifes e receitas rápidas, especialmente quando a prioridade é praticidade com boa maciez.
+              Perfeita para quem quer um corte com presença, sabor profundo e resultado muito especial em assados e grelhas.
             </p>
-            <img
-              id="coxaomole-recommendation-image"
-              class="coxaomole-recommendation-image"
-              src="../../../assets/imagens/coxaomole/coxaomoleinteiro.png"
-              alt="Coxão mole inteiro recomendado"
-            >
           </article>
 
           <div class="meat-detail-grid">
             <article class="info-card">
               <h3>Ideal para</h3>
               <div class="tags">
-                <span>Bifes</span>
-                <span>Panela</span>
-                <span>Rolê</span>
-                <span>Forno</span>
+                <span>Churrasco</span>
+                <span>Assado</span>
+                <span>Grelha</span>
+                <span>Fogo indireto</span>
               </div>
             </article>
 
             <article class="chef-tip">
               <h3>Dica do açougueiro IA</h3>
               <p>
-                Peça o corte em fatias uniformes e sele rapidamente dos dois lados para preservar suculência nos bifes finos.
+                Para realçar o sabor, cozinhe devagar e deixe a gordura derreter aos poucos antes de finalizar a superfície.
               </p>
             </article>
           </div>
@@ -300,23 +286,22 @@
 
   <script src="../../script.js"></script>
   <script>
-    class CoxaoMoleAnimationController {
+    class CostelaAnimationController {
       constructor() {
-        this.imageElement = document.getElementById('coxaomole-image');
-        this.recommendationImage = document.getElementById('coxaomole-recommendation-image');
-        this.buttons = Array.from(document.querySelectorAll('.coxaomole-btn'));
-        this.infoLabel = document.getElementById('coxaomole-info-label');
-        this.currentState = 'inteiro';
+        this.imageElement = document.getElementById('costela-image');
+        this.buttons = Array.from(document.querySelectorAll('.costela-btn'));
+        this.infoLabel = document.getElementById('costela-info-label');
+        this.currentState = 'crua';
         this.imagePaths = {
-          inteiro: '../../../assets/imagens/coxaomole/coxaomoleinteiro.png',
-          bifes: '../../../assets/imagens/coxaomole/coxaomolebifescru.webp',
-          frito: '../../../assets/imagens/coxaomole/coxaomolefrito.jpg'
+          crua: '../../../assets/imagens/costelaBovina/costelacortejanelacru.jpg',
+          inteira: '../../../assets/imagens/costelaBovina/costelacortepadrao.png',
+          assada: '../../../assets/imagens/costelaBovina/costelaassadainteira.webp'
         };
 
         this.labels = {
-          inteiro: 'Mostrando o coxão mole na versão inteira e crua.',
-          bifes: 'Mostrando o coxão mole em formato de bifes crus.',
-          frito: 'Mostrando o coxão mole já frito e preparado.'
+          crua: 'Mostrando a costela na apresentação crua.',
+          inteira: 'Mostrando a costela em corte inteiro e tradicional.',
+          assada: 'Mostrando a costela já assada e pronta para servir.'
         };
 
         this.bindEvents();
@@ -343,12 +328,7 @@
         }
 
         this.imageElement.src = this.imagePaths[nextState];
-        this.imageElement.alt = `Coxão mole - ${this.labels[nextState]}`;
-
-        if (this.recommendationImage) {
-          this.recommendationImage.src = this.imagePaths.inteiro;
-          this.recommendationImage.alt = 'Coxão mole inteiro recomendado';
-        }
+        this.imageElement.alt = `Costela - ${this.labels[nextState]}`;
 
         this.buttons.forEach((button) => {
           const isActive = button.dataset.action === nextState;
@@ -364,7 +344,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const revealBlocks = document.querySelectorAll('[data-reveal]');
       revealBlocks.forEach((block) => block.classList.add('is-visible'));
-      new CoxaoMoleAnimationController();
+      new CostelaAnimationController();
     });
   </script>
 </body>

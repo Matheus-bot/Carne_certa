@@ -4,11 +4,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Coxão Mole | CarneCerta</title>
+  <title>Capa do Contra File | CarneCerta</title>
   <link rel="stylesheet" href="../../css/style.css">
 
   <style>
-    .coxaomole-animation-container {
+    .capadocontrafile-animation-container {
       width: 100%;
       max-width: 620px;
       margin: 40px auto;
@@ -21,7 +21,7 @@
       overflow: hidden;
     }
 
-    .coxaomole-animation-container--inline {
+    .capadocontrafile-animation-container--inline {
       max-width: none;
       margin: 0;
       padding: 22px;
@@ -31,7 +31,7 @@
       border-radius: 0;
     }
 
-    .coxaomole-animation-container::before {
+    .capadocontrafile-animation-container::before {
       content: '';
       position: absolute;
       top: -45%;
@@ -48,7 +48,7 @@
       50% { opacity: 1; }
     }
 
-    .coxaomole-image-wrapper {
+    .capadocontrafile-image-wrapper {
       position: relative;
       width: 100%;
       height: 400px;
@@ -62,7 +62,7 @@
       z-index: 1;
     }
 
-    .coxaomole-animation-container--inline .coxaomole-image-wrapper {
+    .capadocontrafile-animation-container--inline .capadocontrafile-image-wrapper {
       height: auto;
       min-height: 420px;
       background: transparent;
@@ -70,7 +70,7 @@
       margin-bottom: 20px;
     }
 
-    .coxaomole-image-wrapper img {
+    .capadocontrafile-image-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: contain;
@@ -78,7 +78,7 @@
       animation: fadeInScale 0.8s ease-out forwards;
     }
 
-    .coxaomole-image-wrapper img.reset-state {
+    .capadocontrafile-image-wrapper img.reset-state {
       animation: none;
       opacity: 1;
       transform: scale(1);
@@ -95,7 +95,7 @@
       }
     }
 
-    .coxaomole-buttons-group {
+    .capadocontrafile-buttons-group {
       display: flex;
       gap: 12px;
       justify-content: center;
@@ -104,7 +104,7 @@
       z-index: 2;
     }
 
-    .coxaomole-btn {
+    .capadocontrafile-btn {
       padding: 12px 18px;
       font-size: 0.9rem;
       font-weight: 600;
@@ -118,15 +118,15 @@
       text-transform: uppercase;
     }
 
-    .coxaomole-btn:hover,
-    .coxaomole-btn.active {
+    .capadocontrafile-btn:hover,
+    .capadocontrafile-btn.active {
       background: var(--button-color);
       color: white;
       box-shadow: 0 8px 24px rgba(211, 47, 47, 0.3);
       transform: translateY(-2px);
     }
 
-    .coxaomole-info-label {
+    .capadocontrafile-info-label {
       text-align: center;
       margin-top: 18px;
       font-size: 0.875rem;
@@ -135,37 +135,28 @@
       min-height: 20px;
     }
 
-    .coxaomole-recommendation-image {
-      width: 100%;
-      max-width: 240px;
-      border-radius: 12px;
-      object-fit: cover;
-      margin-top: 12px;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
     @media (max-width: 768px) {
-      .coxaomole-animation-container {
+      .capadocontrafile-animation-container {
         padding: 24px;
         margin: 24px auto;
       }
 
-      .coxaomole-image-wrapper {
+      .capadocontrafile-image-wrapper {
         height: 300px;
       }
     }
 
     @media (max-width: 480px) {
-      .coxaomole-animation-container {
+      .capadocontrafile-animation-container {
         padding: 16px;
         margin: 16px;
       }
 
-      .coxaomole-image-wrapper {
+      .capadocontrafile-image-wrapper {
         height: 250px;
       }
 
-      .coxaomole-btn {
+      .capadocontrafile-btn {
         padding: 10px 16px;
         font-size: 0.8rem;
         flex: 1;
@@ -186,108 +177,102 @@
       <section class="meat-section">
         <div class="meat-visual-column" data-reveal>
           <span class="meat-visual-kicker">Mapa CarneCerta</span>
-          <h2>Versatilidade premium para bife e panela</h2>
+          <h2>Versão premium e elegante do contra file</h2>
           <p class="meat-visual-summary">
-            O coxão mole equilibra maciez e rendimento, com ótimo comportamento em bifes finos e cozimento delicado.
+            A capa do contra file destaca a textura, o acabamento e a apresentação ideal para grelha, churrasqueira e preparos sofisticados.
           </p>
 
           <div class="meat-image-stage">
             <span class="meat-image-glow"></span>
             <div class="meat-image-area">
-              <section class="coxaomole-animation-container coxaomole-animation-container--inline">
-                <div class="coxaomole-image-wrapper">
+              <section class="capadocontrafile-animation-container capadocontrafile-animation-container--inline">
+                <div class="capadocontrafile-image-wrapper">
                   <img
-                    id="coxaomole-image"
-                    src="../../../assets/imagens/coxaomole/coxãomole.png"
-                    alt="Coxão mole em apresentação inicial"
+                    id="capadocontrafile-image"
+                    src="../../../assets/imagens/capadefile/capacontrafilecru.jpg"
+                    alt="Capa do Contra File em versão crua"
                     class="meat-image reset-state"
                   >
                 </div>
 
-                <div class="coxaomole-buttons-group">
-                  <button id="coxaomole-btn-inteiro" class="coxaomole-btn" data-action="inteiro">Inteiro</button>
-                  <button id="coxaomole-btn-bifes" class="coxaomole-btn" data-action="bifes">Bifes</button>
-                  <button id="coxaomole-btn-frito" class="coxaomole-btn" data-action="frito">Frito</button>
+                <div class="capadocontrafile-buttons-group">
+                  <button id="capadocontrafile-btn-cru" class="capadocontrafile-btn" data-action="cru">Cru</button>
+                  <button id="capadocontrafile-btn-assado" class="capadocontrafile-btn" data-action="assado">Assado</button>
                 </div>
 
-                <div class="coxaomole-info-label" id="coxaomole-info-label"></div>
+                <div class="capadocontrafile-info-label" id="capadocontrafile-info-label"></div>
               </section>
             </div>
             <div class="meat-image-meta">
-              <span>Bifes e panela</span>
-              <span>Perfil equilibrado</span>
+              <span>Grelha</span>
+              <span>Apresentação</span>
+              <span>Premium</span>
             </div>
           </div>
         </div>
 
         <div class="meat-content" data-reveal>
-          <span class="meat-tag">Ideal para • bifes • panela • forno</span>
-          <h1>Coxão Mole</h1>
+          <span class="meat-tag">Ideal para • churrasco • grelha • apresentação premium</span>
+          <h1>Capa do Contra File</h1>
           <p class="meat-lead">
-            Um corte traseiro democrático para quem quer maciez agradável sem perder versatilidade no preparo.
+            Uma opção elegante para quem busca um corte com sabor forte, acabamento superior e resposta excelente em pratos de fogo direto.
           </p>
           <p class="meat-description">
-            O coxão mole vai bem em bifes do dia a dia, preparos recheados e receitas de panela menos longas. Quando bem fatiado, oferece textura mais uniforme e mastigação confortável.
+            A capa do contra file é valorizada pela sua textura, aparência refinada e pela capacidade de entregar uma experiência marcante em grelha e churrasqueira.
           </p>
 
           <div class="quick-info">
-            <span>Bifes do dia a dia</span>
-            <span>Boa uniformidade</span>
-            <span>Fácil de fatiar</span>
+            <span>Churrasco</span>
+            <span>Grelha</span>
+            <span>Apresentação premium</span>
           </div>
 
           <div class="meat-score-grid">
             <article class="meat-score-card">
-              <span class="meat-score-label">Maciez</span>
+              <span class="meat-score-label">Sabor</span>
+              <strong>5/5</strong>
+              <div class="bar"><div class="fill fill-5"></div></div>
+              <small>Intenso</small>
+            </article>
+            <article class="meat-score-card">
+              <span class="meat-score-label">Apresentação</span>
+              <strong>5/5</strong>
+              <div class="bar"><div class="fill fill-5"></div></div>
+              <small>Premium</small>
+            </article>
+            <article class="meat-score-card">
+              <span class="meat-score-label">Versatilidade</span>
               <strong>4/5</strong>
               <div class="bar"><div class="fill fill-4"></div></div>
-              <small>Boa</small>
-            </article>
-            <article class="meat-score-card">
-              <span class="meat-score-label">Gordura</span>
-              <strong>2/5</strong>
-              <div class="bar"><div class="fill fill-2"></div></div>
-              <small>Baixa</small>
-            </article>
-            <article class="meat-score-card">
-              <span class="meat-score-label">Sabor</span>
-              <strong>3/5</strong>
-              <div class="bar"><div class="fill fill-3"></div></div>
-              <small>Equilibrado</small>
+              <small>Alta</small>
             </article>
           </div>
 
           <article class="recommendation-card">
             <div class="recommendation-top">
-              <span class="score">4.5</span>
-              <span class="best-choice">Leitura mais versátil</span>
+              <span class="score">4.8</span>
+              <span class="best-choice">Escolha premium</span>
             </div>
             <p>
-              Excelente custo de entrada para bifes e receitas rápidas, especialmente quando a prioridade é praticidade com boa maciez.
+              Excelente para ocasiões especiais, quando a proposta é unir sabor marcante com uma apresentação refinada e impactante.
             </p>
-            <img
-              id="coxaomole-recommendation-image"
-              class="coxaomole-recommendation-image"
-              src="../../../assets/imagens/coxaomole/coxaomoleinteiro.png"
-              alt="Coxão mole inteiro recomendado"
-            >
           </article>
 
           <div class="meat-detail-grid">
             <article class="info-card">
               <h3>Ideal para</h3>
               <div class="tags">
-                <span>Bifes</span>
-                <span>Panela</span>
-                <span>Rolê</span>
-                <span>Forno</span>
+                <span>Churrasco</span>
+                <span>Grelha</span>
+                <span>Pratos premium</span>
+                <span>Apresentação</span>
               </div>
             </article>
 
             <article class="chef-tip">
               <h3>Dica do açougueiro IA</h3>
               <p>
-                Peça o corte em fatias uniformes e sele rapidamente dos dois lados para preservar suculência nos bifes finos.
+                Tempere de forma simples e deixe a superfície dourar bem para valorizar o sabor e a textura do corte.
               </p>
             </article>
           </div>
@@ -300,23 +285,20 @@
 
   <script src="../../script.js"></script>
   <script>
-    class CoxaoMoleAnimationController {
+    class CapaContraFileAnimationController {
       constructor() {
-        this.imageElement = document.getElementById('coxaomole-image');
-        this.recommendationImage = document.getElementById('coxaomole-recommendation-image');
-        this.buttons = Array.from(document.querySelectorAll('.coxaomole-btn'));
-        this.infoLabel = document.getElementById('coxaomole-info-label');
-        this.currentState = 'inteiro';
+        this.imageElement = document.getElementById('capadocontrafile-image');
+        this.buttons = Array.from(document.querySelectorAll('.capadocontrafile-btn'));
+        this.infoLabel = document.getElementById('capadocontrafile-info-label');
+        this.currentState = 'cru';
         this.imagePaths = {
-          inteiro: '../../../assets/imagens/coxaomole/coxaomoleinteiro.png',
-          bifes: '../../../assets/imagens/coxaomole/coxaomolebifescru.webp',
-          frito: '../../../assets/imagens/coxaomole/coxaomolefrito.jpg'
+          cru: '../../../assets/imagens/capadefile/capacontrafilecru.jpg',
+          assado: '../../../assets/imagens/capadefile/capacontrafileassada.jpg'
         };
 
         this.labels = {
-          inteiro: 'Mostrando o coxão mole na versão inteira e crua.',
-          bifes: 'Mostrando o coxão mole em formato de bifes crus.',
-          frito: 'Mostrando o coxão mole já frito e preparado.'
+          cru: 'Mostrando a capa do contra file na versão crua.',
+          assado: 'Mostrando a capa do contra file já assada.'
         };
 
         this.bindEvents();
@@ -343,12 +325,7 @@
         }
 
         this.imageElement.src = this.imagePaths[nextState];
-        this.imageElement.alt = `Coxão mole - ${this.labels[nextState]}`;
-
-        if (this.recommendationImage) {
-          this.recommendationImage.src = this.imagePaths.inteiro;
-          this.recommendationImage.alt = 'Coxão mole inteiro recomendado';
-        }
+        this.imageElement.alt = `Capa do Contra File - ${this.labels[nextState]}`;
 
         this.buttons.forEach((button) => {
           const isActive = button.dataset.action === nextState;
@@ -364,7 +341,7 @@
     document.addEventListener('DOMContentLoaded', () => {
       const revealBlocks = document.querySelectorAll('[data-reveal]');
       revealBlocks.forEach((block) => block.classList.add('is-visible'));
-      new CoxaoMoleAnimationController();
+      new CapaContraFileAnimationController();
     });
   </script>
 </body>

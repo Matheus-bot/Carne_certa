@@ -101,6 +101,17 @@ const cowMapCuts = [
     description: "Corte nobre para grelha e chapa, com sabor intenso e boa suculencia."
   },
   {
+    id: "capadocontrafile",
+    name: "Capa do Contra File",
+    pointX: 61.1,
+    pointY: 38.6,
+    labelX: 69.6,
+    labelY: 15.4,
+    side: "right",
+    link: "../carnes/capadocontrafile.html",
+    description: "Versao premium e elegante do contra file para grelha e apresentação sofisticada."
+  },
+  {
     id: "bistecadocontrafile",
     name: "Bisteca do Contra File",
     pointX: 58.4,
@@ -156,6 +167,17 @@ const cowMapCuts = [
     description: "Corte de sabor intenso, ideal para caldo e cozimento longo."
   },
   {
+    id: "rabobovino",
+    name: "Rabo Bovino",
+    pointX: 18.8,
+    pointY: 76.8,
+    labelX: 2.4,
+    labelY: 86.2,
+    side: "left",
+    link: "../carnes/rabobovino.html",
+    description: "Corte tradicional para caldos, panelas e cozimentos longos."
+  },
+  {
     id: "coxaomole",
     name: "Coxao Mole",
     pointX: 73.6,
@@ -176,6 +198,17 @@ const cowMapCuts = [
     side: "right",
     link: "../carnes/musculo.html",
     description: "Rico em colageno, excelente para caldos encorpados e coccao lenta."
+  },
+  {
+    id: "ossobuco",
+    name: "Ossobuco Bovino",
+    pointX: 74.2,
+    pointY: 71.8,
+    labelX: 68.1,
+    labelY: 78.8,
+    side: "right",
+    link: "../carnes/ossobuco.html",
+    description: "Corte clássico para cozimento lento, com sabor intenso e textura macia."
   },
   {
     id: "filemignon",
@@ -200,6 +233,17 @@ const cowMapCuts = [
     description: "Corte dianteiro com sabor marcante, otimo para molhos e panelas."
   },
   {
+    id: "patinho",
+    name: "Patinho",
+    pointX: 31.8,
+    pointY: 56.4,
+    labelX: 8.8,
+    labelY: 58.2,
+    side: "left",
+    link: "../carnes/patinho.html",
+    description: "Corte versátil para panela, assados e pratos tradicionais."
+  },
+  {
     id: "picanha",
     name: "Picanha",
     pointX: 64.2,
@@ -209,6 +253,39 @@ const cowMapCuts = [
     side: "right",
     link: "../carnes/picanha.html",
     description: "Corte nobre, extremamente macio e saboroso para churrasco premium."
+  },
+  {
+    id: "costela",
+    name: "Costela",
+    pointX: 53.2,
+    pointY: 24.8,
+    labelX: 53.8,
+    labelY: 17.2,
+    side: "right",
+    link: "../carnes/costela.html",
+    description: "Corte tradicional, suculento e muito valorizado para assados e churrasco."
+  },
+  {
+    id: "pontadepeito",
+    name: "Ponta de Peito",
+    pointX: 44.6,
+    pointY: 31.4,
+    labelX: 41.2,
+    labelY: 25.4,
+    side: "left",
+    link: "../carnes/pontadepeito.html",
+    description: "Corte versátil para assados, panela e cozimentos tradicionais."
+  },
+  {
+    id: "lagarto",
+    name: "Lagarto",
+    pointX: 48.8,
+    pointY: 31.2,
+    labelX: 52.4,
+    labelY: 24.4,
+    side: "right",
+    link: "../carnes/lagarto.html",
+    description: "Corte versátil para assados, panelas e preparos tradicionais."
   },
   {
     id: "alcatra",
