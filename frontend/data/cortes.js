@@ -91,6 +91,32 @@ window.CARNECERTA_DATA = {
       notes: "Corte grande e saboroso, ideal para churrasco com excelente presença.",
       factor: 1.08
     },
+    lingua: {
+      id: "lingua",
+      name: "Língua Bovina",
+      image: "../../../assets/imagens/lingua/lingua.jpg",
+      page: "../carnes/lingua.html",
+      priorities: ["sabor", "barat"],
+      categories: ["panela", "moer", "desfiar"],
+      fatProfile: "equilibrada",
+      cutHints: ["cozida", "tradicional", "firme", "molho"],
+      butcherCut: "corte em peças inteiras para cozimento",
+      notes: "Corte tradicional com sabor intenso e ótimo para panela.",
+      factor: 0.95
+    },
+    mocoto: {
+      id: "mocoto",
+      name: "Mocotó",
+      image: "../../../assets/imagens/mocoto/mocotoporcionado.jpg",
+      page: "../carnes/mocoto.html",
+      priorities: ["sabor", "barat"],
+      categories: ["panela", "desfiar", "caldo"],
+      fatProfile: "equilibrada",
+      cutHints: ["cozido", "caldo", "tradicional", "firme"],
+      butcherCut: "corte para cozimento longo",
+      notes: "Corte clássico para caldo e preparos tradicionais.",
+      factor: 0.93
+    },
     alcatra: {
       id: "alcatra",
       name: "Alcatra",

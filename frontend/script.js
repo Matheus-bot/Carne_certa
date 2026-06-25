@@ -134,6 +134,28 @@ const cowMapCuts = [
     description: "Corte grande e saboroso, ideal para churrasco com excelente presença."
   },
   {
+    id: "lingua",
+    name: "Língua Bovina",
+    pointX: 24.4,
+    pointY: 63.2,
+    labelX: 4.4,
+    labelY: 68.8,
+    side: "left",
+    link: "../carnes/lingua.html",
+    description: "Corte tradicional, muito apreciado em preparos de panela e cozimento prolongado."
+  },
+  {
+    id: "mocoto",
+    name: "Mocotó",
+    pointX: 22.4,
+    pointY: 71.8,
+    labelX: 3.2,
+    labelY: 80.2,
+    side: "left",
+    link: "../carnes/mocoto.html",
+    description: "Corte de sabor intenso, ideal para caldo e cozimento longo."
+  },
+  {
     id: "coxaomole",
     name: "Coxao Mole",
     pointX: 73.6,
