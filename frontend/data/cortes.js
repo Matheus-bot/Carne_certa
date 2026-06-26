@@ -16,7 +16,7 @@ window.CARNECERTA_DATA = {
     paleta: {
       id: "paleta",
       name: "Paleta",
-      image: "../../../assets/imagens/paleta/paletagerada.png",
+      image: "../../../assets/imagens/paleta/Paletabovinainteiracrua.jpeg",
       page: "../carnes/paleta.html",
       priorities: ["maci", "barat"],
       categories: ["panela", "moer", "desfiar", "hamburguer"],
@@ -25,6 +25,32 @@ window.CARNECERTA_DATA = {
       butcherCut: "corte em cubos medios e retire excesso de nervo",
       notes: "Macia e versatil para receitas de panela.",
       factor: 1.0
+    },
+    maminha: {
+      id: "maminha",
+      name: "Maminha",
+      image: "../../../assets/imagens/maminha/maminhainteiracrua.jpg",
+      page: "../carnes/maminha.html",
+      priorities: ["sabor", "maci"],
+      categories: ["churrasco", "assado", "bife"],
+      fatProfile: "saborosa",
+      cutHints: ["inteira", "assada", "suculenta", "grelha"],
+      butcherCut: "corte inteiro ou em peças para assar",
+      notes: "Corte suculento e muito bem aceito em grelha e assados.",
+      factor: 1.03
+    },
+    fraldinha: {
+      id: "fraldinha",
+      name: "Fraldinha",
+      image: "../../../assets/imagens/fraldinha/fraldinhainteiracrua03.jpg",
+      page: "../carnes/fraldinha.html",
+      priorities: ["sabor", "barat"],
+      categories: ["churrasco", "assado", "panela"],
+      fatProfile: "saborosa",
+      cutHints: ["inteira", "cortada", "assada", "suave"],
+      butcherCut: "corte inteiro ou cortado em tiras para assar",
+      notes: "Corte saboroso e muito versátil para churrasco e panela.",
+      factor: 0.99
     },
     patinho: {
       id: "patinho",

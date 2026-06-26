@@ -233,6 +233,28 @@ const cowMapCuts = [
     description: "Corte dianteiro com sabor marcante, otimo para molhos e panelas."
   },
   {
+    id: "maminha",
+    name: "Maminha",
+    pointX: 66.8,
+    pointY: 46.2,
+    labelX: 69.4,
+    labelY: 49.8,
+    side: "right",
+    link: "../carnes/maminha.html",
+    description: "Corte suculento, muito apreciado para grelha, assados e preparos de sabor marcante."
+  },
+  {
+    id: "fraldinha",
+    name: "Fraldinha",
+    pointX: 49.4,
+    pointY: 56.2,
+    labelX: 52.8,
+    labelY: 60.6,
+    side: "right",
+    link: "../carnes/fraldinha.html",
+    description: "Corte saboroso e bem equilibrado para assados, panelas e pratos de churrasqueira."
+  },
+  {
     id: "patinho",
     name: "Patinho",
     pointX: 31.8,
