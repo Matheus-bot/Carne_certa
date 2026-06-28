@@ -1,5 +1,3 @@
-console.log("CarneCerta iniciado 🚀");
-
 const themeStorageKey = "carnecerta-theme";
 const themeOptions = {
   dark: {
@@ -22,6 +20,17 @@ const getStoredTheme = () => {
   }
 };
 
+const updateThemeToggle = (toggleButton, nextTheme) => {
+  const targetTheme = nextTheme === "dark" ? "light" : "dark";
+
+  toggleButton.dataset.theme = nextTheme;
+  toggleButton.setAttribute("aria-label", `Alternar para ${themeOptions[targetTheme].title}`);
+  toggleButton.innerHTML = `
+    <span class="theme-toggle-icon" aria-hidden="true">${themeOptions[nextTheme].label}</span>
+    <span class="theme-toggle-thumb" aria-hidden="true"></span>
+  `;
+};
+
 const applyTheme = (themeName) => {
   const nextTheme = themeName === "light" ? "light" : "dark";
   const body = document.body;
@@ -38,13 +47,7 @@ const applyTheme = (themeName) => {
 
   const toggleButton = document.querySelector("[data-theme-toggle]");
   if (toggleButton) {
-    const targetTheme = nextTheme === "dark" ? "light" : "dark";
-    toggleButton.dataset.theme = nextTheme;
-    toggleButton.setAttribute("aria-label", `Alternar para ${themeOptions[targetTheme].title}`);
-    toggleButton.innerHTML = `
-      <span class="theme-toggle-icon" aria-hidden="true">${themeOptions[nextTheme].label}</span>
-      <span class="theme-toggle-thumb" aria-hidden="true"></span>
-    `;
+    updateThemeToggle(toggleButton, nextTheme);
   }
 };
 
@@ -71,11 +74,16 @@ const initTheme = () => {
   applyTheme(getStoredTheme());
 };
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initTheme, { once: true });
-} else {
-  initTheme();
-}
+const runWhenReady = (callback) => {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", callback, { once: true });
+    return;
+  }
+
+  callback();
+};
+
+runWhenReady(initTheme);
 
 const cowMapCuts = [
   {
@@ -571,11 +579,7 @@ const initCowMap = () => {
   }
 };
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initCowMap, { once: true });
-} else {
-  initCowMap();
-}
+runWhenReady(initCowMap);
 
 const initRevealBlocks = () => {
   const revealBlocks = document.querySelectorAll("[data-reveal]");
@@ -611,23 +615,33 @@ const initRevealBlocks = () => {
   });
 };
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initRevealBlocks, { once: true });
-} else {
-  initRevealBlocks();
-}
+runWhenReady(initRevealBlocks);
 
 const preferenceCards = document.querySelectorAll("[data-open-preferences]");
 
+const navigateToPreferenceTarget = (card) => {
+  const directTarget = card.dataset.target || "";
+
+  if (directTarget) {
+    window.location.href = directTarget;
+  }
+};
+
 preferenceCards.forEach((card) => {
   card.addEventListener("click", () => {
-    const directTarget = card.dataset.target || "";
+    navigateToPreferenceTarget(card);
+  });
 
-    if (directTarget) {
-      window.location.href = directTarget;
-      return;
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      navigateToPreferenceTarget(card);
     }
   });
+
+  if (!card.hasAttribute("tabindex")) {
+    card.setAttribute("tabindex", "0");
+  }
 });
 
 const optionButtons = document.querySelectorAll(".option-btn");
