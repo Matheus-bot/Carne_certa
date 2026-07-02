@@ -217,3 +217,36 @@ if (showButton && butcherDetails) {
 }
 
 updateRecommendation();
+
+window.addEventListener("ze:describe-cut", (event) => {
+  const payload = event.detail || {};
+  if (!payload || !payload.nome) {
+    return;
+  }
+
+  const narration = payload.textoNarracao || `${payload.nome}. ${payload.descricaoCurta || ""}`;
+
+  if (recommendedName) {
+    recommendedName.textContent = payload.nome;
+  }
+
+  if (recommendedDescription) {
+    recommendedDescription.textContent = payload.descricaoCurta || "Descricao enviada pelo ticket visual.";
+  }
+
+  if (recommendedWhy) {
+    recommendedWhy.innerHTML = `<strong>Por que foi recomendado:</strong> ${narration}`;
+  }
+
+  if (butcherMeat) {
+    butcherMeat.textContent = payload.nome;
+  }
+
+  if (butcherFeatures) {
+    butcherFeatures.textContent = (payload.preparo || []).join(" • ") || "Preparo recomendado no ticket";
+  }
+
+  if (butcherPrep) {
+    butcherPrep.textContent = payload.disponibilidade ? "Disponivel hoje" : "Baixa disponibilidade";
+  }
+});

@@ -1,0 +1,46 @@
+project:
+  scope_path: "."
+  loc: 7000
+  languages: ["html", "css", "javascript", "markdown"]
+  git: true
+  structure:
+    frontend: "Aplicacao web estatica (HTML/CSS/JS) com paginas, scripts e dados"
+    documentacao: "Requisitos, personas, casos de uso e guias"
+    banco: "Referencias conceituais SQL e MongoDB"
+    assets: "Imagens de cortes e recursos visuais"
+    prototipos: "Wireframes e referencias de UX"
+  notes: "Projeto web vanilla sem build tool, foco em recomendacao de cortes e acessibilidade"
+
+assessment:
+  change_type: upgrade
+  rationale: |
+    O pedido e uma evolucao arquitetural no stack atual (frontend vanilla),
+    introduzindo Strategy Pattern, validacao/sanitizacao, acessibilidade e base para PWA.
+    Nao ha migracao de stack principal.
+  transformations:
+    - fromStack: "HTML/CSS/JS vanilla"
+      fromStackVersion: "N/A"
+      toStack: "HTML/CSS/JS vanilla com arquitetura Strategy e motor de recomendacao"
+      toStackVersion: "V1"
+  grouping_needed: false
+  deep_planning: false
+
+progress_sync:
+  run_id: "5c3a114b-7eb7-4634-9dfd-0d8d4f8fe2a1"
+  grouping_mode: "none"
+  execution_mode: "phase-by-phase"
+  plan_start_time: "2026-07-01T00:00:00Z"
+  plan_completed_time: "2026-07-01T00:10:00Z"
+  execution_start_time: "2026-07-01T00:12:00Z"
+  execution_completed_time: ""
+  validation_start_time: ""
+  validation_completed_time: ""
+  total_phases: 4
+  completed_phases: 3
+  total_modules: 3
+  completed_modules: 3
+  total_tasks: 18
+  completed_tasks: 14
+  total_commits: 0
+  build_verified: false
+  test_verified: false

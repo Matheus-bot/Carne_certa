@@ -302,13 +302,19 @@ window.CARNECERTA_DATA = {
     }
   },
   categoryCandidates: {
-    panela: ["musculo", "acem", "paleta", "coxaomole", "pontadealcatra", "alcatra"],
+    panela: ["acem", "paleta", "musculo", "pontadealcatra", "pontadepeito", "patinho", "coxaomole", "lagarto", "fraldinha"],
     bife: ["contrafile", "coxaomole", "pontadealcatra", "acem", "filemignon", "alcatra"],
-    bifearole: ["pontadealcatra", "coxaomole"],
+    bifearole: ["coxaoduro", "lagarto", "coxaomole", "pontadealcatra"],
+    bifefritar: ["patinho", "coxaomole", "lagarto", "alcatra", "contrafile"],
     churrasco: ["pontadealcatra", "contrafile", "coxaomole", "paleta", "filemignon", "picanha", "alcatra"],
+    churrascosemosso: ["maminha", "alcatra", "contrafile", "pontadealcatra", "fraldinha", "picanha"],
+    fritarcomosso: ["bistecadosete", "bistecadocontrafile", "bistecaodoacem", "ossobuco", "acemcomosso"],
     hamburguer: ["coxaomole", "musculo", "acem", "contrafile", "paleta", "pontadealcatra", "filemignon", "picanha", "alcatra"],
-    desfiar: ["musculo", "acem", "paleta", "pontadealcatra", "coxaomole", "alcatra"],
-    moer: ["musculo", "acem", "paleta", "coxaomole", "contrafile", "alcatra"]
+    hamburguerblend: ["blend-hamburguer-classico", "blend-hamburguer-sabor", "blend-hamburguer-economico"],
+    desfiar: ["lagarto", "acem", "fraldinha", "musculo", "patinho", "maminha", "coxaomole", "paleta", "coxaoduro"],
+    moer: ["musculo", "acem", "paleta", "coxaomole", "contrafile", "alcatra"],
+    carnemoida: ["patinho", "acem", "paleta", "musculo", "coxaomole"],
+    panelacomosso: ["costela", "ossobuco", "acemcomosso"]
   },
   gramsPerPerson: {
     panela: 250,
