@@ -10,13 +10,13 @@
   "theme_color": "#121212",
   "icons": [
     {
-      "src": "../assets/logo/logo.png",
+      "src": "../assets/logo/icone-carnecerta.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "../assets/logo/logo.png",
+      "src": "../assets/logo/icone-carnecerta.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"

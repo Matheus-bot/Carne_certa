@@ -663,12 +663,41 @@ preferenceCards.forEach((card) => {
   }
 });
 
+const scrollTriggers = document.querySelectorAll("[data-scroll-target]");
+
+scrollTriggers.forEach((trigger) => {
+  trigger.addEventListener("click", () => {
+    const target = document.querySelector(trigger.dataset.scrollTarget);
+
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+});
+
 const optionButtons = document.querySelectorAll(".option-btn");
 
 optionButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const optionGroup = button.closest(".options, .options-grid");
+  const optionGroup = button.closest(".options, .options-grid");
 
+  if (optionGroup && !optionGroup.hasAttribute("role")) {
+    optionGroup.setAttribute("role", "radiogroup");
+
+    if (!optionGroup.hasAttribute("aria-label") && !optionGroup.hasAttribute("aria-labelledby")) {
+      const heading = optionGroup.closest(".question-block")?.querySelector("h2, legend");
+      if (heading) {
+        optionGroup.setAttribute("aria-label", heading.textContent.trim());
+      }
+    }
+  }
+
+  if (!button.hasAttribute("role")) {
+    button.setAttribute("role", "radio");
+  }
+
+  button.setAttribute("aria-checked", button.classList.contains("active-option") ? "true" : "false");
+
+  button.addEventListener("click", () => {
     if (!optionGroup) {
       return;
     }
@@ -676,9 +705,11 @@ optionButtons.forEach((button) => {
     const siblings = optionGroup.querySelectorAll(".option-btn");
     siblings.forEach((btn) => {
       btn.classList.remove("active-option");
+      btn.setAttribute("aria-checked", "false");
     });
 
     button.classList.add("active-option");
+    button.setAttribute("aria-checked", "true");
   });
 });
 

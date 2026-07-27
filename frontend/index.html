@@ -43,11 +43,11 @@
 
     <div class="top-buttons">
 
-      <button type="button" aria-label="Abrir ajuda sobre o CarneCerta">
+      <button type="button" aria-label="Abrir ajuda sobre o CarneCerta" data-open-preferences data-target="./paginas/categorias/ajuda.html">
         Ajuda
       </button>
 
-      <button type="button" aria-label="Abrir página de acessibilidade" onclick="window.location.href='./paginas/acessibilidade/modo-libras.html'">
+      <button type="button" aria-label="Abrir página de acessibilidade" data-open-preferences data-target="./paginas/acessibilidade/modo-libras.html">
         Acessibilidade
       </button>
 
@@ -58,7 +58,7 @@
 
   <!-- CHAT IA -->
 
-  <section class="chat-top">
+  <section class="chat-top" id="chat-top">
 
     <div class="chat-box">
 
@@ -101,11 +101,11 @@
 
 <div class="hero-buttons">
 
-  <button class="primary-btn" type="button" aria-label="Explorar cortes recomendados">
+  <button class="primary-btn" type="button" aria-label="Explorar cortes recomendados" data-scroll-target="#cards-carousel">
     Explorar Cortes
   </button>
 
-  <button class="secondary-btn" type="button" aria-label="Abrir assistente de IA açougueiro">
+  <button class="secondary-btn" type="button" aria-label="Abrir assistente de IA açougueiro" data-scroll-target="#chat-top">
     IA Açougueiro
   </button>
 
@@ -114,7 +114,7 @@
 
       <!-- CARDS -->
 
-      <div class="cards-carousel">
+      <div class="cards-carousel" id="cards-carousel">
         <div class="cards">
 
         <div

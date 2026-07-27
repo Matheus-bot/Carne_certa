@@ -98,7 +98,7 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  if (requestUrl.pathname.endsWith("/data/carnes.json") || requestUrl.pathname.endsWith("/data/carnes.json".replace("/", ""))) {
+  if (requestUrl.pathname.endsWith(CARNES_DATA_URL.replace(".", ""))) {
     event.respondWith(staleWhileRevalidate(request, DATA_CACHE));
     return;
   }

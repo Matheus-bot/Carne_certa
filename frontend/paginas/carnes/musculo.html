@@ -455,7 +455,6 @@
         // PASSO 1: SEGURANÇA - Cancela animação em progresso
         // ========================================================
         if (this.isAnimating) {
-          console.log(`⚠️ Interrompendo animação anterior (${this.currentState})`);
           this.cancelAnimation();
         }
 
@@ -473,7 +472,6 @@
         // ========================================================
         // PASSO 4: Executa sequência de animação
         // ========================================================
-        console.log(`▶️  Iniciando fluxo: ${action}`);
         this.playSequence(action);
       }
 
@@ -497,7 +495,6 @@
             }
 
             this.transitionToImage(frame.state, frame.label);
-            console.log(`📸 Frame ${index + 1}/${sequence.length}: ${frame.state}`);
 
             // Se for a última frame, finaliza a animação
             if (index === sequence.length - 1) {
@@ -508,7 +505,6 @@
 
                 this.isAnimating = false;
                 this.updateButtonStates(null);
-                console.log(`✅ Animação ${action} finalizada`);
               }, 800); // Aguarda a animação CSS (fadeInScale) terminar
 
               this.animationTimers.push(finalizeTimer);
@@ -576,7 +572,6 @@
         this.animationTimers.forEach((timerId) => clearTimeout(timerId));
         this.animationTimers = [];
         this.isAnimating = false;
-        console.log('⏹️  Timers da animação cancelados');
       }
 
       /**
@@ -605,21 +600,12 @@
         }
       }
 
-      /**
-       * DESTRUIDOR: Limpa quando componente é removido
-       */
-      destroy() {
-        this.cancelAnimation();
-        this.btnCozido.removeEventListener('click', () => {});
-        this.btnMoido.removeEventListener('click', () => {});
-      }
     }
 
     // ============================================================
     // INSTANCIA O CONTROLADOR QUANDO DOM ESTÁ PRONTO
     // ============================================================
     document.addEventListener('DOMContentLoaded', () => {
-      console.log('🎬 MusculoAnimationController inicializado');
       new MusculoAnimationController();
     });
   </script>
