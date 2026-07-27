@@ -109,7 +109,7 @@ Além disso, o projeto possui foco em:
 CarneCerta/
 │
 ├── assets/
-├── documentacao/
+├── docs/
 ├── frontend/
 ├── prototipos/
 ├── banco/
@@ -120,16 +120,15 @@ CarneCerta/
 
 # 📚 Documentação
 
-A pasta `documentacao` contém:
+Toda a documentação do projeto está organizada na pasta [`docs/`](docs/README.md), incluindo:
 
-* Personas
-* Objetivos
-* Requisitos
-* Fluxo do sistema
-* Ideias de telas
-* Backlog
-* Planejamento Scrum
-* Estrutura do banco de dados
+* Planejamento (personas, objetivos, requisitos, fluxo do sistema, backlog, Scrum)
+* Arquitetura (fluxo, casos de uso, banco de dados)
+* Frontend (interface premium, componentes, exemplos de código)
+* Guia técnico de estudo
+* Notas e decisões técnicas
+
+Veja o índice completo em [`docs/README.md`](docs/README.md).
 
 ---
 
