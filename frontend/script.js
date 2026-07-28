@@ -108,10 +108,8 @@ const cowMapCuts = [
   {
     id: "acem",
     name: "Acem",
-    pointX: 32.4,
-    pointY: 40.5,
-    labelX: 2.8,
-    labelY: 18,
+    pointX: 38.7,
+    pointY: 33.2,
     side: "left",
     link: "../carnes/acem.html",
     description: "Corte dianteiro versatil, ideal para receitas de panela e dia a dia."
@@ -119,10 +117,8 @@ const cowMapCuts = [
   {
     id: "contrafile",
     name: "Contra-file",
-    pointX: 59.8,
-    pointY: 39.2,
-    labelX: 68.2,
-    labelY: 16.5,
+    pointX: 59.4,
+    pointY: 29.3,
     side: "right",
     link: "../carnes/contrafile.html",
     description: "Corte nobre para grelha e chapa, com sabor intenso e boa suculencia."
@@ -130,10 +126,8 @@ const cowMapCuts = [
   {
     id: "capadocontrafile",
     name: "Capa do Contra File",
-    pointX: 61.1,
-    pointY: 38.6,
-    labelX: 69.6,
-    labelY: 15.4,
+    pointX: 63.2,
+    pointY: 28.3,
     side: "right",
     link: "../carnes/capadocontrafile.html",
     description: "Versao premium e elegante do contra file para grelha e apresentação sofisticada."
@@ -141,10 +135,8 @@ const cowMapCuts = [
   {
     id: "bistecadocontrafile",
     name: "Bisteca do Contra File",
-    pointX: 58.4,
-    pointY: 37.8,
-    labelX: 66.2,
-    labelY: 15.8,
+    pointX: 55.7,
+    pointY: 33.2,
     side: "right",
     link: "../carnes/bistecadocontrafile.html",
     description: "Versao clássica do contra file, ideal para grelha e churrasco com textura marcante."
@@ -152,21 +144,17 @@ const cowMapCuts = [
   {
     id: "bistecadosete",
     name: "Bisteca do Sete",
-    pointX: 56.8,
-    pointY: 36.6,
-    labelX: 64.8,
-    labelY: 14.6,
-    side: "right",
+    pointX: 49.1,
+    pointY: 35.2,
+    side: "left",
     link: "../carnes/bistecadosete.html",
     description: "Corte tradicional com sabor marcante e ótima resposta na grelha."
   },
   {
     id: "bistecaodoacem",
     name: "Bistecão do Acem",
-    pointX: 30.8,
-    pointY: 41.2,
-    labelX: 8.6,
-    labelY: 18.6,
+    pointX: 33,
+    pointY: 44.1,
     side: "left",
     link: "../carnes/bistecaodoacem.html",
     description: "Corte grande e saboroso, ideal para churrasco com excelente presença."
@@ -174,10 +162,8 @@ const cowMapCuts = [
   {
     id: "lingua",
     name: "Língua Bovina",
-    pointX: 24.4,
-    pointY: 63.2,
-    labelX: 4.4,
-    labelY: 68.8,
+    pointX: 22.7,
+    pointY: 42.1,
     side: "left",
     link: "../carnes/lingua.html",
     description: "Corte tradicional, muito apreciado em preparos de panela e cozimento prolongado."
@@ -185,10 +171,8 @@ const cowMapCuts = [
   {
     id: "mocoto",
     name: "Mocotó",
-    pointX: 22.4,
-    pointY: 71.8,
-    labelX: 3.2,
-    labelY: 80.2,
+    pointX: 39.6,
+    pointY: 84.5,
     side: "left",
     link: "../carnes/mocoto.html",
     description: "Corte de sabor intenso, ideal para caldo e cozimento longo."
@@ -196,21 +180,17 @@ const cowMapCuts = [
   {
     id: "rabobovino",
     name: "Rabo Bovino",
-    pointX: 18.8,
-    pointY: 76.8,
-    labelX: 2.4,
-    labelY: 86.2,
-    side: "left",
+    pointX: 66,
+    pointY: 57.9,
+    side: "right",
     link: "../carnes/rabobovino.html",
     description: "Corte tradicional para caldos, panelas e cozimentos longos."
   },
   {
     id: "coxaomole",
     name: "Coxao Mole",
-    pointX: 73.6,
-    pointY: 55,
-    labelX: 70.4,
-    labelY: 65.5,
+    pointX: 70.7,
+    pointY: 50,
     side: "right",
     link: "../carnes/coxaomole.html",
     description: "Maciez equilibrada para bifes, assados e preparos rapidos."
@@ -218,10 +198,8 @@ const cowMapCuts = [
   {
     id: "musculo",
     name: "Musculo",
-    pointX: 74.9,
-    pointY: 74.2,
-    labelX: 66.5,
-    labelY: 82.5,
+    pointX: 71.7,
+    pointY: 76.9,
     side: "right",
     link: "../carnes/musculo.html",
     description: "Rico em colageno, excelente para caldos encorpados e coccao lenta."
@@ -229,10 +207,8 @@ const cowMapCuts = [
   {
     id: "ossobuco",
     name: "Ossobuco Bovino",
-    pointX: 74.2,
-    pointY: 71.8,
-    labelX: 68.1,
-    labelY: 78.8,
+    pointX: 67.9,
+    pointY: 65.8,
     side: "right",
     link: "../carnes/ossobuco.html",
     description: "Corte clássico para cozimento lento, com sabor intenso e textura macia."
@@ -240,10 +216,8 @@ const cowMapCuts = [
   {
     id: "filemignon",
     name: "File Mignon",
-    pointX: 62.5,
-    pointY: 34.8,
-    labelX: 66.8,
-    labelY: 30.8,
+    pointX: 60.4,
+    pointY: 45.1,
     side: "right",
     link: "../carnes/filemignon.html",
     description: "Corte extremamente macio e magro, ideal para fitness e preparos delicados."
@@ -251,10 +225,8 @@ const cowMapCuts = [
   {
     id: "paleta",
     name: "Paleta",
-    pointX: 25.5,
-    pointY: 58,
-    labelX: 2.8,
-    labelY: 61.5,
+    pointX: 35.9,
+    pointY: 52,
     side: "left",
     link: "../carnes/paleta.html",
     description: "Corte dianteiro com sabor marcante, otimo para molhos e panelas."
@@ -262,10 +234,8 @@ const cowMapCuts = [
   {
     id: "maminha",
     name: "Maminha",
-    pointX: 66.8,
-    pointY: 46.2,
-    labelX: 69.4,
-    labelY: 49.8,
+    pointX: 64.1,
+    pointY: 47,
     side: "right",
     link: "../carnes/maminha.html",
     description: "Corte suculento, muito apreciado para grelha, assados e preparos de sabor marcante."
@@ -273,10 +243,8 @@ const cowMapCuts = [
   {
     id: "fraldinha",
     name: "Fraldinha",
-    pointX: 49.4,
-    pointY: 56.2,
-    labelX: 52.8,
-    labelY: 60.6,
+    pointX: 55.7,
+    pointY: 54,
     side: "right",
     link: "../carnes/fraldinha.html",
     description: "Corte saboroso e bem equilibrado para assados, panelas e pratos de churrasqueira."
@@ -284,21 +252,17 @@ const cowMapCuts = [
   {
     id: "patinho",
     name: "Patinho",
-    pointX: 31.8,
-    pointY: 56.4,
-    labelX: 8.8,
-    labelY: 58.2,
-    side: "left",
+    pointX: 72.6,
+    pointY: 55.9,
+    side: "right",
     link: "../carnes/patinho.html",
     description: "Corte versátil para panela, assados e pratos tradicionais."
   },
   {
     id: "picanha",
     name: "Picanha",
-    pointX: 64.2,
-    pointY: 33.8,
-    labelX: 71.2,
-    labelY: 27.2,
+    pointX: 72.6,
+    pointY: 29.3,
     side: "right",
     link: "../carnes/picanha.html",
     description: "Corte nobre, extremamente macio e saboroso para churrasco premium."
@@ -306,10 +270,8 @@ const cowMapCuts = [
   {
     id: "costela",
     name: "Costela",
-    pointX: 53.2,
-    pointY: 24.8,
-    labelX: 53.8,
-    labelY: 17.2,
+    pointX: 51.9,
+    pointY: 44.1,
     side: "right",
     link: "../carnes/costela.html",
     description: "Corte tradicional, suculento e muito valorizado para assados e churrasco."
@@ -317,10 +279,8 @@ const cowMapCuts = [
   {
     id: "pontadepeito",
     name: "Ponta de Peito",
-    pointX: 44.6,
-    pointY: 31.4,
-    labelX: 41.2,
-    labelY: 25.4,
+    pointX: 40.6,
+    pointY: 56.9,
     side: "left",
     link: "../carnes/pontadepeito.html",
     description: "Corte versátil para assados, panela e cozimentos tradicionais."
@@ -328,10 +288,8 @@ const cowMapCuts = [
   {
     id: "lagarto",
     name: "Lagarto",
-    pointX: 48.8,
-    pointY: 31.2,
-    labelX: 52.4,
-    labelY: 24.4,
+    pointX: 75.4,
+    pointY: 60.9,
     side: "right",
     link: "../carnes/lagarto.html",
     description: "Corte versátil para assados, panelas e preparos tradicionais."
@@ -339,11 +297,9 @@ const cowMapCuts = [
   {
     id: "alcatra",
     name: "Alcatra",
-    pointX: 60.8,
-    pointY: 39.8,
-    labelX: 58.4,
-    labelY: 34.4,
-    side: "left",
+    pointX: 67.9,
+    pointY: 31.2,
+    side: "right",
     link: "../carnes/alcatra.html",
     description: "Corte versátil e saboroso, excelente para grelha, assados e panela.",
     zIndex: 6
@@ -351,10 +307,8 @@ const cowMapCuts = [
   {
     id: "pontadealcatra",
     name: "Ponta de Alcatra",
-    pointX: 70.2,
-    pointY: 43.8,
-    labelX: 68.2,
-    labelY: 43.8,
+    pointX: 66,
+    pointY: 40.1,
     side: "right",
     link: "../carnes/pontadealcatra.html",
     description: "Perfil saboroso para churrasco, bifes altos e preparos suculentos."
