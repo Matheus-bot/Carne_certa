@@ -838,7 +838,17 @@ const getSelectedQuestionText = (questionKey, fallbackText) => {
 };
 
 const parsePeopleCount = (peopleText) => {
-  const normalizedPeopleText = normalizeText(peopleText);
+  const normalizedPeopleText = normalizeText(peopleText).trim();
+
+  // Numero decimal isolado (ex.: "2.5" ou "2,5"), sem hifen de faixa nem "+".
+  // Precisa ser tratado antes do regex generico de digitos abaixo, senao
+  // "2.5" e lido como dois numeros separados (2 e 5) e confundido com uma
+  // faixa tipo "3-4", retornando 5 pessoas em vez de arredondar para 3.
+  const decimalMatch = normalizedPeopleText.match(/^(\d+)[.,](\d+)$/);
+  if (decimalMatch) {
+    return Math.ceil(Number.parseFloat(`${decimalMatch[1]}.${decimalMatch[2]}`));
+  }
+
   const digits = (normalizedPeopleText.match(/\d+/g) || []).map(Number);
 
   if (!digits.length) {
@@ -2003,7 +2013,24 @@ const getTopRecommendations = async (category, selected) => {
   };
 };
 
+// Tags legadas que já existiram em carnes.json mas não têm Strategy própria
+// registrada em StrategyFactory. Em vez de deixar o usuário esbarrar num erro
+// de "categoria não encontrada", redireciona para a categoria oficial mais
+// próxima. Isso não substitui o fail-fast de StrategyFactory.create para
+// categorias realmente desconhecidas (erro de digitação, por exemplo) — só
+// cobre esses aliases explícitos e conhecidos.
+const LEGACY_CATEGORY_ALIASES = {
+  assado: "panela",
+  caldo: "panela"
+};
+
 const pickEffectiveCategory = (category, selected) => {
+  const aliasedCategory = LEGACY_CATEGORY_ALIASES[normalizeText(category)];
+  if (aliasedCategory) {
+    console.warn(`Categoria legada "${category}" sem Strategy; redirecionando para "${aliasedCategory}".`);
+    return aliasedCategory;
+  }
+
   const normalizedUsecase = normalizeText(selected.usecase || "");
   const normalizedBifeType = normalizeText(selected.bifetype || "");
 
@@ -2379,8 +2406,68 @@ const renderRecommendations = (section, recommendations, category, selected, eff
   section.scrollIntoView({ behavior: "smooth", block: "start" });
 };
 
+// Traduz as respostas normalizadas da tela de hambúrguer para o formato de
+// entrada esperado por HamburguerStrategy (frontend/js/hamburguer-strategy.js).
+const mapSelectedToHamburguerInput = (selected) => {
+  let filtroPrincipal = "macia";
+  if (selected.priority.includes("custo") || selected.priority.includes("barat")) {
+    filtroPrincipal = "barata";
+  } else if (selected.priority.includes("gordura") || selected.priority.includes("magr")) {
+    filtroPrincipal = "magra";
+  } else if (selected.priority.includes("sabor")) {
+    filtroPrincipal = "sabor";
+  }
+
+  let blendType = "sosaborosas";
+  if (selected.mixProfile.includes("duas")) {
+    blendType = "duasmagras";
+  } else if (selected.mixProfile.includes("magra") && selected.mixProfile.includes("sabor")) {
+    blendType = "magrasaborosa";
+  }
+
+  return {
+    peopleCount: parsePeopleCount(selected.peopleRaw),
+    grindTimes: extractGrindTimes(selected.grindRaw),
+    wantsBlend: selected.mix.includes("sim"),
+    blendType,
+    filtroPrincipal
+  };
+};
+
+// Ponto de integração com a engine dedicada de Hambúrguer/Carne Moída: em vez
+// de ranquear o catálogo por score (caminho genérico usado pelas outras
+// categorias), monta a receita determinística (corte único ou blend) e
+// renderiza o Ticket Digital diretamente. Erros de entrada (ex.: quantidade
+// de pessoas vazia/zero) viram uma mensagem amigável em vez de travar a tela.
+const renderHamburguerTicketSection = (section, selected) => {
+  const hamburguerEngine = window.CarneCertaHamburguer;
+  const input = mapSelectedToHamburguerInput(selected);
+
+  try {
+    const ticket = new hamburguerEngine.HamburguerStrategy().recommend(input);
+    section.innerHTML = hamburguerEngine.renderTicketHtml(ticket);
+  } catch (error) {
+    const safeMessage = escapeHtml(error.message || "Revise as opcoes selecionadas e tente novamente.");
+    section.innerHTML = `
+      <div class="results-header" aria-live="assertive">
+        <h2>Nao foi possivel gerar seu ticket</h2>
+        <p>${safeMessage}</p>
+      </div>
+    `;
+  }
+
+  section.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+
+// Cada clique gera um token; se um clique mais recente chegar antes de uma
+// promise pendente resolver (ex.: usuario troca de categoria rapido e a
+// resposta da categoria anterior chega depois), a renderizacao desatualizada
+// e descartada em vez de sobrescrever o ticket que o usuario ja está vendo.
+let latestTicketRequestToken = 0;
+
 continueButtons.forEach((button) => {
   button.addEventListener("click", async () => {
+    const requestToken = ++latestTicketRequestToken;
     const category = button.dataset.category;
     const selectedRaw = {
       priorityRaw: getSelectedQuestionText("priority", "nao informada"),
@@ -2410,6 +2497,10 @@ continueButtons.forEach((button) => {
         categoryFilter
       };
     } catch (error) {
+      if (requestToken !== latestTicketRequestToken) {
+        return;
+      }
+
       section.innerHTML = `
         <div class="results-header">
           <h2>Entrada invalida para recomendacao</h2>
@@ -2419,8 +2510,21 @@ continueButtons.forEach((button) => {
       return;
     }
 
+    if (category === "hamburguer" && window.CarneCertaHamburguer) {
+      if (requestToken !== latestTicketRequestToken) {
+        return;
+      }
+      renderHamburguerTicketSection(section, selected);
+      return;
+    }
+
     try {
       const recommendationData = await getTopRecommendations(selected.categoryFilter.termo || category, selected);
+
+      if (requestToken !== latestTicketRequestToken) {
+        return;
+      }
+
       const recommendations = recommendationData.list || [];
       const effectiveCategory = recommendationData.effectiveCategory || category;
 
@@ -2432,6 +2536,10 @@ continueButtons.forEach((button) => {
         effectiveCategory
       );
     } catch (error) {
+      if (requestToken !== latestTicketRequestToken) {
+        return;
+      }
+
       const fallbackSnapshot = loadOfflineTicketSnapshot();
       if (!navigator.onLine && fallbackSnapshot) {
         renderRecommendations(

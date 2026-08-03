@@ -326,6 +326,65 @@
 	color: var(--accent);
 }
 
+.hamburguer-ticket-config {
+	color: var(--text-muted);
+	font-weight: 600;
+	margin-bottom: 18px;
+}
+
+.hamburguer-result-images {
+	display: flex;
+	height: 170px;
+	background: var(--surface);
+}
+
+.hamburguer-result-images.is-blend .result-image {
+	width: 50%;
+	height: 100%;
+}
+
+.hamburguer-result-images:not(.is-blend) .result-image {
+	width: 100%;
+	height: 100%;
+}
+
+.hamburguer-ticket-cuts {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin-bottom: 16px;
+}
+
+.hamburguer-ticket-cut {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 14px;
+	border: 1px solid var(--border-card);
+	border-radius: 12px;
+	background: var(--surface-strong);
+}
+
+.hamburguer-ticket-cut-name {
+	color: var(--main-text);
+	font-weight: 600;
+}
+
+.hamburguer-ticket-cut-weight {
+	color: var(--accent);
+	font-weight: 700;
+}
+
+.hamburguer-ticket-instruction {
+	color: var(--text-muted);
+	line-height: 1.6;
+}
+
+.hamburguer-ticket-instruction strong {
+	color: #fff;
+}
+
 .qr-card {
 	display: grid;
 	grid-template-columns: 1fr 220px;
