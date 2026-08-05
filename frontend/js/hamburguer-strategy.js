@@ -319,6 +319,9 @@
               </div>
               <h3>${escapeHtmlLocal(recomendacao.rotulo)}</h3>
               <ul class="hamburguer-ticket-cuts">${cortesMarkup}</ul>
+              <button class="result-select-btn" type="button" data-ranking="${recomendacao.ranking}">
+                Escolher esta opção
+              </button>
             </div>
           </article>
         `;
@@ -334,6 +337,63 @@
       <p class="hamburguer-ticket-instruction">
         <strong>Instrução técnica:</strong> ${escapeHtmlLocal(ticket.instrucaoTecnica)}
       </p>
+    `;
+  };
+
+  // Tela de "escolha final" de uma recomendação específica do Ticket Digital —
+  // mesmo padrão visual de renderFinalInstruction em script.js (final-choice-card
+  // + qr-card), adaptado para blend: como um blend tem 2 cortes, renderiza um
+  // final-choice-card por corte, cada um com seu próprio link "Ver página do
+  // corte" (corte.page já vem pronto de buildCortes/CUT_GRADES).
+  const buildFinalQrPayload = (ticket, recomendacao) => {
+    const cortesResumo = recomendacao.cortes
+      .map((corte) => `${corte.nome} ${corte.pesoGramas}g`)
+      .join(" + ");
+    return `CarneCerta|categoria:hamburguer|receita:${recomendacao.rotulo}|cortes:${cortesResumo}|pessoas:${ticket.pessoas}|moagem:${ticket.vezesMoida}x`;
+  };
+
+  const renderFinalTicketHtml = (ticket, recomendacao) => {
+    const isBlend = recomendacao.cortes.length > 1;
+    const qrPayload = buildFinalQrPayload(ticket, recomendacao);
+    const qrSrc = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(qrPayload)}`;
+
+    const choiceCardsMarkup = recomendacao.cortes
+      .map(
+        (corte) => `
+          <article class="final-choice-card">
+            <img src="${escapeHtmlLocal(corte.image)}" alt="${escapeHtmlLocal(corte.nome)}" class="final-choice-image">
+            <div class="final-choice-content">
+              <h3>${escapeHtmlLocal(corte.nome)}</h3>
+              <p><strong>Quantidade recomendada:</strong> ${corte.pesoGramas}g${isBlend ? ` (${Math.round(corte.percentual * 100)}% do blend)` : ""} para ${ticket.pessoas} pessoas.</p>
+              <p class="final-note">Parte de: ${escapeHtmlLocal(recomendacao.rotulo)}.</p>
+              <a class="details-link" href="${escapeHtmlLocal(corte.page)}">Ver página do corte (${escapeHtmlLocal(corte.nome)})</a>
+            </div>
+          </article>
+        `
+      )
+      .join("");
+
+    return `
+      <div class="results-header">
+        <h2>Escolha final confirmada</h2>
+        <p>Use o texto abaixo para pedir no açougue e garantir a quantidade certa.</p>
+      </div>
+
+      ${choiceCardsMarkup}
+
+      <article class="qr-card">
+        <div>
+          <h3>QR Code da sua escolha</h3>
+          <p>Mostre esse QR Code no açougue para facilitar o pedido, salvar no celular ou compartilhar com quem vai comprar.</p>
+        </div>
+        <img src="${escapeHtmlLocal(qrSrc)}" alt="QR Code da recomendação" class="qr-image">
+        <div class="qr-tips">
+          <p><strong>Como usar:</strong></p>
+          <p>1. Escaneie para abrir o resumo da escolha.</p>
+          <p>2. Mostre no balcão para evitar erro de corte e quantidade.</p>
+          <p>3. Pode integrar com pedido online, WhatsApp ou sistema de caixa.</p>
+        </div>
+      </article>
     `;
   };
 
@@ -399,6 +459,7 @@
     HamburguerErrorCode,
     HamburguerStrategy,
     renderTicketHtml,
+    renderFinalTicketHtml,
     renderTicketMarkdown
   };
 })(window);

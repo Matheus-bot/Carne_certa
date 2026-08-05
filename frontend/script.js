@@ -2446,6 +2446,21 @@ const renderHamburguerTicketSection = (section, selected) => {
   try {
     const ticket = new hamburguerEngine.HamburguerStrategy().recommend(input);
     section.innerHTML = hamburguerEngine.renderTicketHtml(ticket);
+
+    const selectButtons = section.querySelectorAll(".result-select-btn");
+    selectButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const ranking = Number(button.dataset.ranking || "1");
+        const recomendacao = ticket.recomendacoes.find((item) => item.ranking === ranking);
+
+        if (!recomendacao) {
+          return;
+        }
+
+        section.innerHTML = hamburguerEngine.renderFinalTicketHtml(ticket, recomendacao);
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
   } catch (error) {
     const safeMessage = escapeHtml(error.message || "Revise as opcoes selecionadas e tente novamente.");
     section.innerHTML = `
